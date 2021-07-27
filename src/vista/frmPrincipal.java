@@ -5,6 +5,9 @@
  */
 package vista;
 
+import javax.swing.JOptionPane;
+import java.awt.Image;
+import java.awt.Toolkit;
 /**
  *
  * @author anthony.ricse
@@ -16,6 +19,12 @@ public class frmPrincipal extends javax.swing.JFrame {
      */
     public frmPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
+    }
+    public Image getIconImage(){
+        Image retValue = Toolkit.getDefaultToolkit().getImage((ClassLoader.getSystemResource("image\\Moki (1).png")));
+        return  retValue;
     }
 
     /**
@@ -27,21 +36,59 @@ public class frmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        btnInventario = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
+        lblFondoPrincipal = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnInventario.setIcon(new javax.swing.ImageIcon("C:\\Users\\anthony.ricse\\Desktop\\proyecto\\Ciclo5\\images\\btnInventario.png")); // NOI18N
+        btnInventario.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        btnInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInventario.setPreferredSize(new java.awt.Dimension(158, 132));
+        btnInventario.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                none(evt);
+            }
+        });
+        btnInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 127, 127));
+
+        btnExit.setIcon(new javax.swing.ImageIcon("C:\\Users\\anthony.ricse\\Desktop\\proyecto\\Ciclo5\\images\\btnExit.PNG")); // NOI18N
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExit.setPreferredSize(new java.awt.Dimension(80, 48));
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 40, 40));
+
+        lblFondoPrincipal.setIcon(new javax.swing.ImageIcon("C:\\Users\\anthony.ricse\\Desktop\\proyecto\\Ciclo5\\images\\fondoVerde1.1.png")); // NOI18N
+        lblFondoPrincipal.setMaximumSize(new java.awt.Dimension(669, 440));
+        lblFondoPrincipal.setMinimumSize(new java.awt.Dimension(669, 440));
+        getContentPane().add(lblFondoPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
+JOptionPane.showMessageDialog(null, "Ingreso al inventario", "Inventario",3);JOptionPane.showMessageDialog(null, "Ingreso al inventario", "Inventario",3);    }//GEN-LAST:event_btnInventarioActionPerformed
+
+    private void none(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_none
+        // TODO add your handling code here:
+    }//GEN-LAST:event_none
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +126,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnInventario;
+    private javax.swing.JLabel lblFondoPrincipal;
     // End of variables declaration//GEN-END:variables
 }
