@@ -38,6 +38,8 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         btnInventario = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
+        btnDinero = new javax.swing.JButton();
         lblFondoPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,7 +47,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnInventario.setIcon(new javax.swing.ImageIcon("C:\\Users\\anthony.ricse\\Desktop\\proyecto\\Ciclo5\\images\\btnInventario.png")); // NOI18N
+        btnInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnInventario.png"))); // NOI18N
         btnInventario.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         btnInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInventario.setPreferredSize(new java.awt.Dimension(158, 132));
@@ -61,7 +63,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(btnInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 127, 127));
 
-        btnExit.setIcon(new javax.swing.ImageIcon("C:\\Users\\anthony.ricse\\Desktop\\proyecto\\Ciclo5\\images\\btnExit.PNG")); // NOI18N
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnExit.PNG"))); // NOI18N
         btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.setPreferredSize(new java.awt.Dimension(80, 48));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +73,26 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 40, 40));
 
-        lblFondoPrincipal.setIcon(new javax.swing.ImageIcon("C:\\Users\\anthony.ricse\\Desktop\\proyecto\\Ciclo5\\images\\fondoVerde1.1.png")); // NOI18N
+        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btn.Menu.png"))); // NOI18N
+        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 283, 130, 120));
+
+        btnDinero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnDinero.png"))); // NOI18N
+        btnDinero.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDinero.setPreferredSize(new java.awt.Dimension(157, 133));
+        btnDinero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDineroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 285, 120, 120));
+
+        lblFondoPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fondoVerde1.1.png"))); // NOI18N
         lblFondoPrincipal.setMaximumSize(new java.awt.Dimension(669, 440));
         lblFondoPrincipal.setMinimumSize(new java.awt.Dimension(669, 440));
         getContentPane().add(lblFondoPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, 440));
@@ -80,7 +101,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
-JOptionPane.showMessageDialog(null, "Ingreso al inventario", "Inventario",3);JOptionPane.showMessageDialog(null, "Ingreso al inventario", "Inventario",3);    }//GEN-LAST:event_btnInventarioActionPerformed
+JOptionPane.showMessageDialog(null, "Ingreso al inventario", "Inventario",3);    }//GEN-LAST:event_btnInventarioActionPerformed
 
     private void none(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_none
         // TODO add your handling code here:
@@ -89,6 +110,14 @@ JOptionPane.showMessageDialog(null, "Ingreso al inventario", "Inventario",3);JOp
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+       JOptionPane.showMessageDialog(null, "Ingreso al menu", "Menu",3);
+    }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void btnDineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDineroActionPerformed
+ JOptionPane.showMessageDialog(null, "Ingreso al cuadro de Finanzas", "Cuadro de Finanzas",3);
+    }//GEN-LAST:event_btnDineroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,8 +155,10 @@ JOptionPane.showMessageDialog(null, "Ingreso al inventario", "Inventario",3);JOp
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDinero;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnInventario;
+    private javax.swing.JButton btnMenu;
     private javax.swing.JLabel lblFondoPrincipal;
     // End of variables declaration//GEN-END:variables
 }
