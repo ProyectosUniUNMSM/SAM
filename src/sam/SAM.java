@@ -1,21 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sam;
 
-/**
- *
- * @author AlexTprog
- */
+import Controlador.ControladorMenu;
+import Vista.Vista_Menu;
+
 public class SAM {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Vista_Menu vista = new Vista_Menu();
+        ControladorMenu abrir = new ControladorMenu(vista);
+        abrir.iniciar();
     }
 
 }
