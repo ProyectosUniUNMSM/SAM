@@ -1,7 +1,5 @@
 package modelo;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author AlexTprog
@@ -23,9 +21,9 @@ public class Menu {
         if (isFull()) {
             comida[pos] = c;
             pos++;
-        }else{
-            System.out.println("LLENO");
-        }      
+        } else {
+            System.out.println("MENU LLENO");
+        }
     }
 
     public boolean isFull() {
