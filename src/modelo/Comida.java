@@ -8,12 +8,15 @@ public class Comida {
 
     String nombre;
     float precio;
-    //ingredientes
-    //Imagen//String dir; 
+    Ingrediente[] ingredientes;
+    String img;
 
     public Comida(String nombre, float precio) {
         this.nombre = nombre;
         this.precio = precio;
+    }
+
+    public Comida() {
     }
 
 }
