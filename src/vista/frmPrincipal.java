@@ -8,6 +8,7 @@ package vista;
 import javax.swing.JOptionPane;
 import java.awt.Image;
 import java.awt.Toolkit;
+
 /**
  *
  * @author anthony.ricse
@@ -20,11 +21,12 @@ public class frmPrincipal extends javax.swing.JFrame {
     public frmPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
     }
-    public Image getIconImage(){
+
+    public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage((ClassLoader.getSystemResource("image\\Moki (1).png")));
-        return  retValue;
+        return retValue;
     }
 
     /**
@@ -112,11 +114,11 @@ JOptionPane.showMessageDialog(null, "Ingreso al inventario", "Inventario",3);   
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-       JOptionPane.showMessageDialog(null, "Ingreso al menu", "Menu",3);
+        JOptionPane.showMessageDialog(null, "Ingreso al menu", "Menu", 3);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnDineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDineroActionPerformed
- JOptionPane.showMessageDialog(null, "Ingreso al cuadro de Finanzas", "Cuadro de Finanzas",3);
+        JOptionPane.showMessageDialog(null, "Ingreso al cuadro de Finanzas", "Cuadro de Finanzas", 3);
     }//GEN-LAST:event_btnDineroActionPerformed
 
     /**
