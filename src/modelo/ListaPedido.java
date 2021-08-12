@@ -19,7 +19,7 @@ public class ListaPedido {
         return false;
     }
 
-    public void insertar(Comida comida, Cliente cliente) {
+    public void addPedido(Comida comida, Cliente cliente) {
         Pedido nuevo = new Pedido(comida, cliente);
         nuevo.sig = null;
 
@@ -31,48 +31,19 @@ public class ListaPedido {
         }
     }
 
-    public void eliminar(Comida comida, Cliente cliente) {
+    public Pedido buscarPedido(Cliente c) {
         Pedido aux = inicio;
-        boolean band = false;
-        //Recorre la lista hasta encontrar pedido
-        while (aux != null && !band) {
-            if (aux.cliente.dni.equalsIgnoreCase(cliente.dni)) {
-                if (aux.comida.equals(comida)) {
-                    band = true;
-                }
-            } else {
-                aux = aux.sig;
-            }
-        }
-        //Elimina elemento de la lista
-        if (comida != null && cliente != null) {
-            if (aux == pedido) {
-                inicio = pedido.sig;
-            } else {
-                aux.sig = pedido.sig;
-            }
-        }
-    }
+        while (aux.sig != null) {
+            if (aux.cliente.equals(c)) {
 
-    public Pedido obtenerPedidos(int n) {
-        if (isListaVacia()) {
-            return null;
-        } else {
-            Pedido aux = inicio;
-            int contador = 0;
-            while (contador < n && aux.sig != null) {
-                aux = aux.sig;
-                contador++;
-            }
-            if (contador != n) {
-                return null;
-            } else {
                 return aux;
             }
+            aux = aux.sig;
         }
+        return null;
     }
 
-    public void mostrar() {
+    public void mostrarPedido() {
         Pedido aux = inicio;
         while (aux != null) {
             System.out.println(aux);
@@ -80,4 +51,10 @@ public class ListaPedido {
         }
     }
 
+    public void eliminarPedido(Pedido p) {
+        Pedido aux = inicio;
+        while (aux != null && aux.sig != p) {
+
+        }
+    }
 }

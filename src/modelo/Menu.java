@@ -6,20 +6,17 @@ package modelo;
  */
 public class Menu {
 
-    Comida[] comida;
-    private int pos = 0;
+    public Comida[] comida;
+    public int pos;
 
     public Menu(int tmn) {
-        comida = new Comida[tmn];
+        this.comida = new Comida[tmn];
+        this.pos = 0;
     }
 
-    public Menu() {
-        comida = new Comida[20];
-    }
-
-    public void addComida(Comida c) {
-        if (isFull()) {
-            comida[pos] = c;
+    public void addComida(Comida nuevo) {
+        if (!isFull()) {
+            this.comida[pos] = nuevo;
             pos++;
         } else {
             System.out.println("MENU LLENO");
@@ -27,9 +24,17 @@ public class Menu {
     }
 
     public boolean isFull() {
-        if (pos == comida.length) {
+        if (pos > comida.length) {
             return true;
         }
         return false;
+    }
+
+    public void mostrar() {
+        int i = 0;
+        while (comida[i] != null && i < comida.length) {
+            System.out.println(comida[i]);
+            i++;
+        }
     }
 }

@@ -47,4 +47,13 @@ public class Inventario {
     public void aumIngrediente(int pos, int cantidad) {
         ingredientes[pos].aumIngrediente(cantidad);
     }
+
+    public void mostrar() {
+        int i = 0;
+        while (ingredientes[i] != null && i < ingredientes.length) {
+            System.out.println(ingredientes[i]);
+            i++;
+        }
+    }
+
 }
