@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author AlexTprog
@@ -19,21 +21,26 @@ public class Caja {
     public void addBoleta(Cliente c) {
         Boleta nuevo = new Boleta(c);
 
-        if (!isBoletaActiva(c)) {
+        if (isCajaVacia()) {
+            ultimo = nuevo;
 
-            if (!isCajaVacia()) {
-                ultimo = nuevo;
-            } else {
+        } else {
+            if (!isBoletaActiva(c)) {
                 nuevo.sig = ultimo.sig;
                 ultimo.sig = nuevo;
                 ultimo = nuevo;
+            } else {
+                System.out.println("Ya Hay un Boleta Activa");
             }
-        } else {
-            System.out.println("Ya existe una boleta activa");
         }
+
     }
 
-    public void addPedidoBoleta() {
+    public void addPedidoBoleta(Pedido p) {
+        if (isCajaVacia()) {
+            addBoleta(p.cliente);
+        }
+        buscarBoleta(p.cliente).addPedido(p);
 
     }
 
@@ -48,5 +55,35 @@ public class Caja {
             aux = aux.sig;
         }
         return band;
+    }
+
+    public Boleta buscarBoleta(Cliente c) {
+        Boleta aux = ultimo;
+        do {
+            if (aux.cliente.equals(c)) {
+                return aux;
+            }
+            aux = aux.sig;
+        } while (aux.sig != ultimo);
+        return null;
+    }
+
+    public float calcTotal() {
+        float total = 0;
+        Boleta aux = ultimo;
+        while (aux.sig != ultimo) {
+            aux.calcMonto();
+            total += aux.monto;
+            aux = aux.sig;
+        }
+        return total;
+    }
+
+    public void recibirPedido(ArrayList<Pedido> lista) {
+        for (Pedido aux : lista) {
+            if (aux != null) {
+                addPedidoBoleta(aux);
+            }
+        }
     }
 }

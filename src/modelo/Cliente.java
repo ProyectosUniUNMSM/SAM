@@ -19,6 +19,7 @@ public class Cliente {
         this.dni = dni;
     }
 
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -31,7 +32,8 @@ public class Cliente {
             return false;
         }
         final Cliente other = (Cliente) obj;
-        if (!Objects.equals(this.nombre, other.nombre)) {
+        //Convierte en mayuscula y compara
+        if (!Objects.equals(this.nombre.toUpperCase(), other.nombre.toUpperCase())) {
             return false;
         }
         if (!Objects.equals(this.dni, other.dni)) {

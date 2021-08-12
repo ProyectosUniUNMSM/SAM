@@ -10,16 +10,16 @@ import java.util.Date;
 public class Boleta {
 
     //Nodo de Lista Doblemente enlazada    
-    float monto;
-    ArrayList<Pedido> pedidos;
-    Cliente cliente;
-    Date fecha;
-    boolean estado;
-    Boleta sig;
+    public float monto;
+    public ArrayList<Pedido> pedidos;
+    public Cliente cliente;
+    public Date fecha;
+    public boolean estado;
+    public Boleta sig;
 
     //Atributo de clase
     static String formato = "dd/MMM/yyyy hh:mm a";
-
+    
     public Boleta(Cliente cliente) {
         this.pedidos = new ArrayList<Pedido>();
         this.cliente = cliente;
@@ -27,12 +27,17 @@ public class Boleta {
         this.estado = false;
         this.sig = this;
     }
-
-    public void calcMonto() {
-        float aux = 0;
+    
+    public float calcMonto() {
+        float total = 0;        
         for (Pedido temp : this.pedidos) {
-            aux += temp.comida.precio;
+            total += temp.comida.precio;
         }
-        this.monto = aux;
+        this.monto = total;
+        return total;
+    }
+    
+    public void addPedido(Pedido p) {
+        this.pedidos.add(p);
     }
 }

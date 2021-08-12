@@ -5,6 +5,7 @@
  */
 package sam;
 
+import modelo.Boleta;
 import modelo.Caja;
 import modelo.Cliente;
 import modelo.Comida;
@@ -62,6 +63,9 @@ public class SAM {
 
         misPedidos.addPedido(comida1, cliente);
         misPedidos.addPedido(comida2, cliente);
-
+        
+        miCaja.recibirPedido(misPedidos.enivarPedidos(cliente));
+        
+        System.out.println(miCaja.calcTotal());
     }
 }
