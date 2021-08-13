@@ -5,6 +5,9 @@
  */
 package vista;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author anthony.ricse
@@ -16,7 +19,13 @@ public class IngredientesFrm extends javax.swing.JFrame {
      */
     public IngredientesFrm() {
         initComponents();
+        setLocationRelativeTo(null);
     }
+     public Image getIconImage(){
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("image/logo.png"));
+        return retValue;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,55 +36,96 @@ public class IngredientesFrm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        button1 = new java.awt.Button();
-        button2 = new java.awt.Button();
-        jPanel1 = new javax.swing.JPanel();
+        btnCarne = new java.awt.Button();
+        btnVerdura = new java.awt.Button();
+        cardOpcion = new javax.swing.JPanel();
+        panCarnes = new javax.swing.JPanel();
+        lblFondoCarne = new javax.swing.JLabel();
+        panVerdura = new javax.swing.JPanel();
+        lblFondVerdura = new javax.swing.JLabel();
+        btnRetroceder = new javax.swing.JButton();
         lblFondoIngre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(964, 635));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(950, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        button1.setBackground(new java.awt.Color(130, 193, 89));
-        button1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        button1.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
-        button1.setForeground(new java.awt.Color(255, 255, 255));
-        button1.setLabel("Carnes");
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        btnCarne.setBackground(new java.awt.Color(130, 193, 89));
+        btnCarne.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCarne.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
+        btnCarne.setForeground(new java.awt.Color(255, 255, 255));
+        btnCarne.setLabel("Carnes");
+        btnCarne.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                btnCarneActionPerformed(evt);
             }
         });
-        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 100, 30));
+        getContentPane().add(btnCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 100, 30));
 
-        button2.setBackground(new java.awt.Color(130, 193, 89));
-        button2.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
-        button2.setForeground(new java.awt.Color(255, 255, 255));
-        button2.setLabel("Verduras");
-        getContentPane().add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 100, 30));
+        btnVerdura.setBackground(new java.awt.Color(130, 193, 89));
+        btnVerdura.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
+        btnVerdura.setForeground(new java.awt.Color(255, 255, 255));
+        btnVerdura.setLabel("Verduras");
+        btnVerdura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerduraActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVerdura, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 100, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
-        );
+        cardOpcion.setLayout(new java.awt.CardLayout());
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 830, 430));
+        panCarnes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblFondoIngre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/FondoIngre.jpg"))); // NOI18N
+        lblFondoCarne.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/carnePrueba.png"))); // NOI18N
+        panCarnes.add(lblFondoCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 430));
+
+        cardOpcion.add(panCarnes, "card2");
+
+        panVerdura.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblFondVerdura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/VerduraPrueba.png"))); // NOI18N
+        panVerdura.add(lblFondVerdura, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 440));
+
+        cardOpcion.add(panVerdura, "card3");
+
+        getContentPane().add(cardOpcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 830, 430));
+
+        btnRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/salirBtn2.png"))); // NOI18N
+        btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetrocederActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 50, 50));
+
+        lblFondoIngre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/FondoIngre.jpg"))); // NOI18N
         getContentPane().add(lblFondoIngre, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button1ActionPerformed
+    private void btnCarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarneActionPerformed
+        cardOpcion.removeAll();
+        cardOpcion.add(panCarnes);
+        cardOpcion.repaint();
+        cardOpcion.revalidate();
+    }//GEN-LAST:event_btnCarneActionPerformed
+
+    private void btnVerduraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerduraActionPerformed
+        cardOpcion.removeAll();
+        cardOpcion.add(panVerdura);
+        cardOpcion.repaint();
+        cardOpcion.revalidate();
+    }//GEN-LAST:event_btnVerduraActionPerformed
+
+    private void btnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
+        principalFrm main = new principalFrm();
+        main.dispose();
+        main.setVisible(true);
+        main.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnRetrocederActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,9 +163,14 @@ public class IngredientesFrm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button button1;
-    private java.awt.Button button2;
-    private javax.swing.JPanel jPanel1;
+    private java.awt.Button btnCarne;
+    private javax.swing.JButton btnRetroceder;
+    private java.awt.Button btnVerdura;
+    private javax.swing.JPanel cardOpcion;
+    private javax.swing.JLabel lblFondVerdura;
+    private javax.swing.JLabel lblFondoCarne;
     private javax.swing.JLabel lblFondoIngre;
+    private javax.swing.JPanel panCarnes;
+    private javax.swing.JPanel panVerdura;
     // End of variables declaration//GEN-END:variables
 }

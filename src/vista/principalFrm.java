@@ -5,6 +5,9 @@
  */
 package vista;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author anthony.ricse
@@ -16,6 +19,11 @@ public class principalFrm extends javax.swing.JFrame {
      */
     public principalFrm() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    public Image getIconImage(){
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("image/logo.png"));
+        return retValue;
     }
 
     /**
@@ -29,11 +37,13 @@ public class principalFrm extends javax.swing.JFrame {
 
         salirBtn = new javax.swing.JButton();
         dineroBtn = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
+        btnInventory = new javax.swing.JButton();
         fondoLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         salirBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/salirBtn2.png"))); // NOI18N
@@ -53,18 +63,18 @@ public class principalFrm extends javax.swing.JFrame {
         });
         getContentPane().add(dineroBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 130, 120));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/MenuBtn2.png"))); // NOI18N
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 130, 130));
+        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/MenuBtn2.png"))); // NOI18N
+        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 130, 130));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/inventaryBtn.PNG"))); // NOI18N
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnInventory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/inventaryBtn.PNG"))); // NOI18N
+        btnInventory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnInventoryActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 338, 140, 130));
+        getContentPane().add(btnInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 338, 140, 130));
 
         fondoLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Imagen3.png"))); // NOI18N
         getContentPane().add(fondoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 730, -1));
@@ -79,9 +89,14 @@ System.exit(0);    }//GEN-LAST:event_salirBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dineroBtnActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
+        IngredientesFrm ingre = new IngredientesFrm();
+        
+                ingre.setVisible(true);
+                
+                ingre.setLocationRelativeTo(null);
+                
+    }//GEN-LAST:event_btnInventoryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,10 +134,10 @@ System.exit(0);    }//GEN-LAST:event_salirBtnActionPerformed
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInventory;
+    private javax.swing.JButton btnMenu;
     private javax.swing.JButton dineroBtn;
     private javax.swing.JLabel fondoLbl;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton salirBtn;
     // End of variables declaration//GEN-END:variables
 }
