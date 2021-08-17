@@ -24,10 +24,7 @@ public class Menu {
     }
 
     public boolean isFull() {
-        if (pos > comida.length) {
-            return true;
-        }
-        return false;
+        return pos > comida.length;
     }
 
     public void mostrar() {
