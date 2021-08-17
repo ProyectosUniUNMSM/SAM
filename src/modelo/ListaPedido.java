@@ -1,30 +1,31 @@
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author AlexTprog
  */
 public class ListaPedido {
 
-    Pedido inicio, fin, econtrado;
+    Pedido inicio, econtrado;
 
     public ListaPedido() {
         this.inicio = null;
-        this.fin = null;
     }
 
-    public boolean isColaVacia() {
+    public boolean isListaVacia() {
         if (inicio == null) {
             return true;
         }
         return false;
     }
 
-    public void insertar(Comida comida, Cliente cliente) {
+    public void addPedido(Comida comida, Cliente cliente) {
         Pedido nuevo = new Pedido(comida, cliente);
         nuevo.sig = null;
 
-        if (isColaVacia()) {
+        if (isListaVacia()) {
             inicio = nuevo;
         } else {
             nuevo.sig = inicio;
@@ -32,26 +33,53 @@ public class ListaPedido {
         }
     }
 
-    public void pedidoListo(Boleta boleta, Pedido pedido) {
-        Pedido aux;        
-        boleta.pedidos.add(pedido);
-        
-    }
-
-    public void eliminar(Pedido pedido) {
+    public Pedido buscarPedido(Cliente c) {
         Pedido aux = inicio;
-        //Recorre la lista hasta encontrar pedido
-        while (aux.sig != pedido && aux.sig != null) {
+        while (aux.sig != null) {
+            if (aux.cliente.equals(c)) {
+                return aux;
+            }
             aux = aux.sig;
         }
-        //Elimina elemento de la lista
-        if (pedido != null) {
-            if (aux == pedido) {
-                inicio = pedido.sig;
+        return null;
+    }
+
+    public void mostrarPedido() {
+        Pedido aux = inicio;
+        while (aux != null) {
+            System.out.println(aux);
+            aux = aux.sig;
+        }
+    }
+
+    public void eliminarPedido(Pedido p) {
+        Pedido aux = inicio;
+        while (aux.sig != null && aux.sig != p) {
+            aux = aux.sig;
+        }
+        if (p != null) {
+            if (aux == p) {
+                inicio = aux.sig;
             } else {
-                aux.sig = pedido.sig;
+                aux.sig = p.sig;
             }
         }
+    }
 
+    public void limpiarLista() {
+
+    }
+
+    public ArrayList<Pedido> enivarPedidos(Cliente c) {
+        ArrayList<Pedido> lista = new ArrayList<Pedido>();
+        Pedido aux = inicio;
+        while (aux.sig != null) {
+            if (aux.cliente.equals(c)) {
+                aux.estado = true;
+                lista.add(aux);
+            }
+            aux = aux.sig;
+        }
+        return lista;
     }
 }

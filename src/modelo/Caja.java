@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author AlexTprog
@@ -12,20 +14,76 @@ public class Caja {
         ultimo = null;
     }
 
-    public void addBoleta(Boleta boleta) {
-        
+    public boolean isCajaVacia() {
+        return ultimo == null;
     }
-    
-    public void generarBoleta(){
-        
+
+    public void addBoleta(Cliente c) {
+        Boleta nuevo = new Boleta(c);
+
+        if (isCajaVacia()) {
+            ultimo = nuevo;
+
+        } else {
+            if (!isBoletaActiva(c)) {
+                nuevo.sig = ultimo.sig;
+                ultimo.sig = nuevo;
+                ultimo = nuevo;
+            } else {
+                System.out.println("Ya Hay un Boleta Activa");
+            }
+        }
+
     }
-    
-    public void buscarBoleta(){
-        
+
+    public void addPedidoBoleta(Pedido p) {
+        if (isCajaVacia()) {
+            addBoleta(p.cliente);
+        }
+        buscarBoleta(p.cliente).addPedido(p);
+
     }
-    
-    public void elminarBoleta(){
-        
+
+    public boolean isBoletaActiva(Cliente c) {
+        Boleta aux = ultimo;
+        boolean band = false;
+        //Si el estado de la boleta es false, sigue activa
+        while (aux.sig != ultimo && !band) {
+            if (aux.cliente.equals(c) && !aux.estado) {
+                band = true;
+            }
+            aux = aux.sig;
+        }
+        return band;
     }
-            
+
+    public Boleta buscarBoleta(Cliente c) {
+        Boleta aux = ultimo;
+        do {
+            if (aux.cliente.equals(c)) {
+                return aux;
+            }
+            aux = aux.sig;
+        } while (aux.sig != ultimo);
+        return null;
+    }
+
+    public float calcTotal() {
+        float total = 0;
+        Boleta aux = ultimo;
+        while (aux.sig != ultimo) {
+            aux.calcMonto();
+            total += aux.monto;
+            aux = aux.sig;
+        }
+        return total;
+    }
+
+    public void recibirPedido(ArrayList<Pedido> lista) {
+        for (Pedido aux : lista) {
+            if (aux != null) {
+                addPedidoBoleta(aux);
+            }
+        }
+    }
 }
