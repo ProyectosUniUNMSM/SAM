@@ -14,6 +14,8 @@ import modelo.Inventario;
 import modelo.ListaPedido;
 import modelo.Menu;
 import modelo.Pedido;
+import vista.panelBalance;
+import vista.principalFrm;
 
 /**
  *
@@ -63,9 +65,13 @@ public class SAM {
 
         misPedidos.addPedido(comida1, cliente);
         misPedidos.addPedido(comida2, cliente);
-        
+
         miCaja.recibirPedido(misPedidos.enivarPedidos(cliente));
-        
+
         System.out.println(miCaja.calcTotal());
+
+        principalFrm f = new principalFrm();
+        f.setVisible(true);
+        
     }
 }
