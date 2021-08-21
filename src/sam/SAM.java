@@ -5,17 +5,13 @@
  */
 package sam;
 
-import modelo.Boleta;
 import modelo.Caja;
-import modelo.Cliente;
 import modelo.Comida;
 import modelo.Ingrediente;
 import modelo.Inventario;
 import modelo.ListaPedido;
 import modelo.Menu;
-import modelo.Pedido;
-import vista.panelBalance;
-import vista.principalFrm;
+
 
 /**
  *
@@ -27,6 +23,7 @@ public class SAM {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
         Menu miMenu = new Menu(10);
         Inventario miInventario = new Inventario(10);
         ListaPedido misPedidos = new ListaPedido();
@@ -51,27 +48,5 @@ public class SAM {
         comida2.ingredientes.add(a);
         comida2.ingredientes.add(c);
 
-        System.out.println("C1\t\t\t\t" + comida1);
-        comida1.mostrar();
-        System.out.println("C2\t\t\t\t" + comida2);
-        comida2.mostrar();
-
-        System.out.println("Menu");
-        miMenu.addComida(comida1);
-        miMenu.addComida(comida2);
-        miMenu.mostrar();
-
-        Cliente cliente = new Cliente("Alexander Torre Arteaga", "74854108");
-
-        misPedidos.addPedido(comida1, cliente);
-        misPedidos.addPedido(comida2, cliente);
-
-        miCaja.recibirPedido(misPedidos.enivarPedidos(cliente));
-
-        System.out.println(miCaja.calcTotal());
-
-        principalFrm f = new principalFrm();
-        f.setVisible(true);
-        
     }
 }
