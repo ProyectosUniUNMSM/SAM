@@ -42,7 +42,7 @@ public class principalFrm extends javax.swing.JFrame {
                 salirBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(salirBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 29, 50, 50));
+        getContentPane().add(salirBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, 50, 50));
 
         dineroBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/DineroBtn.PNG"))); // NOI18N
         dineroBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -59,7 +59,7 @@ public class principalFrm extends javax.swing.JFrame {
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 338, 140, 130));
 
         fondoLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Imagen3.png"))); // NOI18N
-        getContentPane().add(fondoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 730, -1));
+        getContentPane().add(fondoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 960, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -69,6 +69,9 @@ System.exit(0);    }//GEN-LAST:event_salirBtnActionPerformed
 
     private void dineroBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dineroBtnActionPerformed
         // TODO add your handling code here:
+        panelBalance panel = new panelBalance();
+        panel.setBounds(0, 0, 900, 600);
+        panel.setVisible(true);
     }//GEN-LAST:event_dineroBtnActionPerformed
 
     /**
