@@ -5,12 +5,14 @@
  */
 package sam;
 
+import controlador.controladorPrincipal;
 import modelo.Caja;
 import modelo.Comida;
 import modelo.Ingrediente;
 import modelo.Inventario;
 import modelo.ListaPedido;
 import modelo.Menu;
+import vista.principal;
 
 
 /**
@@ -48,5 +50,10 @@ public class SAM {
         comida2.ingredientes.add(a);
         comida2.ingredientes.add(c);
 
+        
+            principal mainStart = new principal();
+            controladorPrincipal controlaMain = new controladorPrincipal(mainStart);
+            controlaMain.inciar();
+            
     }
 }
