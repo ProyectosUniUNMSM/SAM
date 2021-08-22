@@ -30,4 +30,8 @@ public class Ingrediente {
     public void setCantidad(int tmn) {
         this.cantidad = tmn;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
 }
