@@ -142,14 +142,14 @@ public class controladorPrincipal extends javax.swing.JFrame implements  ActionL
             vista.btnBalance.setEnabled(true);
         }else if(panel2.isVisible()){
             vista.btnIngre.setEnabled(true);
-            vista.btnMenu.setEnabled(false);
+            vista.btnMenu.setEnabled(true);
             vista.btnBalance.setEnabled(true);
         }else if(panel1.isVisible()){
-            vista.btnIngre.setEnabled(false);
+            vista.btnIngre.setEnabled(true);
             vista.btnMenu.setEnabled(true);
             vista.btnBalance.setEnabled(true);
         }else if(panel3.isVisible()){
-            vista.btnBalance.setEnabled(false);
+            vista.btnBalance.setEnabled(true);
             vista.btnIngre.setEnabled(true);
             vista.btnMenu.setEnabled(true);
         }
