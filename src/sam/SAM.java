@@ -14,7 +14,6 @@ import modelo.ListaPedido;
 import modelo.Menu;
 import vista.principal;
 
-
 /**
  *
  * @author AlexTprog
@@ -50,10 +49,9 @@ public class SAM {
         comida2.ingredientes.add(a);
         comida2.ingredientes.add(c);
 
-        
-            principal mainStart = new principal();
-            controladorPrincipal controlaMain = new controladorPrincipal(mainStart);
-            controlaMain.inciar();
-            
+        principal mainStart = new principal();
+        controladorPrincipal controlaMain = new controladorPrincipal(mainStart);
+        controlaMain.inciar();
+
     }
 }
