@@ -5,14 +5,14 @@
  */
 package sam;
 
-import controlador.controladorPrincipal;
+import controlador.ControladorVentanaPrincipal;
 import modelo.Caja;
 import modelo.Comida;
 import modelo.Ingrediente;
 import modelo.Inventario;
 import modelo.ListaPedido;
 import modelo.Menu;
-import vista.principal;
+import vista.VentanaPrincipal;
 
 /**
  *
@@ -30,27 +30,8 @@ public class SAM {
         ListaPedido misPedidos = new ListaPedido();
         Caja miCaja = new Caja();
 
-        Ingrediente a = new Ingrediente("ingrediente a", "categoria a", 10);
-        Ingrediente b = new Ingrediente("ingrediente b", "categoria b", 11);
-        Ingrediente c = new Ingrediente("ingrediente c", "categoria c", 12);
-
-        miInventario.addIngrediente(a);
-        miInventario.addIngrediente(b);
-        miInventario.addIngrediente(c);
-
-        System.out.println("Inventario");
-        miInventario.mostrar();
-
-        Comida comida1 = new Comida("comida 1", 20);
-        comida1.ingredientes.add(a);
-        comida1.ingredientes.add(b);
-
-        Comida comida2 = new Comida("comida 2", 30);
-        comida2.ingredientes.add(a);
-        comida2.ingredientes.add(c);
-
-        principal mainStart = new principal();
-        controladorPrincipal controlaMain = new controladorPrincipal(mainStart);
+        VentanaPrincipal mainStart = new VentanaPrincipal();
+        ControladorVentanaPrincipal controlaMain = new ControladorVentanaPrincipal(mainStart);
         controlaMain.inciar();
 
     }

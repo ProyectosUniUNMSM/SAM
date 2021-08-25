@@ -9,6 +9,6 @@ package controlador;
  *
  * @author anthony.ricse
  */
-public class controladorIngrediente {
-    
+public class ControladorIngrediente {
+
 }

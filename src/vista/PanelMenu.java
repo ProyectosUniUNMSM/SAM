@@ -17,12 +17,12 @@ import javax.swing.JLabel;
  *
  * @author Carlos
  */
-public class menuFrm extends javax.swing.JPanel {
+public class PanelMenu extends javax.swing.JPanel {
 
     /**
      * Creates new form menuFrm
      */
-    public menuFrm() {
+    public PanelMenu() {
          initComponents();
      }
 

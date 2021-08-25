@@ -15,17 +15,16 @@ import modelo.TextPrompt;
  *
  * @author anthony.ricse
  */
-public class Ingrediente extends javax.swing.JPanel {
+public class PanelIngredientes extends javax.swing.JPanel {
 
     /**
      * Creates new form pan
      */
- 
-    public Ingrediente() {
+    public PanelIngredientes() {
         initComponents();
-         TextPrompt txt1Pane2 = new TextPrompt("Nombre", jTextField1);
+        TextPrompt txt1Pane2 = new TextPrompt("Nombre", jTextField1);
         TextPrompt txt2Pane2 = new TextPrompt("Cantidad", jTextField2);
-         TextPrompt txtPan3Nombre = new TextPrompt("Nombre", Txtfieldpan3Nombre);
+        TextPrompt txtPan3Nombre = new TextPrompt("Nombre", Txtfieldpan3Nombre);
         TextPrompt txtPan3Cantidad = new TextPrompt("Cantidad", TxtfieldPan3Cantidad);
 
     }
@@ -71,7 +70,7 @@ public class Ingrediente extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(950, 600));
 
         TablaIngrediente.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        TablaIngrediente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TablaIngrediente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         TablaIngrediente.setDoubleBuffered(true);
         TablaIngrediente.setName(""); // NOI18N
 
@@ -83,7 +82,7 @@ public class Ingrediente extends javax.swing.JPanel {
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         btnAdd.setBorder(null);
         btnAdd.setContentAreaFilled(false);
-        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
@@ -105,7 +104,7 @@ public class Ingrediente extends javax.swing.JPanel {
 
         btnMinus.setBackground(new java.awt.Color(180, 237, 131));
         btnMinus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/restar.png"))); // NOI18N
-        btnMinus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMinus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMinus.setMinimumSize(new java.awt.Dimension(61, 30));
         btnMinus.setPreferredSize(new java.awt.Dimension(61, 30));
 
@@ -198,7 +197,7 @@ public class Ingrediente extends javax.swing.JPanel {
         btnAdd1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         btnAdd1.setBorder(null);
         btnAdd1.setContentAreaFilled(false);
-        btnAdd1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdd1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAdd1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdd1ActionPerformed(evt);
@@ -220,7 +219,7 @@ public class Ingrediente extends javax.swing.JPanel {
 
         btnMinus1.setBackground(new java.awt.Color(180, 237, 131));
         btnMinus1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/restar.png"))); // NOI18N
-        btnMinus1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMinus1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMinus1.setMinimumSize(new java.awt.Dimension(61, 30));
         btnMinus1.setPreferredSize(new java.awt.Dimension(61, 30));
 
@@ -230,7 +229,7 @@ public class Ingrediente extends javax.swing.JPanel {
             }
         });
 
-        BtnNewIngredient1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnNewIngredient1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BtnNewIngredient1.setLabel("Agregar");
         BtnNewIngredient1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -306,7 +305,7 @@ public class Ingrediente extends javax.swing.JPanel {
         TablaIngrediente.addTab("", jPanel3);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salirBtn2.png"))); // NOI18N
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -351,7 +350,7 @@ public class Ingrediente extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnNewIngredientActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-    
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void btnAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
