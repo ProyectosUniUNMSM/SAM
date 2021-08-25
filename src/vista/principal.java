@@ -65,6 +65,7 @@ public class principal extends javax.swing.JFrame implements ActionListener{
         contenedor.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 102, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnIngre.setMinimumSize(new java.awt.Dimension(100, 100));
         btnIngre.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -73,31 +74,10 @@ public class principal extends javax.swing.JFrame implements ActionListener{
                 btnIngreActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(btnIngre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(440, 440, 440)
-                .addComponent(btnBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(400, 400, 400)
-                .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(lblBotonoes, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblBotonoes, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnIngre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        jPanel1.add(btnIngre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 110, 100));
+        jPanel1.add(btnBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 100));
+        jPanel1.add(lblBotonoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 110));
 
         contenedor.add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
