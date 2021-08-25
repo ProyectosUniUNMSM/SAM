@@ -25,27 +25,21 @@ public class principal extends javax.swing.JFrame implements ActionListener{
      */
      
     Ingrediente panel1 = new Ingrediente();
-      
+   prueba panelPrincipal = new prueba();
     private Icon icono;
     public principal() {
         initComponents();
-           lblBotonoes.setIcon(setScalableFoto(lblBotonoes, "/imagenes/paneButton.jpg"));
-            btnIngre.setIcon(setIconoButton("/imagenes/inventaryBtn_1.PNG", btnIngre));
-          btnIngre.setIcon(seticonIconPresionado("/imagenes/inventaryBtn_1.PNG", btnIngre, 10, 10));
+         
+      
         
         /*imagenTableTextPanel1*/
-           ImageIcon carne = new ImageIcon(getClass().getResource("/imagenes/carneText.png")); 
-           ImageIcon Tamaño = new ImageIcon(carne.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
-           panel1.TablaIngrediente.setIconAt(1, Tamaño );
            
-           ImageIcon verudra = new ImageIcon(getClass().getResource("/imagenes/verduraText.png")); 
-           ImageIcon TamañoV = new ImageIcon(verudra.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
-           panel1.TablaIngrediente.setIconAt(0, TamañoV );
+           
       
        
         this.setLocationRelativeTo(null);
        
-        contenedor.add(panel1);
+       
     }
 
     /**
@@ -60,6 +54,8 @@ public class principal extends javax.swing.JFrame implements ActionListener{
         contenedor = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         btnIngre = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
+        btnBalance = new javax.swing.JButton();
         lblBotonoes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,7 +65,6 @@ public class principal extends javax.swing.JFrame implements ActionListener{
         contenedor.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 102, 0));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnIngre.setMinimumSize(new java.awt.Dimension(100, 100));
         btnIngre.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -78,8 +73,31 @@ public class principal extends javax.swing.JFrame implements ActionListener{
                 btnIngreActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIngre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
-        jPanel1.add(lblBotonoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 110));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(btnIngre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(440, 440, 440)
+                .addComponent(btnBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(400, 400, 400)
+                .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(lblBotonoes, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblBotonoes, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnIngre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         contenedor.add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
@@ -126,36 +144,17 @@ public class principal extends javax.swing.JFrame implements ActionListener{
             }
         });
     }
-    public Icon setIconoButton(String direcc , JButton button){
-        ImageIcon icon = new ImageIcon(getClass().getResource(direcc));
-            int ancho = button.getWidth();
-            int alto = button.getHeight();
-            ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto,Image.SCALE_DEFAULT));
-            return icono;
-    }
-    public Icon seticonIconPresionado(String direcc , JButton boton , int ancho , int altura){
-        ImageIcon icon = new ImageIcon(getClass().getResource(direcc));
-        int width = boton.getWidth()  - ancho ; 
-        int heigth = boton.getHeight() - altura;
-        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(width, heigth, Image.SCALE_DEFAULT));
-           return icono;
-    }
-    public Icon setScalableFoto(JLabel lbl,String direcc ){
-        ImageIcon foto = new ImageIcon(getClass().getResource(direcc));
-        Icon icono = new ImageIcon(foto.getImage().getScaledInstance(
-                lbl.getWidth() ,
-                lbl.getHeight(),
-                1));
-    return  icono;
-    }
+    
     
 
        
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIngre;
-    private javax.swing.JPanel contenedor;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblBotonoes;
+    public javax.swing.JButton btnBalance;
+    public javax.swing.JButton btnIngre;
+    public javax.swing.JButton btnMenu;
+    public javax.swing.JPanel contenedor;
+    public javax.swing.JPanel jPanel1;
+    public javax.swing.JLabel lblBotonoes;
     // End of variables declaration//GEN-END:variables
 
     @Override
