@@ -15,12 +15,12 @@ import modelo.TextPrompt;
  *
  * @author anthony.ricse
  */
-public class PanelIngredientes extends javax.swing.JPanel {
+public class PanelInventario extends javax.swing.JPanel {
 
     /**
      * Creates new form pan
      */
-    public PanelIngredientes() {
+    public PanelInventario() {
         initComponents();
         TextPrompt txt1Pane2 = new TextPrompt("Nombre", jTextField1);
         TextPrompt txt2Pane2 = new TextPrompt("Cantidad", jTextField2);

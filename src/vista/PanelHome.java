@@ -29,7 +29,8 @@ public class PanelHome extends javax.swing.JPanel {
 
         lblFondo = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(950, 600));
+        setMinimumSize(new java.awt.Dimension(950, 500));
+        setPreferredSize(new java.awt.Dimension(950, 500));
         setLayout(new java.awt.BorderLayout());
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoPrincipal.png"))); // NOI18N

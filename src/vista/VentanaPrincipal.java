@@ -18,8 +18,8 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
     /**
      * Creates new form principal
      */
-    PanelIngredientes panel1 = new PanelIngredientes();
-    PanelHome panelPrincipal = new PanelHome();
+    PanelInventario panelIngredientes = new PanelInventario();
+    PanelHome panelHome = new PanelHome();
     private Icon icono;
 
     public VentanaPrincipal() {
@@ -41,47 +41,54 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
 
         panContenedor = new javax.swing.JPanel();
         panBtns = new javax.swing.JPanel();
-        btnIngre = new javax.swing.JButton();
+        btnInventario = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
         btnBalance = new javax.swing.JButton();
-        lblBotonoes = new javax.swing.JLabel();
+        lblBotones = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(950, 600));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panContenedor.setMinimumSize(new java.awt.Dimension(950, 600));
-        panContenedor.setPreferredSize(new java.awt.Dimension(950, 600));
+        panContenedor.setMinimumSize(new java.awt.Dimension(950, 490));
+        panContenedor.setPreferredSize(new java.awt.Dimension(950, 490));
         panContenedor.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(panContenedor, java.awt.BorderLayout.CENTER);
+        getContentPane().add(panContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 500));
 
         panBtns.setBackground(new java.awt.Color(51, 102, 0));
         panBtns.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnIngre.setMinimumSize(new java.awt.Dimension(100, 100));
-        btnIngre.setPreferredSize(new java.awt.Dimension(100, 100));
-        btnIngre.addActionListener(new java.awt.event.ActionListener() {
+        btnInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/inventaryBtn.PNG"))); // NOI18N
+        btnInventario.setMinimumSize(new java.awt.Dimension(100, 100));
+        btnInventario.setPreferredSize(new java.awt.Dimension(100, 100));
+        btnInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngreActionPerformed(evt);
+                btnInventarioActionPerformed(evt);
             }
         });
-        panBtns.add(btnIngre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
-        panBtns.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 110, 100));
-        panBtns.add(btnBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 100));
-        panBtns.add(lblBotonoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 110));
+        panBtns.add(btnInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 10, 80, 80));
 
-        getContentPane().add(panBtns, java.awt.BorderLayout.PAGE_END);
+        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/MenuBtn.png"))); // NOI18N
+        panBtns.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 10, 80, 80));
+
+        btnBalance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DineroBtn.PNG"))); // NOI18N
+        panBtns.add(btnBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 10, 80, 80));
+        panBtns.add(lblBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 100));
+
+        getContentPane().add(panBtns, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 950, 100));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIngreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngreActionPerformed
+    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnIngreActionPerformed
+    }//GEN-LAST:event_btnInventarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnBalance;
-    public javax.swing.JButton btnIngre;
+    public javax.swing.JButton btnInventario;
     public javax.swing.JButton btnMenu;
-    public javax.swing.JLabel lblBotonoes;
+    public javax.swing.JLabel lblBotones;
     public javax.swing.JPanel panBtns;
     public javax.swing.JPanel panContenedor;
     // End of variables declaration//GEN-END:variables

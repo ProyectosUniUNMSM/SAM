@@ -20,13 +20,6 @@ public class ControladorPanelBalance {
     public ControladorPanelBalance(PanelBalance vista) {
         this.vista = vista;
 
-        this.vista.btnSalir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                System.exit(0);
-            }
-        });
-
     }
 
 }

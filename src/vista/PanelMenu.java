@@ -23,8 +23,8 @@ public class PanelMenu extends javax.swing.JPanel {
      * Creates new form menuFrm
      */
     public PanelMenu() {
-         initComponents();
-     }
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -648,27 +648,29 @@ public class PanelMenu extends javax.swing.JPanel {
     private javax.swing.JLabel lblPENomComida6;
     private javax.swing.JLabel lblPENomComida7;
     // End of variables declaration//GEN-END:variables
-  public Icon setIconoButton(String direcc , JButton button){
+  public Icon setIconoButton(String direcc, JButton button) {
         ImageIcon icon = new ImageIcon(getClass().getResource(direcc));
-            int ancho = button.getWidth();
-            int alto = button.getHeight();
-            ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto,Image.SCALE_DEFAULT));
-            return icono;
+        int ancho = button.getWidth();
+        int alto = button.getHeight();
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        return icono;
     }
-    public Icon seticonIconPresionado(String direcc , JButton boton , int ancho , int altura){
+
+    public Icon seticonIconPresionado(String direcc, JButton boton, int ancho, int altura) {
         ImageIcon icon = new ImageIcon(getClass().getResource(direcc));
-        int width = boton.getWidth()  - ancho ; 
+        int width = boton.getWidth() - ancho;
         int heigth = boton.getHeight() - altura;
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(width, heigth, Image.SCALE_DEFAULT));
-           return icono;
+        return icono;
     }
-    public Icon setScalableFoto(JLabel lbl,String direcc ){
+
+    public Icon setScalableFoto(JLabel lbl, String direcc) {
         ImageIcon foto = new ImageIcon(getClass().getResource(direcc));
         Icon icono = new ImageIcon(foto.getImage().getScaledInstance(
-                lbl.getWidth() ,
+                lbl.getWidth(),
                 lbl.getHeight(),
                 1));
-    return  icono;
+        return icono;
     }
-   
+
 }
