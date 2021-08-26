@@ -98,9 +98,10 @@ public class PanelMenu extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Pedidos entregados");
 
-        setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(950, 600));
-        setPreferredSize(new java.awt.Dimension(950, 600));
+        setBackground(new java.awt.Color(180, 237, 131));
+        setMinimumSize(new java.awt.Dimension(950, 500));
+        setPreferredSize(new java.awt.Dimension(950, 500));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane1.setBackground(new java.awt.Color(0, 140, 255));
         jTabbedPane1.setForeground(new java.awt.Color(102, 102, 102));
@@ -570,20 +571,7 @@ public class PanelMenu extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Lista de Pedidos", jPanel2);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 870, 450));
     }// </editor-fold>//GEN-END:initComponents
 
 

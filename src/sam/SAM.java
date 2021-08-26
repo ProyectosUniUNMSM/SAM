@@ -32,7 +32,7 @@ public class SAM {
 
         VentanaPrincipal mainStart = new VentanaPrincipal();
         ControladorVentanaPrincipal controlaMain = new ControladorVentanaPrincipal(mainStart);
-        controlaMain.inciar();
+        controlaMain.iniciar();
 
     }
 }

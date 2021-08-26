@@ -22,10 +22,15 @@ public class PanelInventario extends javax.swing.JPanel {
      */
     public PanelInventario() {
         initComponents();
-        TextPrompt txt1Pane2 = new TextPrompt("Nombre", jTextField1);
-        TextPrompt txt2Pane2 = new TextPrompt("Cantidad", jTextField2);
-        TextPrompt txtPan3Nombre = new TextPrompt("Nombre", Txtfieldpan3Nombre);
-        TextPrompt txtPan3Cantidad = new TextPrompt("Cantidad", TxtfieldPan3Cantidad);
+
+        
+
+        ImageIcon carne = new ImageIcon(getClass().getResource("/imagenes/carneText.png"));
+        ImageIcon Tamaño = new ImageIcon(carne.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+        this.TablaIngrediente.setIconAt(1, Tamaño);
+        ImageIcon verudra = new ImageIcon(getClass().getResource("/imagenes/verduraText.png"));
+        ImageIcon TamañoV = new ImageIcon(verudra.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+        this.TablaIngrediente.setIconAt(0, TamañoV);
 
     }
 
@@ -40,46 +45,40 @@ public class PanelInventario extends javax.swing.JPanel {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         TablaIngrediente = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        panVegetales = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         btnAdd = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         btnMinus = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        BtnNewIngredient = new java.awt.Button();
         PanelOrden = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
-        jPanel3 = new javax.swing.JPanel();
+        panCarnes = new javax.swing.JPanel();
         jComboBox2 = new javax.swing.JComboBox<>();
         btnAdd1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         btnMinus1 = new javax.swing.JButton();
-        Txtfieldpan3Nombre = new javax.swing.JTextField();
-        TxtfieldPan3Cantidad = new javax.swing.JTextField();
-        BtnNewIngredient1 = new java.awt.Button();
         PanelOrden1 = new javax.swing.JPanel();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        lblFondo = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(180, 237, 131));
         setMinimumSize(new java.awt.Dimension(950, 600));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         TablaIngrediente.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         TablaIngrediente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         TablaIngrediente.setDoubleBuffered(true);
         TablaIngrediente.setName(""); // NOI18N
 
-        jPanel1.setBackground(new java.awt.Color(180, 237, 131));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panVegetales.setBackground(new java.awt.Color(180, 237, 131));
+        panVegetales.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.png"))); // NOI18N
         btnAdd.setBorder(null);
         btnAdd.setContentAreaFilled(false);
         btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -103,23 +102,11 @@ public class PanelInventario extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jTable2);
 
         btnMinus.setBackground(new java.awt.Color(180, 237, 131));
-        btnMinus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/restar.png"))); // NOI18N
+        btnMinus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menos.png"))); // NOI18N
+        btnMinus.setBorderPainted(false);
         btnMinus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMinus.setMinimumSize(new java.awt.Dimension(61, 30));
         btnMinus.setPreferredSize(new java.awt.Dimension(61, 30));
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
-        BtnNewIngredient.setLabel("Agregar");
-        BtnNewIngredient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnNewIngredientActionPerformed(evt);
-            }
-        });
 
         PanelOrden.setBackground(new java.awt.Color(102, 153, 255));
         PanelOrden.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -141,60 +128,45 @@ public class PanelInventario extends javax.swing.JPanel {
         });
         PanelOrden.add(jRadioButton2);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panVegetalesLayout = new javax.swing.GroupLayout(panVegetales);
+        panVegetales.setLayout(panVegetalesLayout);
+        panVegetalesLayout.setHorizontalGroup(
+            panVegetalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panVegetalesLayout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panVegetalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PanelOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panVegetalesLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(btnMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(BtnNewIngredient, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panVegetalesLayout.setVerticalGroup(
+            panVegetalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panVegetalesLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(PanelOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panVegetalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMinus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(BtnNewIngredient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(202, 252, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
-        TablaIngrediente.addTab("", jPanel1);
+        TablaIngrediente.addTab("", panVegetales);
 
-        jPanel3.setBackground(new java.awt.Color(180, 237, 131));
-        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panCarnes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        btnAdd1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
+        btnAdd1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.png"))); // NOI18N
         btnAdd1.setBorder(null);
         btnAdd1.setContentAreaFilled(false);
         btnAdd1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -218,24 +190,11 @@ public class PanelInventario extends javax.swing.JPanel {
         jScrollPane3.setViewportView(jTable3);
 
         btnMinus1.setBackground(new java.awt.Color(180, 237, 131));
-        btnMinus1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/restar.png"))); // NOI18N
+        btnMinus1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menos.png"))); // NOI18N
+        btnMinus1.setBorderPainted(false);
         btnMinus1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMinus1.setMinimumSize(new java.awt.Dimension(61, 30));
         btnMinus1.setPreferredSize(new java.awt.Dimension(61, 30));
-
-        Txtfieldpan3Nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Txtfieldpan3NombreActionPerformed(evt);
-            }
-        });
-
-        BtnNewIngredient1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BtnNewIngredient1.setLabel("Agregar");
-        BtnNewIngredient1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnNewIngredient1ActionPerformed(evt);
-            }
-        });
 
         PanelOrden1.setBackground(new java.awt.Color(102, 153, 255));
         PanelOrden1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -257,84 +216,40 @@ public class PanelInventario extends javax.swing.JPanel {
         });
         PanelOrden1.add(jRadioButton4);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout panCarnesLayout = new javax.swing.GroupLayout(panCarnes);
+        panCarnes.setLayout(panCarnesLayout);
+        panCarnesLayout.setHorizontalGroup(
+            panCarnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panCarnesLayout.createSequentialGroup()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panCarnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PanelOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(panCarnesLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(btnAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(btnMinus1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(Txtfieldpan3Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(TxtfieldPan3Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(BtnNewIngredient1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnMinus1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        panCarnesLayout.setVerticalGroup(
+            panCarnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panCarnesLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(PanelOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panCarnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMinus1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(Txtfieldpan3Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(TxtfieldPan3Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(BtnNewIngredient1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
-        TablaIngrediente.addTab("", jPanel3);
+        TablaIngrediente.addTab("", panCarnes);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salirBtn2.png"))); // NOI18N
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoIngre.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(850, 850, 850)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(TablaIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(lblFondo)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(TablaIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(lblFondo)
-        );
+        add(TablaIngrediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 870, 450));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -345,52 +260,26 @@ public class PanelInventario extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
-    private void BtnNewIngredientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNewIngredientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnNewIngredientActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void btnAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdd1ActionPerformed
-
-    private void Txtfieldpan3NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txtfieldpan3NombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Txtfieldpan3NombreActionPerformed
-
-    private void BtnNewIngredient1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNewIngredient1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnNewIngredient1ActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-System.exit(0);    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button BtnNewIngredient;
-    private java.awt.Button BtnNewIngredient1;
     private javax.swing.JPanel PanelOrden;
     private javax.swing.JPanel PanelOrden1;
     public javax.swing.JTabbedPane TablaIngrediente;
-    private javax.swing.JTextField TxtfieldPan3Cantidad;
-    private javax.swing.JTextField Txtfieldpan3Nombre;
     public javax.swing.JButton btnAdd;
     public javax.swing.JButton btnAdd1;
     private javax.swing.JButton btnMinus;
     private javax.swing.JButton btnMinus1;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    public javax.swing.JPanel jPanel1;
-    public javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
@@ -399,8 +288,7 @@ System.exit(0);    }//GEN-LAST:event_jButton1ActionPerformed
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JLabel lblFondo;
+    public javax.swing.JPanel panCarnes;
+    public javax.swing.JPanel panVegetales;
     // End of variables declaration//GEN-END:variables
 }

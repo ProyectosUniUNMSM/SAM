@@ -19,7 +19,7 @@ public class Boleta {
 
     //Atributo de clase
     static String formato = "dd/MMM/yyyy hh:mm a";
-    
+
     public Boleta(Cliente cliente) {
         this.pedidos = new ArrayList<Pedido>();
         this.cliente = cliente;
@@ -27,16 +27,16 @@ public class Boleta {
         this.estado = false;
         this.sig = this;
     }
-    
+
     public float calcMonto() {
-        float total = 0;        
+        float total = 0;
         for (Pedido temp : this.pedidos) {
             total += temp.comida.precio;
         }
         this.monto = total;
         return total;
     }
-    
+
     public void addPedido(Pedido p) {
         this.pedidos.add(p);
     }

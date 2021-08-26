@@ -56,7 +56,7 @@ public class PanelBalance extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(180, 237, 131));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(130, 179, 102)));
         setMinimumSize(new java.awt.Dimension(950, 600));
         setPreferredSize(new java.awt.Dimension(950, 600));
@@ -67,8 +67,6 @@ public class PanelBalance extends javax.swing.JPanel {
         jTabbedPane2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         panFactura.setBackground(new java.awt.Color(255, 255, 255));
-        panFactura.setMinimumSize(null);
-        panFactura.setPreferredSize(null);
         panFactura.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panEncabezado.setBackground(new java.awt.Color(210, 232, 172));
@@ -83,9 +81,9 @@ public class PanelBalance extends javax.swing.JPanel {
         panEncabezadoLayout.setHorizontalGroup(
             panEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panEncabezadoLayout.createSequentialGroup()
-                .addGap(363, 363, 363)
+                .addGap(309, 309, 309)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(321, Short.MAX_VALUE))
         );
         panEncabezadoLayout.setVerticalGroup(
             panEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,7 +230,7 @@ public class PanelBalance extends javax.swing.JPanel {
 
         jTabbedPane2.addTab("Balance", jScrollPane3);
 
-        add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 40, 870, 420));
+        add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 870, 450));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed

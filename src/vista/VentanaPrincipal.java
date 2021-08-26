@@ -8,24 +8,21 @@ package vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
  * @author anthony.ricse
  */
-public class VentanaPrincipal extends javax.swing.JFrame implements ActionListener {
+public class VentanaPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form principal
      */
-    PanelInventario panelIngredientes = new PanelInventario();
-    PanelHome panelHome = new PanelHome();
-    private Icon icono;
-
     public VentanaPrincipal() {
         initComponents();
-
-        /*imagenTableTextPanel1*/
+        this.lblBotones.setIcon(setScalableFoto(this.lblBotones, "/imagenes/paneButton.jpg"));
         this.setLocationRelativeTo(null);
 
     }
@@ -93,8 +90,9 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
     public javax.swing.JPanel panContenedor;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void actionPerformed(ActionEvent arg0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Icon setScalableFoto(JLabel lbl, String direcc) {
+        ImageIcon foto = new ImageIcon(getClass().getResource(direcc));
+        Icon icono = new ImageIcon(foto.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), 1));
+        return icono;
     }
 }

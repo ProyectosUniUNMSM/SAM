@@ -19,7 +19,6 @@ public class Cliente {
         this.dni = dni;
     }
 
-    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

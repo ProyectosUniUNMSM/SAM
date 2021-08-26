@@ -33,7 +33,7 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
     public ControladorVentanaPrincipal(VentanaPrincipal vista) {
         this.vista = vista;
 
-        this.vista.panContenedor.add(panHome);        
+        this.vista.panContenedor.add(panHome);
 
         panHome.setVisible(true);
         panInventario.setVisible(false);
@@ -46,28 +46,12 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
 
     }
 
-    public void inciar() {
-
+    public void iniciar() {
         vista.setVisible(true);
-
-        /*botonoes y label del frmPrincipal*/
-        vista.lblBotones.setIcon(setScalableFoto(vista.lblBotones, "/imagenes/paneButton.jpg"));
-
-        vista.panContenedor.add(panHome);
-        panHome.setVisible(true);
-        panInventario.setVisible(false);
-        panMenu.setVisible(false);
-        panBalance.setVisible(false);
-
         vista.setLocationRelativeTo(null);
-
     }
 
-    public Icon setScalableFoto(JLabel lbl, String direcc) {
-        ImageIcon foto = new ImageIcon(getClass().getResource(direcc));
-        Icon icono = new ImageIcon(foto.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), 1));
-        return icono;
-    }
+
 
     @Override
     public void actionPerformed(ActionEvent event) {
@@ -78,7 +62,7 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
             panInventario.setVisible(true);
             panMenu.setVisible(false);
             panBalance.setVisible(false);
-            
+
             vista.panContenedor.add(panInventario);
             vista.panContenedor.validate();
         } else if (evt.equals(vista.btnMenu)) {
@@ -86,7 +70,7 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
             panInventario.setVisible(false);
             panMenu.setVisible(true);
             panBalance.setVisible(false);
-            
+
             vista.panContenedor.add(panMenu);
             vista.panContenedor.validate();
 
