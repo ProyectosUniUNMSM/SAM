@@ -301,7 +301,7 @@ public class PanelInventario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddVegActionPerformed
-        aumentarIngrediente(cbxIngCarn);
+        aumentarIngrediente(cbxIngVeg);
     }//GEN-LAST:event_btnAddVegActionPerformed
 
     private void ordCantidadVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordCantidadVegActionPerformed
@@ -327,7 +327,7 @@ public class PanelInventario extends javax.swing.JPanel {
 
     private void btnMinusCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusCarActionPerformed
         // TODO add your handling code here:
-        disminuirIngrediente(cbxIngVeg);
+        disminuirIngrediente(cbxIngCarn);
     }//GEN-LAST:event_btnMinusCarActionPerformed
 
     private void btnMinusVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusVegActionPerformed

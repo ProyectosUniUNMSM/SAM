@@ -98,7 +98,7 @@ public class PanelBalance extends javax.swing.JPanel {
         btnFactura.setBackground(new java.awt.Color(0, 140, 255));
         btnFactura.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnFactura.setForeground(new java.awt.Color(255, 255, 255));
-        btnFactura.setText("Factura");
+        btnFactura.setText("Pagar");
         btnFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFacturaActionPerformed(evt);
@@ -108,7 +108,7 @@ public class PanelBalance extends javax.swing.JPanel {
 
         cbxClientes.setEditable(true);
         cbxClientes.setForeground(new java.awt.Color(102, 102, 102));
-        cbxClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente 1", "Cliente 2", "Clinete 3", "Cliente 4" }));
+        cbxClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente 1", "Cliente 2", "Cliente 3", "Cliente 4" }));
         panFactura.add(cbxClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 62, 100, -1));
 
         jLabel2.setText("Cliente:");
@@ -177,7 +177,7 @@ public class PanelBalance extends javax.swing.JPanel {
 
         jScrollPane4.setViewportView(panFactura);
 
-        jTabbedPane2.addTab("Factura", jScrollPane4);
+        jTabbedPane2.addTab("Boleta", jScrollPane4);
 
         panBalance.setBackground(new java.awt.Color(255, 255, 255));
         panBalance.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -224,7 +224,7 @@ public class PanelBalance extends javax.swing.JPanel {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setText("Fin del Dia");
-        panBalance.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
+        panBalance.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
 
         jScrollPane3.setViewportView(panBalance);
 

@@ -49,7 +49,6 @@ public class Caja {
             addBoleta(p.cliente);
         }
         buscarBoleta(p.cliente).addPedido(p);
-
     }
 
     public boolean isBoletaActiva(Cliente c) {
