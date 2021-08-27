@@ -231,6 +231,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Ordenar Alfabetcamente"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordAlfabeticoVegActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="ordCantidadVeg">
                   <Properties>
@@ -419,6 +422,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Ordenar Alfabetcamente"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordAlfabeticoCarActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="ordCantidadCar">
                   <Properties>

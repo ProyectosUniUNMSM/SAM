@@ -7,7 +7,9 @@ package vista;
 
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Ingrediente;
@@ -19,9 +21,10 @@ import modelo.Inventario;
  */
 public class PanelInventario extends javax.swing.JPanel {
 
-    /**
-     * Creates new form pan
-     */
+    Inventario miInventario = Inventario.getInventario();
+    ArrayList<Ingrediente> carnes = miInventario.getCarnes();
+    ArrayList<Ingrediente> vegetales = miInventario.getVegetales();
+
     public PanelInventario() {
         initComponents();
 
@@ -29,16 +32,12 @@ public class PanelInventario extends javax.swing.JPanel {
         ImageIcon imgCarne = new ImageIcon(getClass().getResource("/imagenes/carneText.png"));
         ImageIcon Tamaño = new ImageIcon(imgCarne.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
         this.tabpanel.setIconAt(1, Tamaño);
+
         ImageIcon imgVeget = new ImageIcon(getClass().getResource("/imagenes/verduraText.png"));
         ImageIcon TamañoV = new ImageIcon(imgVeget.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
         this.tabpanel.setIconAt(0, TamañoV);
 
         //Cargando Tablas y cbx
-        Inventario miInventario = Inventario.getInventario();
-
-        ArrayList<Ingrediente> carnes = miInventario.getCarnes();
-        ArrayList<Ingrediente> vegetales = miInventario.getVegetales();
-
         setTablaCarnes(carnes);
         setCmbxIngredientesCarnes(carnes);
 
@@ -140,6 +139,11 @@ public class PanelInventario extends javax.swing.JPanel {
         ordAlfabeticoVeg.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         ordAlfabeticoVeg.setForeground(new java.awt.Color(255, 255, 255));
         ordAlfabeticoVeg.setText("Ordenar Alfabetcamente");
+        ordAlfabeticoVeg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordAlfabeticoVegActionPerformed(evt);
+            }
+        });
         PanelOrdenVeg.add(ordAlfabeticoVeg);
 
         ordCantidadVeg.setBackground(new java.awt.Color(102, 153, 255));
@@ -242,6 +246,11 @@ public class PanelInventario extends javax.swing.JPanel {
         ordAlfabeticoCar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         ordAlfabeticoCar.setForeground(new java.awt.Color(255, 255, 255));
         ordAlfabeticoCar.setText("Ordenar Alfabetcamente");
+        ordAlfabeticoCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordAlfabeticoCarActionPerformed(evt);
+            }
+        });
         PanelOrdenCar.add(ordAlfabeticoCar);
 
         ordCantidadCar.setBackground(new java.awt.Color(102, 153, 255));
@@ -292,47 +301,55 @@ public class PanelInventario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddVegActionPerformed
-        if (!cbxIngVeg.getSelectedItem().equals(null)) {
-            Ingrediente ing = (Ingrediente) cbxIngVeg.getSelectedItem();
-            ing.aumIngrediente(1);
-        } else {
-            JOptionPane.showMessageDialog(null, "Ingrediente no seleccionado");
-        }
+        aumentarIngrediente(cbxIngCarn);
     }//GEN-LAST:event_btnAddVegActionPerformed
 
     private void ordCantidadVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordCantidadVegActionPerformed
         // TODO add your handling code here:
+        ordCantidadVeg.setSelected(true);
+        ordAlfabeticoVeg.setSelected(false);
+        ordCantidad(vegetales, 0, vegetales.size());
+        setTablaVegetales(vegetales);
     }//GEN-LAST:event_ordCantidadVegActionPerformed
 
     private void btnAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCarActionPerformed
         // TODO add your handling code here:
-        if (!cbxIngCarn.getSelectedItem().equals(null)) {
-            Ingrediente ing = (Ingrediente) cbxIngVeg.getSelectedItem();
-            ing.aumIngrediente(1);
-        } else {
-            JOptionPane.showMessageDialog(null, "Ingrediente no seleccionado");
-        }
+        aumentarIngrediente(cbxIngCarn);
     }//GEN-LAST:event_btnAddCarActionPerformed
 
     private void ordCantidadCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordCantidadCarActionPerformed
         // TODO add your handling code here:
+        ordCantidadCar.setSelected(true);
+        ordAlfabeticoCar.setSelected(false);
+        ordCantidad(carnes, 0, carnes.size());
+        setTablaCarnes(carnes);
     }//GEN-LAST:event_ordCantidadCarActionPerformed
 
     private void btnMinusCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusCarActionPerformed
         // TODO add your handling code here:
-        if (!cbxIngCarn.getSelectedItem().equals(null)) {
-            Ingrediente ing = (Ingrediente) cbxIngVeg.getSelectedItem();
-            ing.disIngrediente(1);
-            
-            
-        } else {
-            JOptionPane.showMessageDialog(null, "Ingrediente no seleccionado");
-        }
+        disminuirIngrediente(cbxIngVeg);
     }//GEN-LAST:event_btnMinusCarActionPerformed
 
     private void btnMinusVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusVegActionPerformed
         // TODO add your handling code here:
+        disminuirIngrediente(cbxIngVeg);
     }//GEN-LAST:event_btnMinusVegActionPerformed
+
+    private void ordAlfabeticoVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordAlfabeticoVegActionPerformed
+        // TODO add your handling code here:
+        ordCantidadVeg.setSelected(true);
+        ordAlfabeticoVeg.setSelected(false);
+        ordCantidad(vegetales, 0, vegetales.size());
+        setTablaVegetales(vegetales);
+    }//GEN-LAST:event_ordAlfabeticoVegActionPerformed
+
+    private void ordAlfabeticoCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordAlfabeticoCarActionPerformed
+        // TODO add your handling code here:
+        ordCantidadCar.setSelected(true);
+        ordAlfabeticoCar.setSelected(false);
+        ordCantidad(carnes, 0, carnes.size());
+        setTablaCarnes(carnes);
+    }//GEN-LAST:event_ordAlfabeticoCarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -395,4 +412,86 @@ public class PanelInventario extends javax.swing.JPanel {
         }
     }
 
+    public void aumentarIngrediente(JComboBox cbx) {
+        if (!cbx.getSelectedItem().equals(null)) {
+            Ingrediente ing = (Ingrediente) cbx.getSelectedItem();
+            ing.aumIngrediente(1);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrediente no seleccionado");
+        }
+    }
+
+    public void disminuirIngrediente(JComboBox cbx) {
+        if (!cbx.getSelectedItem().equals(null)) {
+            Ingrediente ing = (Ingrediente) cbx.getSelectedItem();
+            ing.disIngrediente(1);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrediente no seleccionado");
+        }
+    }
+
+    //QuickSort
+    public void ordAlfabeticamente(ArrayList<Ingrediente> ing, int primero, int ultimo) {
+        int i, j, central;
+        String pivote;
+
+        central = (primero + ultimo) / 2;
+        pivote = ing.get(central).getNombre();
+        i = primero;
+        j = ultimo;
+
+        do {
+            while (ing.get(i).getNombre().compareToIgnoreCase(pivote) == 1) {
+                i++;
+            }
+            while (ing.get(j).getNombre().compareToIgnoreCase(pivote) == -1) {
+                j--;
+            }
+            if (i <= j) {
+                Collections.swap(ing, i, j);
+                i++;
+                j--;
+            }
+
+        } while (i <= j);
+
+        if (primero < j) {
+            ordAlfabeticamente(ing, primero, j);
+        }
+        if (i < ultimo) {
+            ordAlfabeticamente(ing, i, ultimo);
+        }
+    }
+
+    public void ordCantidad(ArrayList<Ingrediente> ing, int primero, int ultimo) {
+        int i, j, central;
+        int pivote;
+
+        central = (primero + ultimo) / 2;
+        pivote = ing.get(central).getCantidad();
+        i = primero;
+        j = ultimo;
+
+        do {
+            while (ing.get(i).getCantidad() < pivote) {
+                i++;
+            }
+            while (ing.get(j).getCantidad() > pivote) {
+                j--;
+            }
+            if (i <= j) {
+                Collections.swap(ing, i, j);
+                i++;
+                j--;
+            }
+
+        } while (i <= j);
+
+        if (primero < j) {
+            ordCantidad(ing, primero, j);
+        }
+        if (i < ultimo) {
+            ordCantidad(ing, i, ultimo);
+        }
+    }
 }
