@@ -6,9 +6,9 @@ package modelo;
  */
 public class Ingrediente {
 
-    int cantidad;
-    String categoria;
-    String nombre;
+    private int cantidad;
+    private String categoria;
+    private String nombre;
 
     public Ingrediente() {
     }
@@ -27,11 +27,28 @@ public class Ingrediente {
         this.cantidad -= cant;
     }
 
-    public void setCantidad(int tmn) {
-        this.cantidad = tmn;
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getNombre() {
         return nombre;
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
 }

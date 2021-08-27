@@ -6,10 +6,12 @@
 package vista;
 
 import java.awt.Image;
-import javax.swing.Icon;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import modelo.TextPrompt;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Ingrediente;
+import modelo.Inventario;
 
 /**
  *
@@ -23,14 +25,25 @@ public class PanelInventario extends javax.swing.JPanel {
     public PanelInventario() {
         initComponents();
 
-        
+        //Colocando img
+        ImageIcon imgCarne = new ImageIcon(getClass().getResource("/imagenes/carneText.png"));
+        ImageIcon Tamaño = new ImageIcon(imgCarne.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+        this.tabpanel.setIconAt(1, Tamaño);
+        ImageIcon imgVeget = new ImageIcon(getClass().getResource("/imagenes/verduraText.png"));
+        ImageIcon TamañoV = new ImageIcon(imgVeget.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+        this.tabpanel.setIconAt(0, TamañoV);
 
-        ImageIcon carne = new ImageIcon(getClass().getResource("/imagenes/carneText.png"));
-        ImageIcon Tamaño = new ImageIcon(carne.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
-        this.TablaIngrediente.setIconAt(1, Tamaño);
-        ImageIcon verudra = new ImageIcon(getClass().getResource("/imagenes/verduraText.png"));
-        ImageIcon TamañoV = new ImageIcon(verudra.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
-        this.TablaIngrediente.setIconAt(0, TamañoV);
+        //Cargando Tablas y cbx
+        Inventario miInventario = Inventario.getInventario();
+
+        ArrayList<Ingrediente> carnes = miInventario.getCarnes();
+        ArrayList<Ingrediente> vegetales = miInventario.getVegetales();
+
+        setTablaCarnes(carnes);
+        setCmbxIngredientesCarnes(carnes);
+
+        setTablaVegetales(vegetales);
+        setCmbxIngredientesVegetales(vegetales);
 
     }
 
@@ -43,90 +56,102 @@ public class PanelInventario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        TablaIngrediente = new javax.swing.JTabbedPane();
+        tabpanel = new javax.swing.JTabbedPane();
         panVegetales = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        btnAdd = new javax.swing.JButton();
+        cbxIngVeg = new javax.swing.JComboBox<>();
+        btnAddVeg = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        btnMinus = new javax.swing.JButton();
-        PanelOrden = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        tableVegetales = new javax.swing.JTable();
+        btnMinusVeg = new javax.swing.JButton();
+        PanelOrdenVeg = new javax.swing.JPanel();
+        ordAlfabeticoVeg = new javax.swing.JRadioButton();
+        ordCantidadVeg = new javax.swing.JRadioButton();
         panCarnes = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        btnAdd1 = new javax.swing.JButton();
+        cbxIngCarn = new javax.swing.JComboBox<>();
+        btnAddCar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        btnMinus1 = new javax.swing.JButton();
-        PanelOrden1 = new javax.swing.JPanel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        tableCarnes = new javax.swing.JTable();
+        btnMinusCar = new javax.swing.JButton();
+        PanelOrdenCar = new javax.swing.JPanel();
+        ordAlfabeticoCar = new javax.swing.JRadioButton();
+        ordCantidadCar = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(180, 237, 131));
         setMinimumSize(new java.awt.Dimension(950, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TablaIngrediente.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        TablaIngrediente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        TablaIngrediente.setDoubleBuffered(true);
-        TablaIngrediente.setName(""); // NOI18N
+        tabpanel.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        tabpanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tabpanel.setDoubleBuffered(true);
+        tabpanel.setName(""); // NOI18N
 
-        panVegetales.setBackground(new java.awt.Color(180, 237, 131));
+        panVegetales.setBackground(new java.awt.Color(255, 255, 255));
         panVegetales.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxIngVeg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.png"))); // NOI18N
-        btnAdd.setBorder(null);
-        btnAdd.setContentAreaFilled(false);
-        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnAddVeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.png"))); // NOI18N
+        btnAddVeg.setBorder(null);
+        btnAddVeg.setContentAreaFilled(false);
+        btnAddVeg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAddVeg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnAddVegActionPerformed(evt);
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tableVegetales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Categoria", "Cantidad"
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        btnMinus.setBackground(new java.awt.Color(180, 237, 131));
-        btnMinus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menos.png"))); // NOI18N
-        btnMinus.setBorderPainted(false);
-        btnMinus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnMinus.setMinimumSize(new java.awt.Dimension(61, 30));
-        btnMinus.setPreferredSize(new java.awt.Dimension(61, 30));
-
-        PanelOrden.setBackground(new java.awt.Color(102, 153, 255));
-        PanelOrden.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jRadioButton1.setBackground(new java.awt.Color(102, 153, 255));
-        jRadioButton1.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("Ordenar Alfabetcamente");
-        PanelOrden.add(jRadioButton1);
-
-        jRadioButton2.setBackground(new java.awt.Color(102, 153, 255));
-        jRadioButton2.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("Ordenar por la cantidad");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        PanelOrden.add(jRadioButton2);
+        jScrollPane2.setViewportView(tableVegetales);
+
+        btnMinusVeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menos.png"))); // NOI18N
+        btnMinusVeg.setBorder(null);
+        btnMinusVeg.setContentAreaFilled(false);
+        btnMinusVeg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMinusVeg.setMinimumSize(new java.awt.Dimension(61, 30));
+        btnMinusVeg.setPreferredSize(new java.awt.Dimension(61, 30));
+        btnMinusVeg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinusVegActionPerformed(evt);
+            }
+        });
+
+        PanelOrdenVeg.setBackground(new java.awt.Color(102, 153, 255));
+        PanelOrdenVeg.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        ordAlfabeticoVeg.setBackground(new java.awt.Color(102, 153, 255));
+        ordAlfabeticoVeg.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        ordAlfabeticoVeg.setForeground(new java.awt.Color(255, 255, 255));
+        ordAlfabeticoVeg.setText("Ordenar Alfabetcamente");
+        PanelOrdenVeg.add(ordAlfabeticoVeg);
+
+        ordCantidadVeg.setBackground(new java.awt.Color(102, 153, 255));
+        ordCantidadVeg.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        ordCantidadVeg.setForeground(new java.awt.Color(255, 255, 255));
+        ordCantidadVeg.setText("Ordenar por la cantidad");
+        ordCantidadVeg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordCantidadVegActionPerformed(evt);
+            }
+        });
+        PanelOrdenVeg.add(ordCantidadVeg);
 
         javax.swing.GroupLayout panVegetalesLayout = new javax.swing.GroupLayout(panVegetales);
         panVegetales.setLayout(panVegetalesLayout);
@@ -136,85 +161,99 @@ public class PanelInventario extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(panVegetalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelOrdenVeg, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxIngVeg, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panVegetalesLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAddVeg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(btnMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnMinusVeg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         panVegetalesLayout.setVerticalGroup(
             panVegetalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panVegetalesLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(PanelOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PanelOrdenVeg, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxIngVeg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(panVegetalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMinus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAddVeg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMinusVeg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(202, 252, Short.MAX_VALUE))
             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
-        TablaIngrediente.addTab("", panVegetales);
+        tabpanel.addTab("", panVegetales);
 
+        panCarnes.setBackground(new java.awt.Color(255, 255, 255));
         panCarnes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cbxIngCarn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxIngCarn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        btnAdd1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.png"))); // NOI18N
-        btnAdd1.setBorder(null);
-        btnAdd1.setContentAreaFilled(false);
-        btnAdd1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnAdd1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddCar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.png"))); // NOI18N
+        btnAddCar.setBorder(null);
+        btnAddCar.setContentAreaFilled(false);
+        btnAddCar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAddCar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdd1ActionPerformed(evt);
+                btnAddCarActionPerformed(evt);
             }
         });
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tableCarnes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Categoria", "Cantidad"
             }
-        ));
-        jScrollPane3.setViewportView(jTable3);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        btnMinus1.setBackground(new java.awt.Color(180, 237, 131));
-        btnMinus1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menos.png"))); // NOI18N
-        btnMinus1.setBorderPainted(false);
-        btnMinus1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnMinus1.setMinimumSize(new java.awt.Dimension(61, 30));
-        btnMinus1.setPreferredSize(new java.awt.Dimension(61, 30));
-
-        PanelOrden1.setBackground(new java.awt.Color(102, 153, 255));
-        PanelOrden1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jRadioButton3.setBackground(new java.awt.Color(102, 153, 255));
-        jRadioButton3.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton3.setText("Ordenar Alfabetcamente");
-        PanelOrden1.add(jRadioButton3);
-
-        jRadioButton4.setBackground(new java.awt.Color(102, 153, 255));
-        jRadioButton4.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        jRadioButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton4.setText("Ordenar por la cantidad");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        PanelOrden1.add(jRadioButton4);
+        jScrollPane3.setViewportView(tableCarnes);
+
+        btnMinusCar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menos.png"))); // NOI18N
+        btnMinusCar.setBorder(null);
+        btnMinusCar.setContentAreaFilled(false);
+        btnMinusCar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMinusCar.setMinimumSize(new java.awt.Dimension(61, 30));
+        btnMinusCar.setPreferredSize(new java.awt.Dimension(61, 30));
+        btnMinusCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinusCarActionPerformed(evt);
+            }
+        });
+
+        PanelOrdenCar.setBackground(new java.awt.Color(102, 153, 255));
+        PanelOrdenCar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        ordAlfabeticoCar.setBackground(new java.awt.Color(102, 153, 255));
+        ordAlfabeticoCar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        ordAlfabeticoCar.setForeground(new java.awt.Color(255, 255, 255));
+        ordAlfabeticoCar.setText("Ordenar Alfabetcamente");
+        PanelOrdenCar.add(ordAlfabeticoCar);
+
+        ordCantidadCar.setBackground(new java.awt.Color(102, 153, 255));
+        ordCantidadCar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        ordCantidadCar.setForeground(new java.awt.Color(255, 255, 255));
+        ordCantidadCar.setText("Ordenar por la cantidad");
+        ordCantidadCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordCantidadCarActionPerformed(evt);
+            }
+        });
+        PanelOrdenCar.add(ordCantidadCar);
 
         javax.swing.GroupLayout panCarnesLayout = new javax.swing.GroupLayout(panCarnes);
         panCarnes.setLayout(panCarnesLayout);
@@ -224,71 +263,136 @@ public class PanelInventario extends javax.swing.JPanel {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(panCarnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelOrdenCar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxIngCarn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panCarnesLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(btnAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAddCar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(btnMinus1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnMinusCar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         panCarnesLayout.setVerticalGroup(
             panCarnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panCarnesLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(PanelOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PanelOrdenCar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxIngCarn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(panCarnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMinus1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAddCar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMinusCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
-        TablaIngrediente.addTab("", panCarnes);
+        tabpanel.addTab("", panCarnes);
 
-        add(TablaIngrediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 870, 450));
+        add(tabpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 870, 450));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddActionPerformed
+    private void btnAddVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddVegActionPerformed
+        if (!cbxIngVeg.getSelectedItem().equals(null)) {
+            Ingrediente ing = (Ingrediente) cbxIngVeg.getSelectedItem();
+            ing.aumIngrediente(1);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrediente no seleccionado");
+        }
+    }//GEN-LAST:event_btnAddVegActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void ordCantidadVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordCantidadVegActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_ordCantidadVegActionPerformed
 
-    private void btnAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
+    private void btnAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdd1ActionPerformed
+        if (!cbxIngCarn.getSelectedItem().equals(null)) {
+            Ingrediente ing = (Ingrediente) cbxIngVeg.getSelectedItem();
+            ing.aumIngrediente(1);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrediente no seleccionado");
+        }
+    }//GEN-LAST:event_btnAddCarActionPerformed
 
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+    private void ordCantidadCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordCantidadCarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
+    }//GEN-LAST:event_ordCantidadCarActionPerformed
+
+    private void btnMinusCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusCarActionPerformed
+        // TODO add your handling code here:
+        if (!cbxIngCarn.getSelectedItem().equals(null)) {
+            Ingrediente ing = (Ingrediente) cbxIngVeg.getSelectedItem();
+            ing.disIngrediente(1);
+            
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrediente no seleccionado");
+        }
+    }//GEN-LAST:event_btnMinusCarActionPerformed
+
+    private void btnMinusVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusVegActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinusVegActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelOrden;
-    private javax.swing.JPanel PanelOrden1;
-    public javax.swing.JTabbedPane TablaIngrediente;
-    public javax.swing.JButton btnAdd;
-    public javax.swing.JButton btnAdd1;
-    private javax.swing.JButton btnMinus;
-    private javax.swing.JButton btnMinus1;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JPanel PanelOrdenCar;
+    private javax.swing.JPanel PanelOrdenVeg;
+    public javax.swing.JButton btnAddCar;
+    public javax.swing.JButton btnAddVeg;
+    private javax.swing.JButton btnMinusCar;
+    private javax.swing.JButton btnMinusVeg;
+    private javax.swing.JComboBox<String> cbxIngCarn;
+    private javax.swing.JComboBox<String> cbxIngVeg;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JRadioButton ordAlfabeticoCar;
+    private javax.swing.JRadioButton ordAlfabeticoVeg;
+    private javax.swing.JRadioButton ordCantidadCar;
+    private javax.swing.JRadioButton ordCantidadVeg;
     public javax.swing.JPanel panCarnes;
     public javax.swing.JPanel panVegetales;
+    private javax.swing.JTable tableCarnes;
+    private javax.swing.JTable tableVegetales;
+    public javax.swing.JTabbedPane tabpanel;
     // End of variables declaration//GEN-END:variables
+
+    public void setTablaCarnes(ArrayList<Ingrediente> ingredientes) {
+        String[] columnas = {"Nombre", "Categoria", "Cantidad"};
+        Object[][] miData = new Object[ingredientes.size()][3];
+        for (int i = 0; i < ingredientes.size(); i++) {
+            miData[i][0] = ingredientes.get(i).getNombre();
+            miData[i][1] = ingredientes.get(i).getCategoria();
+            miData[i][2] = ingredientes.get(i).getCantidad();
+        }
+        DefaultTableModel miDefaultTableModel = new DefaultTableModel(miData, columnas);
+        tableCarnes.setModel(miDefaultTableModel);
+    }
+
+    public void setTablaVegetales(ArrayList<Ingrediente> ingredientes) {
+        String[] columnas = {"Nombre", "Categoria", "Cantidad"};
+        Object[][] miData = new Object[ingredientes.size()][3];
+        for (int i = 0; i < ingredientes.size(); i++) {
+            miData[i][0] = ingredientes.get(i).getNombre();
+            miData[i][1] = ingredientes.get(i).getCategoria();
+            miData[i][2] = ingredientes.get(i).getCantidad();
+        }
+        DefaultTableModel miDefaultTableModel = new DefaultTableModel(miData, columnas);
+        tableVegetales.setModel(miDefaultTableModel);
+    }
+
+    public void setCmbxIngredientesCarnes(ArrayList<Ingrediente> ing) {
+        cbxIngCarn.removeAllItems();
+        for (int i = 0; i < ing.size(); i++) {
+            cbxIngCarn.addItem(ing.get(i).getNombre());
+        }
+    }
+
+    public void setCmbxIngredientesVegetales(ArrayList<Ingrediente> ing) {
+        cbxIngVeg.removeAllItems();
+        for (int i = 0; i < ing.size(); i++) {
+            cbxIngVeg.addItem(ing.get(i).getNombre());
+        }
+    }
+
 }

@@ -25,14 +25,14 @@ public class SAM {
      */
     public static void main(String[] args) {
 
-        Menu miMenu = new Menu(10);
-        Inventario miInventario = new Inventario(10);
-        ListaPedido misPedidos = new ListaPedido();
-        Caja miCaja = new Caja();
+        Menu miMenu = Menu.getMenu();
+        Inventario miInventario = Inventario.getInventario();
+        ListaPedido misPedidos = ListaPedido.getListaPedido();
+        Caja miCaja = Caja.getCaja();
 
-        VentanaPrincipal mainStart = new VentanaPrincipal();
-        ControladorVentanaPrincipal controlaMain = new ControladorVentanaPrincipal(mainStart);
-        controlaMain.iniciar();
+        VentanaPrincipal ventana = new VentanaPrincipal();
+        ControladorVentanaPrincipal control = new ControladorVentanaPrincipal(ventana);
+        control.iniciar();
 
     }
 }

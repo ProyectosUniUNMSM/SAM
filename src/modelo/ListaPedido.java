@@ -8,10 +8,18 @@ import java.util.ArrayList;
  */
 public class ListaPedido {
 
-    Pedido inicio, econtrado;
+    private static ListaPedido listaPedido;
+    private Pedido inicio, econtrado;
 
-    public ListaPedido() {
+    private ListaPedido() {
         this.inicio = null;
+    }
+
+    public static ListaPedido getListaPedido() {
+        if (listaPedido == null) {
+            listaPedido = new ListaPedido();
+        }
+        return listaPedido;
     }
 
     public boolean isListaVacia() {

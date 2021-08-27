@@ -6,12 +6,20 @@ package modelo;
  */
 public class Menu {
 
-    public Comida[] comida;
-    public int pos;
+    private static Menu menu;
+    private Comida[] comida;
+    private int pos;
 
-    public Menu(int tmn) {
+    private Menu(int tmn) {
         this.comida = new Comida[tmn];
         this.pos = 0;
+    }
+
+    public static Menu getMenu() {
+        if (menu == null) {
+            menu = new Menu(10);
+        }
+        return menu;
     }
 
     public void addComida(Comida nuevo) {
