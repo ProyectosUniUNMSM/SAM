@@ -19,6 +19,9 @@ public class Comida {
         this.ingredientes = new ArrayList<Ingrediente>();
     }
 
+    public Comida() {
+    }
+
     public void agregarIngrediente(Ingrediente i) {
         this.ingredientes.add(i);
     }
@@ -27,9 +30,6 @@ public class Comida {
         for (Ingrediente i : ingredientes) {
             System.out.println(i);
         }
-    }
-
-    public Comida() {
     }
 
 }

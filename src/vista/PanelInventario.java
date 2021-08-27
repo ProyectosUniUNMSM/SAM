@@ -337,16 +337,16 @@ public class PanelInventario extends javax.swing.JPanel {
 
     private void ordAlfabeticoVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordAlfabeticoVegActionPerformed
         // TODO add your handling code here:
-        ordCantidadVeg.setSelected(true);
-        ordAlfabeticoVeg.setSelected(false);
+        ordCantidadVeg.setSelected(false);
+        ordAlfabeticoVeg.setSelected(true);
         ordCantidad(vegetales, 0, vegetales.size());
         setTablaVegetales(vegetales);
     }//GEN-LAST:event_ordAlfabeticoVegActionPerformed
 
     private void ordAlfabeticoCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordAlfabeticoCarActionPerformed
         // TODO add your handling code here:
-        ordCantidadCar.setSelected(true);
-        ordAlfabeticoCar.setSelected(false);
+        ordCantidadCar.setSelected(false);
+        ordAlfabeticoCar.setSelected(true);
         ordCantidad(carnes, 0, carnes.size());
         setTablaCarnes(carnes);
     }//GEN-LAST:event_ordAlfabeticoCarActionPerformed
@@ -413,7 +413,7 @@ public class PanelInventario extends javax.swing.JPanel {
     }
 
     public void aumentarIngrediente(JComboBox cbx) {
-        if (!cbx.getSelectedItem().equals(null)) {
+        if (cbx.getSelectedItem() != null) {
             Ingrediente ing = (Ingrediente) cbx.getSelectedItem();
             ing.aumIngrediente(1);
         } else {
@@ -422,7 +422,7 @@ public class PanelInventario extends javax.swing.JPanel {
     }
 
     public void disminuirIngrediente(JComboBox cbx) {
-        if (!cbx.getSelectedItem().equals(null)) {
+        if (cbx.getSelectedItem() != null) {
             Ingrediente ing = (Ingrediente) cbx.getSelectedItem();
             ing.disIngrediente(1);
         } else {
