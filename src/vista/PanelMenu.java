@@ -17,14 +17,14 @@ import javax.swing.JLabel;
  *
  * @author Carlos
  */
-public class menuFrm extends javax.swing.JPanel {
+public class PanelMenu extends javax.swing.JPanel {
 
     /**
      * Creates new form menuFrm
      */
-    public menuFrm() {
-         initComponents();
-     }
+    public PanelMenu() {
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,9 +98,10 @@ public class menuFrm extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Pedidos entregados");
 
-        setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(950, 600));
-        setPreferredSize(new java.awt.Dimension(950, 600));
+        setBackground(new java.awt.Color(180, 237, 131));
+        setMinimumSize(new java.awt.Dimension(950, 500));
+        setPreferredSize(new java.awt.Dimension(950, 500));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane1.setBackground(new java.awt.Color(0, 140, 255));
         jTabbedPane1.setForeground(new java.awt.Color(102, 102, 102));
@@ -570,20 +571,7 @@ public class menuFrm extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Lista de Pedidos", jPanel2);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 870, 450));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -648,27 +636,29 @@ public class menuFrm extends javax.swing.JPanel {
     private javax.swing.JLabel lblPENomComida6;
     private javax.swing.JLabel lblPENomComida7;
     // End of variables declaration//GEN-END:variables
-  public Icon setIconoButton(String direcc , JButton button){
+  public Icon setIconoButton(String direcc, JButton button) {
         ImageIcon icon = new ImageIcon(getClass().getResource(direcc));
-            int ancho = button.getWidth();
-            int alto = button.getHeight();
-            ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto,Image.SCALE_DEFAULT));
-            return icono;
+        int ancho = button.getWidth();
+        int alto = button.getHeight();
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        return icono;
     }
-    public Icon seticonIconPresionado(String direcc , JButton boton , int ancho , int altura){
+
+    public Icon seticonIconPresionado(String direcc, JButton boton, int ancho, int altura) {
         ImageIcon icon = new ImageIcon(getClass().getResource(direcc));
-        int width = boton.getWidth()  - ancho ; 
+        int width = boton.getWidth() - ancho;
         int heigth = boton.getHeight() - altura;
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(width, heigth, Image.SCALE_DEFAULT));
-           return icono;
+        return icono;
     }
-    public Icon setScalableFoto(JLabel lbl,String direcc ){
+
+    public Icon setScalableFoto(JLabel lbl, String direcc) {
         ImageIcon foto = new ImageIcon(getClass().getResource(direcc));
         Icon icono = new ImageIcon(foto.getImage().getScaledInstance(
-                lbl.getWidth() ,
+                lbl.getWidth(),
                 lbl.getHeight(),
                 1));
-    return  icono;
+        return icono;
     }
-   
+
 }

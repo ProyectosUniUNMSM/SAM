@@ -8,10 +8,18 @@ import java.util.ArrayList;
  */
 public class Caja {
 
-    Boleta ultimo;
+    private static Caja caja;
+    private Boleta ultimo;
 
-    public Caja() {
+    private Caja() {
         ultimo = null;
+    }
+
+    public static Caja getCaja() {
+        if (caja == null) {
+            caja = new Caja();
+        }
+        return caja;
     }
 
     public boolean isCajaVacia() {
