@@ -42,4 +42,19 @@ public class Menu {
             i++;
         }
     }
+   public void setLlenarComidas(Menu menu){
+        Comida comida1 = new Comida("LomoSaltado", (float) 35.5);
+        Comida comida2 = new Comida("Aji de Gallina", (float) 40.5);
+        Comida comida3 = new Comida("Arroz con pollo", (float) 35.5);
+        Comida comida4 = new Comida("Sopa Seca", (float) 35.5);
+        
+        menu.addComida(comida1);
+        menu.addComida(comida2);
+        menu.addComida(comida3);
+        menu.addComida(comida4);
+           
+    }
+     public float getComidaPrecioI(int indice ) {
+          return comida[1].getPrecio();
+    }
 }

@@ -32,4 +32,22 @@ public class Comida {
         }
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+    
+    
+    
+
+    public Comida(String nombre, float precio, ArrayList<Ingrediente> ingredientes, String img) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.ingredientes = ingredientes;
+        this.img = img;
+    }
+
 }
