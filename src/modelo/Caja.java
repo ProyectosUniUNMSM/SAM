@@ -10,9 +10,11 @@ public class Caja {
 
     private static Caja caja;
     private Boleta ultimo;
+    private int tamaño;
 
     private Caja() {
         ultimo = null;
+        tamaño = 0;
     }
 
     public static Caja getCaja() {
@@ -31,12 +33,13 @@ public class Caja {
 
         if (isCajaVacia()) {
             ultimo = nuevo;
+            tamaño++;
 
         } else {
             if (!isBoletaActiva(c)) {
                 nuevo.sig = ultimo.sig;
                 ultimo.sig = nuevo;
-                ultimo = nuevo;
+                tamaño++;
             } else {
                 System.out.println("Ya Hay un Boleta Activa");
             }
@@ -65,13 +68,13 @@ public class Caja {
     }
 
     public Boleta buscarBoleta(Cliente c) {
-        Boleta aux = ultimo;
+        Boleta aux = ultimo.sig;
         do {
             if (aux.cliente.equals(c)) {
                 return aux;
             }
             aux = aux.sig;
-        } while (aux.sig != ultimo);
+        } while (aux!= ultimo.sig);
         return null;
     }
 
@@ -92,5 +95,13 @@ public class Caja {
                 addPedidoBoleta(aux);
             }
         }
+    }
+
+    public int getTamaño() {
+        return tamaño;
+    } 
+
+    public Boleta getUltimo() {
+        return ultimo;
     }
 }
