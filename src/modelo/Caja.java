@@ -6,6 +6,7 @@ import java.util.ArrayList;
  *
  * @author AlexTprog
  */
+//Lista Circ de Boletas
 public class Caja {
 
     private static Caja caja;
@@ -54,7 +55,7 @@ public class Caja {
     public boolean isBoletaActiva(Cliente c) {
         Boleta aux = ultimo;
         boolean band = false;
-        //Si el estado de la boleta es false, sigue activa
+        //Si el estado de la boleta es false, sigue activa = no esta pagada
         while (aux.sig != ultimo && !band) {
             if (aux.cliente.equals(c) && !aux.estado) {
                 band = true;
