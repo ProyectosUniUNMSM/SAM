@@ -19,6 +19,14 @@ public class Cliente {
         this.dni = dni;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

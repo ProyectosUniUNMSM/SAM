@@ -5,6 +5,15 @@
  */
 package vista;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import javax.swing.table.DefaultTableModel;
+import modelo.Boleta;
+import modelo.Caja;
+import modelo.Comida;
+
 /**
  *
  * @author AlexTprog
@@ -52,7 +61,7 @@ public class PanelBalance extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         lblPlato = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblBalance = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
@@ -184,19 +193,23 @@ public class PanelBalance extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Total de Ventas:");
-        panBalance.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 240, 30));
+        panBalance.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 180, 30));
 
+        lblTotalVentas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblTotalVentas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTotalVentas.setText("NUMERO");
-        panBalance.add(lblTotalVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 70, 20));
+        panBalance.add(lblTotalVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 90, 20));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel7.setText("Plato mas Vendido");
+        jLabel7.setText("Plato mas Vendido:");
         panBalance.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 220, 30));
 
+        lblPlato.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblPlato.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPlato.setText("PLATO");
-        panBalance.add(lblPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 50, 20));
+        panBalance.add(lblPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 150, 20));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblBalance.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -207,7 +220,7 @@ public class PanelBalance extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblBalance);
 
         panBalance.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 470, 240));
 
@@ -259,7 +272,6 @@ public class PanelBalance extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane4;
     public javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblDniCliente;
     private javax.swing.JLabel lblFechaCliente;
     private javax.swing.JLabel lblNomCliente;
@@ -270,5 +282,53 @@ public class PanelBalance extends javax.swing.JPanel {
     private javax.swing.JPanel panEncabezado;
     private javax.swing.JPanel panFactura;
     private javax.swing.JPanel panPrecio;
+    private javax.swing.JTable tblBalance;
     // End of variables declaration//GEN-END:variables
+
+    public void setTablaBoletas(Caja c) {
+        String[] columnas = {"DNI", "Nombre", "Fecha", "Monto", "Estado"};
+        Object[][] miData = new Object[c.getTamaño()][5];
+        Boleta b = c.getUltimo();
+        for (int i = 0; i < c.getTamaño(); i++) {
+            b.calcMonto();
+            miData[i][0] = b.cliente.getDni();
+            miData[i][1] = b.cliente.getNombre();
+            miData[i][2] = b.fecha;
+            miData[i][3] = b.monto;
+            miData[i][4] = b.estado;
+            b=b.sig;        
+        }
+        DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
+        tblBalance.setModel(modelo);
+    }
+    
+    public void setNumeroVentas(Caja c){
+        int ventas = c.getTamaño();
+        lblTotalVentas.setText(String.valueOf(ventas));
+    }
+    
+    public void setPlatoMasVendido(Caja c){
+        ArrayList<String> comidas = new ArrayList<>();
+        Boleta b = c.getUltimo();
+        for (int i = 0; i < c.getTamaño(); i++) {
+            for (int j = 0; j < b.pedidos.size(); j++) {
+                comidas.add(b.pedidos.get(j).comida.nombre);   
+            }   
+            b=b.sig;
+        }
+        
+        System.out.println(comidas.toString());
+        int max = 0;
+        int curr = 0;
+        String currKey =  null;
+        Set<String> unique = new HashSet<String>(comidas);
+        for (String key : unique) {
+            curr = Collections.frequency(comidas, key);
+            if(max < curr){
+                max = curr;
+                currKey = key;
+            }
+        }
+        lblPlato.setText(currKey);   
+    }
 }
