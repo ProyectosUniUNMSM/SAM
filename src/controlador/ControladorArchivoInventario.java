@@ -9,18 +9,18 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Ingrediente;
+import modelo.Inventario;
 
 /**
  *
  * @author Carlos
  */
-public class ControladorArchivoIngrediente {
+public class ControladorArchivoInventario {
 
     private ArrayList<Ingrediente> ingredientes;
 
-    public ControladorArchivoIngrediente() {
+    public ControladorArchivoInventario() {
         ingredientes = new ArrayList<Ingrediente>();
-        leerArchivo();
     }
 
     public void leerArchivo() {
@@ -38,6 +38,7 @@ public class ControladorArchivoIngrediente {
                 }
             }
             fileInput.close();
+            cargarInventario();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Sin ingredientes.");
         }
@@ -74,6 +75,13 @@ public class ControladorArchivoIngrediente {
                 salvarArchivo();
                 flag = false;
             }
+        }
+    }
+
+    public void cargarInventario() {
+        Inventario miInventario = Inventario.getInventario();
+        for (Ingrediente i : this.ingredientes) {
+            miInventario.addIngrediente(i);
         }
     }
 }

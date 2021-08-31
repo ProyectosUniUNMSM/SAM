@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/alexa/Desktop/GitHub/SAM/src/vista/PanelMenu.java</file>
             <file>file:/C:/Users/alexa/Desktop/GitHub/SAM/src/modelo/Comida.java</file>
-            <file>file:/C:/Users/alexa/Desktop/GitHub/SAM/src/sam/SAM.java</file>
-            <file>file:/C:/Users/alexa/Desktop/GitHub/SAM/src/vista/PanelInventario.java</file>
-            <file>file:/C:/Users/alexa/Desktop/GitHub/SAM/src/modelo/Inventario.java</file>
+            <file>file:/C:/Users/alexa/Desktop/GitHub/SAM/src/controlador/ControladorArchivoInventario.java</file>
+            <file>file:/C:/Users/alexa/Desktop/GitHub/SAM/src/modelo/Menu.java</file>
+            <file>file:/C:/Users/alexa/Desktop/GitHub/SAM/src/controlador/ControladorArchivoMenu.java</file>
         </group>
     </open-files>
 </project-private>

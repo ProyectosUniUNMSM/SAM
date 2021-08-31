@@ -9,16 +9,19 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Comida;
+import modelo.Ingrediente;
+import modelo.Inventario;
+import modelo.Menu;
 
 /**
  *
  * @author Carlos
  */
-public class ControladorArchivoComida {
+public class ControladorArchivoMenu {
 
     private ArrayList<Comida> comidas;
 
-    public ControladorArchivoComida() {
+    public ControladorArchivoMenu() {
         comidas = new ArrayList<Comida>();
         leerArchivo();
     }
@@ -38,6 +41,7 @@ public class ControladorArchivoComida {
                 }
             }
             fileInput.close();
+            cargarMenu();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Sin comidas.");
         }
@@ -55,6 +59,11 @@ public class ControladorArchivoComida {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Comidas no registradas.");
         }
+    }
+
+    public void cargarComidas(ArrayList<Comida> comidas) {
+        Menu miMenu = Menu.getMenu();
+
     }
 
     //Para inicializar las comidas, luego borrar metodo.
@@ -79,5 +88,12 @@ public class ControladorArchivoComida {
         comidas.add(com7);
 
         salvarArchivo();
+    }
+
+    public void cargarMenu() {
+        Menu miMenu = Menu.getMenu();
+        for (Comida i : this.comidas) {
+            miMenu.addComida(i);
+        }
     }
 }
