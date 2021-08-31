@@ -23,8 +23,13 @@ public class PanelBalance extends javax.swing.JPanel {
     /**
      * Creates new form panelBalance
      */
+    Caja miCaja = Caja.getCaja();
+    
     public PanelBalance() {
         initComponents();
+        setTablaBoletas(miCaja);
+        setNumeroVentas(miCaja);
+        setPlatoMasVendido(miCaja);
     }
 
     /**
@@ -296,39 +301,39 @@ public class PanelBalance extends javax.swing.JPanel {
             miData[i][2] = b.fecha;
             miData[i][3] = b.monto;
             miData[i][4] = b.estado;
-            b=b.sig;        
+            b = b.sig;
         }
         DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
         tblBalance.setModel(modelo);
     }
     
-    public void setNumeroVentas(Caja c){
+    public void setNumeroVentas(Caja c) {
         int ventas = c.getTamaño();
         lblTotalVentas.setText(String.valueOf(ventas));
     }
     
-    public void setPlatoMasVendido(Caja c){
+    public void setPlatoMasVendido(Caja c) {
         ArrayList<String> comidas = new ArrayList<>();
         Boleta b = c.getUltimo();
         for (int i = 0; i < c.getTamaño(); i++) {
             for (int j = 0; j < b.pedidos.size(); j++) {
-                comidas.add(b.pedidos.get(j).comida.nombre);   
-            }   
-            b=b.sig;
+                comidas.add(b.pedidos.get(j).comida.nombre);
+            }
+            b = b.sig;
         }
         
         System.out.println(comidas.toString());
         int max = 0;
         int curr = 0;
-        String currKey =  null;
+        String currKey = null;
         Set<String> unique = new HashSet<String>(comidas);
         for (String key : unique) {
             curr = Collections.frequency(comidas, key);
-            if(max < curr){
+            if (max < curr) {
                 max = curr;
                 currKey = key;
             }
         }
-        lblPlato.setText(currKey);   
+        lblPlato.setText(currKey);
     }
 }
