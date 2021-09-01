@@ -464,6 +464,7 @@ public class PanelMenu extends javax.swing.JPanel {
     private void btnAactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAactualizarActionPerformed
         String[] reporteEntrega = {"DNI", "Nombre", "comida", "Estado"};
         Object matrizSend[][] = new Object[lista.size()][4];
+        boolean estado = false;
         if (Seleccionados(3)) {
             for (int i = 0; i < TableReceveid.getRowCount(); i++) {
 
@@ -472,7 +473,8 @@ public class PanelMenu extends javax.swing.JPanel {
                     matrizSend[i][0] = TableReceveid.getValueAt(i, 0);
                     matrizSend[i][1] = TableReceveid.getValueAt(i, 1);
                     matrizSend[i][2] = TableReceveid.getValueAt(i, 2);
-                    matrizSend[i][3] = TableReceveid.getValueAt(i, 3);
+                   
+                    matrizSend[i][3] = estado;
                 }
 
             }
