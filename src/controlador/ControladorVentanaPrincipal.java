@@ -22,7 +22,6 @@ import vista.PanelDatos;
 import vista.VentanaPrincipal;
 import vista.PanelHome;
 
-
 /**
  *
  * @author anthony.ricse
@@ -33,13 +32,11 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
     PanelHome panHome = new PanelHome();
     PanelInventario panInventario = new PanelInventario();
     PanelMenu panMenu = new PanelMenu();
-  
     PanelBalance panBalance = new PanelBalance();
-    PanelDatos panDatos = new PanelDatos();
 
     public ControladorVentanaPrincipal(VentanaPrincipal vista) {
         this.vista = vista;
-       
+
         this.vista.panContenedor.add(panHome);
 
         panHome.setVisible(true);
@@ -50,22 +47,13 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
         this.vista.btnInventario.addActionListener(this);
         this.vista.btnMenu.addActionListener(this);
         this.vista.btnBalance.addActionListener(this);
-    
-        
-        
-    
+
     }
-     
 
     public void iniciar() {
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
     }
-    
-    
-    
-
-
 
     @Override
     public void actionPerformed(ActionEvent event) {
@@ -97,10 +85,7 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
             vista.panContenedor.add(panBalance);
             vista.panContenedor.validate();
         }
-        
-        
-        
-        
+
     }
 
 }

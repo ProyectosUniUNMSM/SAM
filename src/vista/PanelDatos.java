@@ -20,8 +20,10 @@ public class PanelDatos extends javax.swing.JFrame {
 
     private Comida comida; //Comida que se va a pedir
     ListaPedido misPedidos = ListaPedido.getListaPedido();
+    PanelMenu conexion;
 
-    public PanelDatos() {
+    public PanelDatos(PanelMenu menu) {
+        this.conexion = menu;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -99,10 +101,14 @@ public class PanelDatos extends javax.swing.JFrame {
         Cliente client = new Cliente(txtNombre.getText(), txtDni.getText());
         misPedidos.addPedido(comida, client);
         dispose();
+        conexion.actualizarTablas();
+        limpiarCampos();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         dispose();
+        conexion.actualizarTablas();
+        limpiarCampos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -126,4 +132,12 @@ public class PanelDatos extends javax.swing.JFrame {
         lblNombreComida.setText(comida.getNombre());
         lblFotos.setIcon(new javax.swing.ImageIcon(getClass().getResource(comida.getImg())));
     }
+
+    public void limpiarCampos() {
+        lblNombreComida.setText("");
+        lblPrecio.setText("");
+        txtNombre.setText("");
+        txtDni.setText("");
+    }
+
 }

@@ -101,7 +101,7 @@ public class ListaPedido {
         ArrayList<Pedido> lista = new ArrayList<Pedido>();
         if (!isListaVacia()) {
             Pedido aux = inicio;
-            while (aux.sig != null) {
+            while (aux != null) {
                 lista.add(aux);
                 aux = aux.sig;
             }
@@ -114,7 +114,7 @@ public class ListaPedido {
         ArrayList<Pedido> lista = new ArrayList<Pedido>();
         if (!isListaVacia()) {
             Pedido aux = inicio;
-            while (aux.sig != null) {
+            while (aux != null) {
                 if (aux.estado == true) {
                     lista.add(aux);
                 }

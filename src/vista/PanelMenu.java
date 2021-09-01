@@ -13,6 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import modelo.Comida;
 import modelo.ListaPedido;
@@ -24,18 +26,13 @@ public class PanelMenu extends javax.swing.JPanel {
     ListaPedido misPedidos = ListaPedido.getListaPedido();
     Menu miMenu = Menu.getMenu();
 
-    ArrayList<Pedido> enviados = misPedidos.getPedidos();
-    ArrayList<Pedido> recibidos = misPedidos.getPedidosListos();
-    PanelDatos panDatos = new PanelDatos();
+    PanelDatos panDatos = new PanelDatos(this);
 
     public PanelMenu() {
         initComponents();
         miMenu.setLlenarComidas();
         setComidasDelMenu();
-        //Coloca TODOS los Pedidos Recibidos
-        setTabla(enviados, tblRecibidos);
-        //Coloca SOLO Pedidos Enviados/Listos
-        setTabla(recibidos, tblEnviados);
+        actualizarTablas();
     }
 
     /**
@@ -329,6 +326,11 @@ public class PanelMenu extends javax.swing.JPanel {
         tblRecibidos.setColumnSelectionAllowed(true);
         tblRecibidos.setDoubleBuffered(true);
         tblRecibidos.setRowHeight(20);
+        tblRecibidos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tblRecibidosFocusGained(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblRecibidos);
 
         tblEnviados.setModel(new javax.swing.table.DefaultTableModel(
@@ -351,6 +353,11 @@ public class PanelMenu extends javax.swing.JPanel {
             }
         });
         tblEnviados.setRowHeight(20);
+        tblEnviados.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tblEnviadosFocusGained(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblEnviados);
 
         jLabel1.setText("Lista de Pedidos");
@@ -399,16 +406,24 @@ public class PanelMenu extends javax.swing.JPanel {
     private void btnFoodMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu1ActionPerformed
         panDatos.setComidaAPedir(miMenu.getComida(0));
         panDatos.setVisible(true);
-        //Coloca TODOS los Pedidos Recibidos
-        setTabla(enviados, tblRecibidos);
-        //Coloca SOLO Pedidos Enviados/Listos
-        setTabla(recibidos, tblEnviados);
+        actualizarTablas();
     }//GEN-LAST:event_btnFoodMenu1ActionPerformed
 
     private void btnFoodMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu2ActionPerformed
         panDatos.setComidaAPedir(miMenu.getComida(1));
         panDatos.setVisible(true);
+        actualizarTablas();
     }//GEN-LAST:event_btnFoodMenu2ActionPerformed
+
+    private void tblRecibidosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblRecibidosFocusGained
+        // TODO add your handling code here:
+        actualizarTablas();
+    }//GEN-LAST:event_tblRecibidosFocusGained
+
+    private void tblEnviadosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblEnviadosFocusGained
+        // TODO add your handling code here:
+        actualizarTablas();
+    }//GEN-LAST:event_tblEnviadosFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -450,6 +465,7 @@ public class PanelMenu extends javax.swing.JPanel {
     public void setComidasDelMenu() {
         JLabel[] imagenes = {lblFoodMenu1, lblFoodMenu2, lblFoodMenu3, lblFoodMenu4,
             lblFoodMenu5, lblFoodMenu6, lblFoodMenu7, lblFoodMenu8};
+
         JLabel[] nombres = {lblNombre1, lblNombre2, lblNombre3, lblNombre4, lblNombre5,
             lblNombre6, lblNombre7, lblNombre8};
 
@@ -472,10 +488,37 @@ public class PanelMenu extends javax.swing.JPanel {
                 miData[i][2] = p.get(i).getNombreComida();
                 miData[i][3] = p.get(i).getEstado();
             }
-            DefaultTableModel miDefaultTableModel = new DefaultTableModel(miData, columnas);
+            DefaultTableModel miDefaultTableModel = new DefaultTableModel(miData, columnas) {
+                Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                };
+
+                public Class getColumnClass(int columnIndex) {
+                    return types[columnIndex];
+                }
+            };
             tbl.setModel(miDefaultTableModel);
         }
 
     }
+
+    public void actualizarTablas() {
+        //Coloca TODOS los Pedidos Recibidos
+        setTabla(misPedidos.getPedidos(), tblRecibidos);
+        //Coloca SOLO Pedidos Enviados/Listos
+        setTabla(misPedidos.getPedidosListos(), tblEnviados);
+        //misPedidos.mostrarPedido();
+    }
+    /*
+    public void agregarTableListener(JTable tabla) {
+        tabla.getModel().addTableModelListener(new TableModelListener() {
+            @Override
+            public void tableChanged(TableModelEvent arg0) {
+
+            }
+        }
+        );
+    }
+     */
 
 }
