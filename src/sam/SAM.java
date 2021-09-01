@@ -7,8 +7,6 @@ package sam;
 
 import controlador.ControladorVentanaPrincipal;
 import modelo.Caja;
-import modelo.Comida;
-import modelo.Ingrediente;
 import modelo.Inventario;
 import modelo.ListaPedido;
 import modelo.Menu;
@@ -33,6 +31,5 @@ public class SAM {
         VentanaPrincipal ventana = new VentanaPrincipal();
         ControladorVentanaPrincipal control = new ControladorVentanaPrincipal(ventana);
         control.iniciar();
-
     }
 }

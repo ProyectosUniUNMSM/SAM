@@ -8,17 +8,17 @@ package controlador;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import modelo.Caja;
-import modelo.Cliente;
-import modelo.Comida;
-import modelo.Pedido;
+import javax.swing.plaf.nimbus.NimbusStyle;
+import modelo.Menu;
 import vista.PanelInventario;
 import vista.PanelMenu;
 import vista.PanelBalance;
+import vista.PanelDatos;
 import vista.VentanaPrincipal;
 import vista.PanelHome;
 
@@ -55,8 +55,6 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
         vista.setLocationRelativeTo(null);
     }
 
-
-
     @Override
     public void actionPerformed(ActionEvent event) {
         Object evt = event.getSource();
@@ -86,9 +84,9 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
 
             vista.panContenedor.add(panBalance);
             vista.panContenedor.validate();
-            
+            /*
             Caja caja = Caja.getCaja();
-            /*Prueba de caja
+            Prueba de caja
             Cliente c = new Cliente("Daniel", "19200102");
             Cliente c2 = new Cliente("Dan", "192002");
             Comida com = new Comida("Chaufa", 50);
@@ -109,10 +107,11 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
             caja.addPedidoBoleta(p4);
             caja.addPedidoBoleta(p5);
             caja.addPedidoBoleta(p6);
-            */
+            
             panBalance.setTablaBoletas(caja);
             panBalance.setNumeroVentas(caja);
             panBalance.setPlatoMasVendido(caja);
+            */
         }
 
     }

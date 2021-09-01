@@ -317,7 +317,7 @@ public class PanelBalance extends javax.swing.JPanel {
         Boleta b = c.getUltimo();
         for (int i = 0; i < c.getTamaño(); i++) {
             for (int j = 0; j < b.pedidos.size(); j++) {
-                comidas.add(b.pedidos.get(j).comida.nombre);
+                comidas.add(b.pedidos.get(j).comida.getNombre());
             }
             b = b.sig;
         }

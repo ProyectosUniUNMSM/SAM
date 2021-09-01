@@ -8,8 +8,8 @@ import java.util.Objects;
  */
 public class Cliente {
 
-    String nombre;
-    String dni;
+    private String nombre;
+    private String dni;
 
     public Cliente() {
     }

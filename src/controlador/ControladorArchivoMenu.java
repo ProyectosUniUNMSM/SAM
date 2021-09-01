@@ -69,6 +69,7 @@ public class ControladorArchivoMenu {
     //Para inicializar las comidas, luego borrar metodo.
     public void agregarComidas() {
         //8 comidas predefinidas
+        /*
         Comida com0 = new Comida("Lomo Saltado", 12.5f);
         Comida com1 = new Comida("Arroz con Pollo", 10.0f);
         Comida com2 = new Comida("Ají de Gallina", 10.0f);
@@ -77,7 +78,7 @@ public class ControladorArchivoMenu {
         Comida com5 = new Comida("Tallarín Saltado", 11.0f);
         Comida com6 = new Comida("Seco a la Norteña", 13.50f);
         Comida com7 = new Comida("Ceviche", 12.0f);
-
+         
         comidas.add(com0);
         comidas.add(com1);
         comidas.add(com2);
@@ -86,7 +87,7 @@ public class ControladorArchivoMenu {
         comidas.add(com5);
         comidas.add(com6);
         comidas.add(com7);
-
+         */
         salvarArchivo();
     }
 

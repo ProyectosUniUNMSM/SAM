@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +10,8 @@ import java.util.ArrayList;
 public class ListaPedido {
 
     private static ListaPedido listaPedido;
-    private Pedido inicio, econtrado;
+    private Pedido inicio;
+    static int tamaño = 0;
 
     private ListaPedido() {
         this.inicio = null;
@@ -30,7 +32,9 @@ public class ListaPedido {
     }
 
     public void addPedido(Comida comida, Cliente cliente) {
+
         Pedido nuevo = new Pedido(comida, cliente);
+
         nuevo.sig = null;
 
         if (isListaVacia()) {
@@ -39,6 +43,14 @@ public class ListaPedido {
             nuevo.sig = inicio;
             inicio = nuevo;
         }
+        nuevo.indice++;
+
+        tamaño++;
+
+    }
+
+    public int size() {
+        return tamaño;
     }
 
     public Pedido buscarPedido(Cliente c) {
@@ -50,6 +62,17 @@ public class ListaPedido {
             aux = aux.sig;
         }
         return null;
+    }
+
+    public Pedido buscar(int index) {
+        Pedido aux = inicio;
+        while (aux.sig != null) {
+            if (aux.cliente.equals(index)) {
+                return aux;
+            }
+            aux = aux.sig;
+        }
+        return aux;
     }
 
     public void mostrarPedido() {
@@ -74,20 +97,31 @@ public class ListaPedido {
         }
     }
 
-    public void limpiarLista() {
+    public ArrayList<Pedido> getPedidos() {
+        ArrayList<Pedido> lista = new ArrayList<Pedido>();
+        if (!isListaVacia()) {
+            Pedido aux = inicio;
+            while (aux != null) {
+                lista.add(aux);
+                aux = aux.sig;
+            }
+        }
 
+        return lista;
     }
 
-    public ArrayList<Pedido> enivarPedidos(Cliente c) {
+    public ArrayList<Pedido> getPedidosListos() {
         ArrayList<Pedido> lista = new ArrayList<Pedido>();
-        Pedido aux = inicio;
-        while (aux.sig != null) {
-            if (aux.cliente.equals(c)) {
-                aux.estado = true;
-                lista.add(aux);
+        if (!isListaVacia()) {
+            Pedido aux = inicio;
+            while (aux != null) {
+                if (aux.estado == true) {
+                    lista.add(aux);
+                }
+                aux = aux.sig;
             }
-            aux = aux.sig;
         }
         return lista;
     }
+
 }

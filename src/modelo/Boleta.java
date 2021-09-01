@@ -31,7 +31,7 @@ public class Boleta {
     public float calcMonto() {
         float total = 0;
         for (Pedido temp : this.pedidos) {
-            total += temp.comida.precio;
+            total += temp.comida.getPrecio();
         }
         this.monto = total;
         return total;
