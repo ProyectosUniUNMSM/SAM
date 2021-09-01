@@ -16,6 +16,7 @@ import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import modelo.Comida;
 import modelo.ListaPedido;
 import modelo.Menu;
@@ -27,6 +28,8 @@ public class PanelMenu extends javax.swing.JPanel {
     Menu miMenu = Menu.getMenu();
 
     PanelDatos panDatos = new PanelDatos(this);
+    ArrayList<Pedido> recibido = misPedidos.getPedidos();
+    ArrayList<Pedido> enviado = misPedidos.getPedidosListos();
 
     public PanelMenu() {
         initComponents();
@@ -122,6 +125,11 @@ public class PanelMenu extends javax.swing.JPanel {
         btnFoodMenu3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFoodMenu3.setForeground(new java.awt.Color(255, 255, 255));
         btnFoodMenu3.setText("Agregar");
+        btnFoodMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFoodMenu3ActionPerformed(evt);
+            }
+        });
 
         lblFoodMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -133,6 +141,11 @@ public class PanelMenu extends javax.swing.JPanel {
         btnFoodMenu4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFoodMenu4.setForeground(new java.awt.Color(255, 255, 255));
         btnFoodMenu4.setText("Agregar");
+        btnFoodMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFoodMenu4ActionPerformed(evt);
+            }
+        });
 
         lblFoodMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -144,6 +157,11 @@ public class PanelMenu extends javax.swing.JPanel {
         btnFoodMenu5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFoodMenu5.setForeground(new java.awt.Color(255, 255, 255));
         btnFoodMenu5.setText("Agregar");
+        btnFoodMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFoodMenu5ActionPerformed(evt);
+            }
+        });
 
         lblFoodMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -155,6 +173,11 @@ public class PanelMenu extends javax.swing.JPanel {
         btnFoodMenu6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFoodMenu6.setForeground(new java.awt.Color(255, 255, 255));
         btnFoodMenu6.setText("Agregar");
+        btnFoodMenu6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFoodMenu6ActionPerformed(evt);
+            }
+        });
 
         lblFoodMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -166,6 +189,11 @@ public class PanelMenu extends javax.swing.JPanel {
         btnFoodMenu7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFoodMenu7.setForeground(new java.awt.Color(255, 255, 255));
         btnFoodMenu7.setText("Agregar");
+        btnFoodMenu7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFoodMenu7ActionPerformed(evt);
+            }
+        });
 
         lblFoodMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -177,6 +205,11 @@ public class PanelMenu extends javax.swing.JPanel {
         btnFoodMenu8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFoodMenu8.setForeground(new java.awt.Color(255, 255, 255));
         btnFoodMenu8.setText("Agregar");
+        btnFoodMenu8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFoodMenu8ActionPerformed(evt);
+            }
+        });
 
         btnFoodMenu2.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -194,24 +227,6 @@ public class PanelMenu extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(lblNombre5)
-                        .addGap(133, 133, 133)
-                        .addComponent(lblNombre6)
-                        .addGap(133, 133, 133)
-                        .addComponent(lblNombre7)
-                        .addGap(153, 153, 153)
-                        .addComponent(lblNombre8))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(btnFoodMenu5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110)
-                        .addComponent(btnFoodMenu6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110)
-                        .addComponent(btnFoodMenu7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(130, 130, 130)
-                        .addComponent(btnFoodMenu8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,7 +263,29 @@ public class PanelMenu extends javax.swing.JPanel {
                         .addGap(90, 90, 90)
                         .addComponent(lblFoodMenu7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(110, 110, 110)
-                        .addComponent(lblFoodMenu8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblFoodMenu8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnFoodMenu5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(97, 97, 97)
+                                .addComponent(btnFoodMenu6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblNombre5)
+                                .addGap(133, 133, 133)
+                                .addComponent(lblNombre6)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(133, 133, 133)
+                                .addComponent(lblNombre7)
+                                .addGap(153, 153, 153)
+                                .addComponent(lblNombre8))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(123, 123, 123)
+                                .addComponent(btnFoodMenu7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnFoodMenu8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -292,12 +329,18 @@ public class PanelMenu extends javax.swing.JPanel {
                     .addComponent(lblNombre6)
                     .addComponent(lblNombre7)
                     .addComponent(lblNombre8))
-                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnFoodMenu5)
-                    .addComponent(btnFoodMenu6)
-                    .addComponent(btnFoodMenu7)
-                    .addComponent(btnFoodMenu8)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnFoodMenu7)
+                            .addComponent(btnFoodMenu5)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnFoodMenu6))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnFoodMenu8))))
         );
 
         jTabbedPane1.addTab("Menú", jPanel1);
@@ -306,13 +349,13 @@ public class PanelMenu extends javax.swing.JPanel {
 
         tblRecibidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
+                {null, null, null,  new Boolean(true)},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "DNI", "Nombre", "comida", "Estado"
+                "DNI", "Nombre", "Comida", "Estado"
             }
         ) {
             Class[] types = new Class [] {
@@ -323,12 +366,11 @@ public class PanelMenu extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        tblRecibidos.setColumnSelectionAllowed(true);
         tblRecibidos.setDoubleBuffered(true);
         tblRecibidos.setRowHeight(20);
-        tblRecibidos.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tblRecibidosFocusGained(evt);
+        tblRecibidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblRecibidosMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(tblRecibidos);
@@ -352,12 +394,8 @@ public class PanelMenu extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
+        tblEnviados.setEnabled(false);
         tblEnviados.setRowHeight(20);
-        tblEnviados.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tblEnviadosFocusGained(evt);
-            }
-        });
         jScrollPane1.setViewportView(tblEnviados);
 
         jLabel1.setText("Lista de Pedidos");
@@ -406,24 +444,44 @@ public class PanelMenu extends javax.swing.JPanel {
     private void btnFoodMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu1ActionPerformed
         panDatos.setComidaAPedir(miMenu.getComida(0));
         panDatos.setVisible(true);
-        actualizarTablas();
     }//GEN-LAST:event_btnFoodMenu1ActionPerformed
 
     private void btnFoodMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu2ActionPerformed
         panDatos.setComidaAPedir(miMenu.getComida(1));
         panDatos.setVisible(true);
-        actualizarTablas();
     }//GEN-LAST:event_btnFoodMenu2ActionPerformed
 
-    private void tblRecibidosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblRecibidosFocusGained
-        // TODO add your handling code here:
-        actualizarTablas();
-    }//GEN-LAST:event_tblRecibidosFocusGained
+    private void btnFoodMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu3ActionPerformed
+        // TODO add your handling code here:        
+    }//GEN-LAST:event_btnFoodMenu3ActionPerformed
 
-    private void tblEnviadosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblEnviadosFocusGained
+    private void btnFoodMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu4ActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_btnFoodMenu4ActionPerformed
+
+    private void btnFoodMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFoodMenu5ActionPerformed
+
+    private void btnFoodMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFoodMenu6ActionPerformed
+
+    private void btnFoodMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFoodMenu7ActionPerformed
+
+    private void btnFoodMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFoodMenu8ActionPerformed
+
+    private void tblRecibidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRecibidosMouseClicked
+        // TODO add your handling code here:
+        int fila = tblRecibidos.getSelectedRow();
+        boolean val = (boolean) tblRecibidos.getValueAt(fila, 3);
+        recibido.get(fila).setEstado(val);
         actualizarTablas();
-    }//GEN-LAST:event_tblEnviadosFocusGained
+    }//GEN-LAST:event_tblRecibidosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -486,7 +544,7 @@ public class PanelMenu extends javax.swing.JPanel {
                 miData[i][0] = p.get(i).getDniCliente();
                 miData[i][1] = p.get(i).getNombreCliente();
                 miData[i][2] = p.get(i).getNombreComida();
-                miData[i][3] = p.get(i).getEstado();
+                miData[i][3] = p.get(i).isEstado();
             }
             DefaultTableModel miDefaultTableModel = new DefaultTableModel(miData, columnas) {
                 Class[] types = new Class[]{
@@ -503,22 +561,27 @@ public class PanelMenu extends javax.swing.JPanel {
     }
 
     public void actualizarTablas() {
-        //Coloca TODOS los Pedidos Recibidos
-        setTabla(misPedidos.getPedidos(), tblRecibidos);
-        //Coloca SOLO Pedidos Enviados/Listos
-        setTabla(misPedidos.getPedidosListos(), tblEnviados);
-        //misPedidos.mostrarPedido();
+        //setTabla(misPedidos.getPedidos(), tblRecibidos);
+        //setTabla(misPedidos.getPedidosListos(), tblEnviados);
+        recibido = misPedidos.getPedidos();
+        enviado = misPedidos.getPedidosListos();
+        setTabla(recibido, tblRecibidos);
+        setTabla(enviado, tblEnviados);
+
     }
-    /*
+
     public void agregarTableListener(JTable tabla) {
         tabla.getModel().addTableModelListener(new TableModelListener() {
             @Override
             public void tableChanged(TableModelEvent arg0) {
-
+                int fila = tblRecibidos.getSelectedRow();
+                boolean val = (boolean) tblRecibidos.getValueAt(fila, 3);
+                System.out.println(val);
+                recibido.get(fila).setEstado(val);
+                actualizarTablas();
             }
         }
         );
     }
-     */
 
 }

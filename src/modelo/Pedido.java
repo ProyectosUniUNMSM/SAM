@@ -59,8 +59,12 @@ public class Pedido {
         return cliente.getNombre();
     }
 
-    public boolean getEstado() {
+    public boolean isEstado() {
         return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
 }

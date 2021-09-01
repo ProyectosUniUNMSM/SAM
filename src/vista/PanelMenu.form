@@ -77,26 +77,6 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="110" pref="110" max="-2" attributes="0"/>
-                              <Component id="lblNombre5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="133" pref="133" max="-2" attributes="0"/>
-                              <Component id="lblNombre6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="133" pref="133" max="-2" attributes="0"/>
-                              <Component id="lblNombre7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="153" pref="153" max="-2" attributes="0"/>
-                              <Component id="lblNombre8" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="100" pref="100" max="-2" attributes="0"/>
-                              <Component id="btnFoodMenu5" min="-2" pref="80" max="-2" attributes="0"/>
-                              <EmptySpace min="110" pref="110" max="-2" attributes="0"/>
-                              <Component id="btnFoodMenu6" min="-2" pref="80" max="-2" attributes="0"/>
-                              <EmptySpace min="110" pref="110" max="-2" attributes="0"/>
-                              <Component id="btnFoodMenu7" min="-2" pref="80" max="-2" attributes="0"/>
-                              <EmptySpace min="130" pref="130" max="-2" attributes="0"/>
-                              <Component id="btnFoodMenu8" min="-2" pref="80" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -140,6 +120,35 @@
                               <Component id="lblFoodMenu7" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace min="110" pref="110" max="-2" attributes="0"/>
                               <Component id="lblFoodMenu8" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="btnFoodMenu5" min="-2" pref="80" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                                      <Component id="btnFoodMenu6" min="-2" pref="80" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblNombre5" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="133" pref="133" max="-2" attributes="0"/>
+                                      <Component id="lblNombre6" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="133" pref="133" max="-2" attributes="0"/>
+                                      <Component id="lblNombre7" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="153" pref="153" max="-2" attributes="0"/>
+                                      <Component id="lblNombre8" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                                      <Component id="btnFoodMenu7" min="-2" pref="80" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="btnFoodMenu8" min="-2" pref="80" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -198,12 +207,22 @@
                           <Component id="lblNombre7" min="-2" max="-2" attributes="0"/>
                           <Component id="lblNombre8" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnFoodMenu5" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnFoodMenu6" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnFoodMenu7" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnFoodMenu8" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnFoodMenu7" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnFoodMenu5" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnFoodMenu6" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnFoodMenu8" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -312,6 +331,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFoodMenu3ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblFoodMenu4">
               <Properties>
@@ -349,6 +371,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFoodMenu4ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblFoodMenu5">
               <Properties>
@@ -386,6 +411,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFoodMenu5ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblFoodMenu6">
               <Properties>
@@ -423,6 +451,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFoodMenu6ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblFoodMenu7">
               <Properties>
@@ -460,6 +491,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFoodMenu7ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblFoodMenu8">
               <Properties>
@@ -497,6 +531,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFoodMenu8ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnFoodMenu2">
               <Properties>
@@ -593,8 +630,13 @@
                       <Table columnCount="4" rowCount="4">
                         <Column editable="true" title="DNI" type="java.lang.String"/>
                         <Column editable="true" title="Nombre" type="java.lang.String"/>
-                        <Column editable="true" title="comida" type="java.lang.String"/>
-                        <Column editable="true" title="Estado" type="java.lang.Boolean"/>
+                        <Column editable="true" title="Comida" type="java.lang.String"/>
+                        <Column editable="true" title="Estado" type="java.lang.Boolean">
+                          <Data value="true"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                        </Column>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -621,7 +663,6 @@
                         </Column>
                       </TableColumnModel>
                     </Property>
-                    <Property name="columnSelectionAllowed" type="boolean" value="true"/>
                     <Property name="doubleBuffered" type="boolean" value="true"/>
                     <Property name="rowHeight" type="int" value="20"/>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -629,7 +670,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tblRecibidosFocusGained"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblRecibidosMouseClicked"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -654,11 +695,9 @@
                         <Column editable="true" title="Estado" type="java.lang.Boolean"/>
                       </Table>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="rowHeight" type="int" value="20"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tblEnviadosFocusGained"/>
-                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
