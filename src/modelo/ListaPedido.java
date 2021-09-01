@@ -11,11 +11,11 @@ public class ListaPedido {
 
     private static ListaPedido listaPedido;
     private Pedido inicio, econtrado;
-    private Pedido[] pedidos;
+    static int tamaño =0;
+   
 
     private ListaPedido() {
         this.inicio = null;
-      
     }
 
     public static ListaPedido getListaPedido() {
@@ -43,13 +43,16 @@ public class ListaPedido {
         } else {
             nuevo.sig = inicio;
             inicio = nuevo;
-            inicio.indice++;
         }
-    
+        nuevo.indice++;
+
+        tamaño++;
 
     }
 
- 
+    public int size() {
+        return tamaño;
+    }
 
     public Pedido buscarPedido(Cliente c) {
         Pedido aux = inicio;
@@ -61,6 +64,17 @@ public class ListaPedido {
         }
         return null;
     }
+        public Pedido buscar(int index) {
+        Pedido aux = inicio;
+        while (aux.sig != null) {
+            if (aux.cliente.equals(index)) {
+                return aux;
+            }
+            aux = aux.sig;
+        }
+        return aux;
+    }
+    
 
     public void mostrarPedido() {
         Pedido aux = inicio;
@@ -99,17 +113,6 @@ public class ListaPedido {
             aux = aux.sig;
         }
         return lista;
-    };
-    //ingrediete   getcarcarnes
-   public ArrayList<ListaPedido> getPedidos() {
-        ArrayList<ListaPedido> listaInformacion = new ArrayList<>();
-        int i = 0;
-        while (pedidos[i] != null && i < pedidos.length) {
-             if (pedidos[i].getAceptar().equalsIgnoreCase("")) {
-                listaInformacion.add(pedidos[i]);
-            }
-            i++;
-        }
-        return listaInformacion;
     }
+
 }
