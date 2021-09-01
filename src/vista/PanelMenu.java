@@ -40,6 +40,7 @@ public class PanelMenu extends javax.swing.JPanel {
 
         miMenu.setLlenarComidas(miMenu);
 
+
         panDatos.btnCerrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -62,9 +63,10 @@ public class PanelMenu extends javax.swing.JPanel {
                 panDatos.txtNombre.setText("");
                 panDatos.dispose();
             }
-
+            
         });
-
+        
+        
     }
 
     /**
@@ -76,7 +78,6 @@ public class PanelMenu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         lblFoodMenu1 = new javax.swing.JLabel();
@@ -111,9 +112,6 @@ public class PanelMenu extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnAactualizar = new javax.swing.JButton();
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Pedidos entregados");
 
         setBackground(new java.awt.Color(180, 237, 131));
         setMinimumSize(new java.awt.Dimension(950, 500));
@@ -473,13 +471,13 @@ public class PanelMenu extends javax.swing.JPanel {
                     matrizSend[i][0] = TableReceveid.getValueAt(i, 0);
                     matrizSend[i][1] = TableReceveid.getValueAt(i, 1);
                     matrizSend[i][2] = TableReceveid.getValueAt(i, 2);
-                   
+
                     matrizSend[i][3] = estado;
                 }
 
             }
             TableSend.setModel(new javax.swing.table.DefaultTableModel(
-                  matrizSend,reporteEntrega
+                    matrizSend, reporteEntrega
             ) {
                 Class[] types = new Class[]{
                     java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
@@ -515,7 +513,6 @@ public class PanelMenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

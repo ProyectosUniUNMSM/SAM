@@ -24,17 +24,14 @@ import modelo.Pedido;
  */
 public class PanelDatos extends javax.swing.JFrame {
 
-   
-     ArrayList<Pedido> listaPedidos = new ArrayList<Pedido>();
+    ArrayList<Pedido> listaPedidos = new ArrayList<Pedido>();
 //  PanelMenu panMenu = new PanelMenu();
+
     public PanelDatos() {
         initComponents();
         setLocationRelativeTo(null);
-
-  
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -52,7 +49,7 @@ public class PanelDatos extends javax.swing.JFrame {
         lblNombreComida = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 400));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -73,7 +70,7 @@ public class PanelDatos extends javax.swing.JFrame {
         jLabel3.setText("Formulario");
         panPrueba.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 108, -1));
 
-        btnAceptar.setText("Aceotar");
+        btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
@@ -81,7 +78,7 @@ public class PanelDatos extends javax.swing.JFrame {
         });
         panPrueba.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
 
-        btnCerrar.setText("cerrar");
+        btnCerrar.setText("Cerrar");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarActionPerformed(evt);
@@ -115,14 +112,14 @@ public class PanelDatos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-/*
+        /*
         Cliente cliente = new Cliente(txtNombre.getText(), txtDni.getText());
         float precio = Float.parseFloat(lblPrecio.getText());
         Comida comida = new Comida(lblNombreComida.getText(), precio);
         Pedido pedido = new Pedido(comida, cliente);
         listaPedidos.add(pedido);*/
     }//GEN-LAST:event_btnAceptarActionPerformed
-/*
+    /*
     public void mostrar() {
         Object matriz[][] = new Object[listaPedidos.size()][3];
         String[] columnas = {"DNI", "Nombre", "comida", "Estado"};
@@ -138,7 +135,7 @@ public class PanelDatos extends javax.swing.JFrame {
     
     }*/
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-      /*dispose();
+        /*dispose();
         setLocationRelativeTo(null);*/
     }//GEN-LAST:event_btnCerrarActionPerformed
 
