@@ -570,18 +570,4 @@ public class PanelMenu extends javax.swing.JPanel {
 
     }
 
-    public void agregarTableListener(JTable tabla) {
-        tabla.getModel().addTableModelListener(new TableModelListener() {
-            @Override
-            public void tableChanged(TableModelEvent arg0) {
-                int fila = tblRecibidos.getSelectedRow();
-                boolean val = (boolean) tblRecibidos.getValueAt(fila, 3);
-                System.out.println(val);
-                recibido.get(fila).setEstado(val);
-                actualizarTablas();
-            }
-        }
-        );
-    }
-
 }
