@@ -33,6 +33,5 @@ public class SAM {
         VentanaPrincipal ventana = new VentanaPrincipal();
         ControladorVentanaPrincipal control = new ControladorVentanaPrincipal(ventana);
         control.iniciar();
-
     }
 }

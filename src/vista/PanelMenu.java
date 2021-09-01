@@ -29,47 +29,42 @@ import sam.SAM;
 
 public class PanelMenu extends javax.swing.JPanel {
 
-
-    PanelDatos panDatos = new PanelDatos();
-
-    Menu miMenu = Menu.getMenu();
     ListaPedido misPedidos = ListaPedido.getListaPedido();
+
     ArrayList<Pedido> lista = new ArrayList<Pedido>();
-    
-    
+    PanelDatos panDatos = new PanelDatos();
+    Menu miMenu = Menu.getMenu();
+
     public PanelMenu() {
         initComponents();
-      
-          
-     miMenu.setLlenarComidas(miMenu);
-        
-     panDatos.btnCerrar.addActionListener(new ActionListener() {
+
+        miMenu.setLlenarComidas(miMenu);
+
+        panDatos.btnCerrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 panDatos.dispose();
             }
-     });
-     panDatos.btnAceptar.addActionListener(new ActionListener() {
+        });
+        panDatos.btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-             Cliente cliente = new Cliente(panDatos.txtNombre.getText(),panDatos.txtDni.getText() );
-            float precio = Float.parseFloat(panDatos.lblPrecio.getText());
-            Comida comida = new Comida(panDatos.lblNombreComida.getText(), precio); 
-            Pedido pedido = new Pedido(comida, cliente);
-            misPedidos.addPedido(comida, cliente);
-            System.out.println(misPedidos.size());
-            lista.add(pedido);
-      
-        mostrar();
-        panDatos.txtDni.setText("");
-        panDatos.txtNombre.setText("");
-        panDatos.dispose();
+                Cliente cliente = new Cliente(panDatos.txtNombre.getText(), panDatos.txtDni.getText());
+                float precio = Float.parseFloat(panDatos.lblPrecio.getText());
+                Comida comida = new Comida(panDatos.lblNombreComida.getText(), precio);
+                Pedido pedido = new Pedido(comida, cliente);
+                misPedidos.addPedido(comida, cliente);
+                System.out.println(misPedidos.size());
+                lista.add(pedido);
+
+                mostrar();
+                panDatos.txtDni.setText("");
+                panDatos.txtNombre.setText("");
+                panDatos.dispose();
             }
-     
-     });
-     
-   
-        
+
+        });
+
     }
 
     /**
@@ -115,6 +110,7 @@ public class PanelMenu extends javax.swing.JPanel {
         TableSend = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btnAactualizar = new javax.swing.JButton();
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Pedidos entregados");
@@ -396,6 +392,13 @@ public class PanelMenu extends javax.swing.JPanel {
 
         jLabel3.setText("Pedidos Entregados");
 
+        btnAactualizar.setText("Actualizar");
+        btnAactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAactualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -404,12 +407,13 @@ public class PanelMenu extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAactualizar)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -423,7 +427,9 @@ public class PanelMenu extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addGap(13, 13, 13))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(btnAactualizar))
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -435,33 +441,67 @@ public class PanelMenu extends javax.swing.JPanel {
 
         add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 940, 450));
     }// </editor-fold>//GEN-END:initComponents
-  
+
     private void btnFoodMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu1ActionPerformed
-   panDatos.setVisible(true);
-   panDatos.lblNombreComida.setText(miMenu.getComidaNombreI(0));    
-    panDatos.lblFotos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arrayComida/comida1.jpg")));
-    panDatos.lblPrecio.setText(String.valueOf(miMenu.getComidaPrecioI(0)));
-    
- 
-    
-    
+        panDatos.setVisible(true);
+        panDatos.lblNombreComida.setText(miMenu.getComidaNombreI(0));
+        panDatos.lblFotos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arrayComida/comida1.jpg")));
+        panDatos.lblPrecio.setText(String.valueOf(miMenu.getComidaPrecioI(0)));
+
+
     }//GEN-LAST:event_btnFoodMenu1ActionPerformed
 
     private void btnFoodMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu2ActionPerformed
-        
-  panDatos.setVisible(true);
-   panDatos.lblNombreComida.setText(miMenu.getComidaNombreI(1));    
-    panDatos.lblFotos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arrayComida/comida2.jpg")));
-    panDatos.lblPrecio.setText(String.valueOf(miMenu.getComidaPrecioI(1)));
-        
-        
-        
+
+        panDatos.setVisible(true);
+        panDatos.lblNombreComida.setText(miMenu.getComidaNombreI(1));
+        panDatos.lblFotos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arrayComida/comida2.jpg")));
+        panDatos.lblPrecio.setText(String.valueOf(miMenu.getComidaPrecioI(1)));
+
+
     }//GEN-LAST:event_btnFoodMenu2ActionPerformed
+
+    private void btnAactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAactualizarActionPerformed
+        String[] reporteEntrega = {"DNI", "Nombre", "comida", "Estado"};
+        Object matrizSend[][] = new Object[lista.size()][4];
+        if (Seleccionados(3)) {
+            for (int i = 0; i < TableReceveid.getRowCount(); i++) {
+
+                boolean sel = (boolean) TableReceveid.getValueAt(i, 3);
+                if (sel) {
+                    matrizSend[i][0] = TableReceveid.getValueAt(i, 0);
+                    matrizSend[i][1] = TableReceveid.getValueAt(i, 1);
+                    matrizSend[i][2] = TableReceveid.getValueAt(i, 2);
+                    matrizSend[i][3] = TableReceveid.getValueAt(i, 3);
+                }
+
+            }
+            TableSend.setModel(new javax.swing.table.DefaultTableModel(
+                  matrizSend,reporteEntrega
+            ) {
+                Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                };
+
+                public Class getColumnClass(int columnIndex) {
+                    return types[columnIndex];
+                }
+            });
+
+            TableSend.setRowHeight(20);
+
+            jScrollPane1.setViewportView(TableSend);
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe selecionar al menos uno", "Mensaje de alerta", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btnAactualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable TableReceveid;
     public javax.swing.JTable TableSend;
+    private javax.swing.JButton btnAactualizar;
     public javax.swing.JButton btnFoodMenu1;
     private javax.swing.JButton btnFoodMenu2;
     private javax.swing.JButton btnFoodMenu3;
@@ -495,8 +535,23 @@ public class PanelMenu extends javax.swing.JPanel {
     public javax.swing.JLabel lblFoodMenu7;
     public javax.swing.JLabel lblFoodMenu8;
     // End of variables declaration//GEN-END:variables
-      public void mostrar() {
-  
+      public boolean Seleccionados(int pos) {
+        int contador = 0;
+        boolean bandera = true;
+        for (int i = 0; i < TableReceveid.getRowCount(); i++) {
+            boolean selecccion = (boolean) TableReceveid.getValueAt(i, pos);
+            if (selecccion) {
+                contador++;
+            }
+        }
+        if (contador == 0) {
+            bandera = false;
+        }
+        return bandera;
+    }
+
+    public void mostrar() {
+
         Object matriz[][] = new Object[lista.size()][4];
         String[] columnas = {"DNI", "Nombre", "comida", "Estado"};
         for (int i = 0; i < lista.size(); i++) {
@@ -504,26 +559,27 @@ public class PanelMenu extends javax.swing.JPanel {
             matriz[i][1] = lista.get(i).getPedidoClienteNombre();
             matriz[i][2] = lista.get(i).getPeidoNombreComida();
             matriz[i][3] = lista.get(i).isEstado();
-          misPedidos.mostrarPedido();
+
         }
-      
+
         TableReceveid.setModel(new javax.swing.table.DefaultTableModel(
-           matriz,
-           columnas
+                matriz,
+                columnas
         ) {
-            Class[] types = new Class [] {
+            Class[] types = new Class[]{
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
         });
         TableReceveid.setColumnSelectionAllowed(true);
         TableReceveid.setDoubleBuffered(true);
         TableReceveid.setRowHeight(25);
         jScrollPane2.setViewportView(TableReceveid);
-      }
+    }
+
     public Icon setIconoButton(String direcc, JButton button) {
         ImageIcon icon = new ImageIcon(getClass().getResource(direcc));
         int ancho = button.getWidth();
@@ -548,6 +604,5 @@ public class PanelMenu extends javax.swing.JPanel {
                 1));
         return icono;
     }
-
 
 }
