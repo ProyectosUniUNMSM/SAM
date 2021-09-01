@@ -13,9 +13,10 @@ public class Comida {
     private ArrayList<Ingrediente> ingredientes;
     private String img;
     
-    public Comida(String nombre, float precio) {
+    public Comida(String nombre, float precio,String dir) {
         this.nombre = nombre;
         this.precio = precio;
+        this.img = dir;
         this.ingredientes = new ArrayList<Ingrediente>();
     }
     

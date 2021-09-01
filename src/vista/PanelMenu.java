@@ -12,6 +12,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import modelo.Comida;
 import modelo.ListaPedido;
 import modelo.Menu;
 import modelo.Pedido;
@@ -19,44 +22,20 @@ import modelo.Pedido;
 public class PanelMenu extends javax.swing.JPanel {
 
     ListaPedido misPedidos = ListaPedido.getListaPedido();
-
-    ArrayList<Pedido> lista = new ArrayList<Pedido>();
-    PanelDatos panDatos = new PanelDatos();
     Menu miMenu = Menu.getMenu();
+
+    ArrayList<Pedido> enviados = misPedidos.getPedidos();
+    ArrayList<Pedido> recibidos = misPedidos.getPedidosListos();
+    PanelDatos panDatos = new PanelDatos();
 
     public PanelMenu() {
         initComponents();
-
         miMenu.setLlenarComidas();
-        /*
-        panDatos.btnCerrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                panDatos.dispose();
-            }
-        });
-
-        panDatos.btnAceptar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                Cliente cliente = new Cliente(panDatos.txtNombre.getText(), panDatos.txtDni.getText());
-                float precio = Float.parseFloat(panDatos.lblPrecio.getText());
-                //No debe crear una nueva comida si no sacarla de menu
-                //Comida comida = new Comida(panDatos.lblNombreComida.getText(), precio);
-                Comida comida = miMenu.getComida(panDatos.lblNombreComida.getText());
-                Pedido pedido = new Pedido(comida, cliente);
-                misPedidos.addPedido(comida, cliente);
-                System.out.println(misPedidos.size());
-                lista.add(pedido);
-
-                mostrar();
-                panDatos.txtDni.setText("");
-                panDatos.txtNombre.setText("");
-                panDatos.dispose();
-            }
-
-        });
-         */
+        setComidasDelMenu();
+        //Coloca TODOS los Pedidos Recibidos
+        setTabla(enviados, tblRecibidos);
+        //Coloca SOLO Pedidos Enviados/Listos
+        setTabla(recibidos, tblEnviados);
     }
 
     /**
@@ -71,37 +50,36 @@ public class PanelMenu extends javax.swing.JPanel {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         lblFoodMenu1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblNombre1 = new javax.swing.JLabel();
         btnFoodMenu1 = new javax.swing.JButton();
         lblFoodMenu2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblNombre2 = new javax.swing.JLabel();
         lblFoodMenu3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblNombre3 = new javax.swing.JLabel();
         btnFoodMenu3 = new javax.swing.JButton();
         lblFoodMenu4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblNombre4 = new javax.swing.JLabel();
         btnFoodMenu4 = new javax.swing.JButton();
         lblFoodMenu5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblNombre5 = new javax.swing.JLabel();
         btnFoodMenu5 = new javax.swing.JButton();
         lblFoodMenu6 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblNombre6 = new javax.swing.JLabel();
         btnFoodMenu6 = new javax.swing.JButton();
         lblFoodMenu7 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        lblNombre7 = new javax.swing.JLabel();
         btnFoodMenu7 = new javax.swing.JButton();
         lblFoodMenu8 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblNombre8 = new javax.swing.JLabel();
         btnFoodMenu8 = new javax.swing.JButton();
         btnFoodMenu2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        TableReceveid = new javax.swing.JTable();
+        tblRecibidos = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TableSend = new javax.swing.JTable();
+        tblEnviados = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnAactualizar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(180, 237, 131));
         setMinimumSize(new java.awt.Dimension(950, 500));
@@ -115,11 +93,11 @@ public class PanelMenu extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(865, 460));
 
-        lblFoodMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arrayComida/comida1.jpg"))); // NOI18N
+        lblFoodMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("Lomo Saltado");
+        lblNombre1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre1.setText("Comida 1");
 
         btnFoodMenu1.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -131,17 +109,17 @@ public class PanelMenu extends javax.swing.JPanel {
             }
         });
 
-        lblFoodMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arrayComida/comida2.jpg"))); // NOI18N
+        lblFoodMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setText("Aji de Gallina");
+        lblNombre2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre2.setText("Comdia 2");
 
         lblFoodMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setText("Arroz con pollo");
+        lblNombre3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre3.setText("Comida 3");
 
         btnFoodMenu3.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -151,8 +129,8 @@ public class PanelMenu extends javax.swing.JPanel {
         lblFoodMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setText("Sopa Seca");
+        lblNombre4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre4.setText("Comida 4");
 
         btnFoodMenu4.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -162,8 +140,8 @@ public class PanelMenu extends javax.swing.JPanel {
         lblFoodMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel8.setText("Comida 5");
+        lblNombre5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre5.setText("Comida 5");
 
         btnFoodMenu5.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -173,8 +151,8 @@ public class PanelMenu extends javax.swing.JPanel {
         lblFoodMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel9.setText("Comida 6");
+        lblNombre6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre6.setText("Comida 6");
 
         btnFoodMenu6.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -184,8 +162,8 @@ public class PanelMenu extends javax.swing.JPanel {
         lblFoodMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel10.setText("Comida 7");
+        lblNombre7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre7.setText("Comida 7");
 
         btnFoodMenu7.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -195,8 +173,8 @@ public class PanelMenu extends javax.swing.JPanel {
         lblFoodMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel11.setText("Comida 8");
+        lblNombre8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre8.setText("Comida 8");
 
         btnFoodMenu8.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -221,13 +199,13 @@ public class PanelMenu extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(110, 110, 110)
-                        .addComponent(jLabel8)
+                        .addComponent(lblNombre5)
                         .addGap(133, 133, 133)
-                        .addComponent(jLabel9)
+                        .addComponent(lblNombre6)
                         .addGap(133, 133, 133)
-                        .addComponent(jLabel10)
+                        .addComponent(lblNombre7)
                         .addGap(153, 153, 153)
-                        .addComponent(jLabel11))
+                        .addComponent(lblNombre8))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(btnFoodMenu5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,13 +219,15 @@ public class PanelMenu extends javax.swing.JPanel {
                         .addGap(100, 100, 100)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnFoodMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                            .addComponent(lblNombre1))
                         .addGap(105, 105, 105)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(331, 331, 331)
-                                .addComponent(jLabel7))
+                                .addComponent(lblNombre2)
+                                .addGap(142, 142, 142)
+                                .addComponent(lblNombre3)
+                                .addGap(155, 155, 155)
+                                .addComponent(lblNombre4))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnFoodMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(110, 110, 110)
@@ -256,14 +236,11 @@ public class PanelMenu extends javax.swing.JPanel {
                                 .addComponent(btnFoodMenu4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblFoodMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(90, 90, 90)
-                                .addComponent(lblFoodMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(90, 90, 90)
-                                .addComponent(lblFoodMenu3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblFoodMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)
+                        .addComponent(lblFoodMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)
+                        .addComponent(lblFoodMenu3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(110, 110, 110)
                         .addComponent(lblFoodMenu4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -289,13 +266,13 @@ public class PanelMenu extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel4))
+                        .addComponent(lblNombre1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5))))
+                            .addComponent(lblNombre4)
+                            .addComponent(lblNombre3)
+                            .addComponent(lblNombre2))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
@@ -314,10 +291,10 @@ public class PanelMenu extends javax.swing.JPanel {
                     .addComponent(lblFoodMenu8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
+                    .addComponent(lblNombre5)
+                    .addComponent(lblNombre6)
+                    .addComponent(lblNombre7)
+                    .addComponent(lblNombre8))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnFoodMenu5)
@@ -330,7 +307,7 @@ public class PanelMenu extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        TableReceveid.setModel(new javax.swing.table.DefaultTableModel(
+        tblRecibidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -349,12 +326,12 @@ public class PanelMenu extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        TableReceveid.setColumnSelectionAllowed(true);
-        TableReceveid.setDoubleBuffered(true);
-        TableReceveid.setRowHeight(20);
-        jScrollPane2.setViewportView(TableReceveid);
+        tblRecibidos.setColumnSelectionAllowed(true);
+        tblRecibidos.setDoubleBuffered(true);
+        tblRecibidos.setRowHeight(20);
+        jScrollPane2.setViewportView(tblRecibidos);
 
-        TableSend.setModel(new javax.swing.table.DefaultTableModel(
+        tblEnviados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -373,34 +350,24 @@ public class PanelMenu extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        TableSend.setRowHeight(20);
-        jScrollPane1.setViewportView(TableSend);
+        tblEnviados.setRowHeight(20);
+        jScrollPane1.setViewportView(tblEnviados);
 
         jLabel1.setText("Lista de Pedidos");
 
         jLabel3.setText("Pedidos Entregados");
-
-        btnAactualizar.setText("Actualizar");
-        btnAactualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAactualizarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAactualizar)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -409,16 +376,15 @@ public class PanelMenu extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addComponent(jLabel1)
                         .addGap(13, 13, 13))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(btnAactualizar))
-                        .addGap(18, 18, 18)))
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -431,67 +397,21 @@ public class PanelMenu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFoodMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu1ActionPerformed
+        panDatos.setComidaAPedir(miMenu.getComida(0));
         panDatos.setVisible(true);
-        panDatos.lblNombreComida.setText(miMenu.getComida(0).getNombre());
-        panDatos.lblFotos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arrayComida/comida1.jpg")));
-        panDatos.lblPrecio.setText(String.valueOf(miMenu.getComida(0).getPrecio()));
-
-
+        //Coloca TODOS los Pedidos Recibidos
+        setTabla(enviados, tblRecibidos);
+        //Coloca SOLO Pedidos Enviados/Listos
+        setTabla(recibidos, tblEnviados);
     }//GEN-LAST:event_btnFoodMenu1ActionPerformed
 
     private void btnFoodMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu2ActionPerformed
-
+        panDatos.setComidaAPedir(miMenu.getComida(1));
         panDatos.setVisible(true);
-        panDatos.lblNombreComida.setText(miMenu.getComida(1).getNombre());
-        panDatos.lblFotos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arrayComida/comida2.jpg")));
-        panDatos.lblPrecio.setText(String.valueOf(miMenu.getComida(1).getPrecio()));
-
-
     }//GEN-LAST:event_btnFoodMenu2ActionPerformed
-
-    private void btnAactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAactualizarActionPerformed
-        String[] reporteEntrega = {"DNI", "Nombre", "comida", "Estado"};
-        Object matrizSend[][] = new Object[lista.size()][4];
-        boolean estado = false;
-        if (Seleccionados(3)) {
-            for (int i = 0; i < TableReceveid.getRowCount(); i++) {
-
-                boolean sel = (boolean) TableReceveid.getValueAt(i, 3);
-                if (sel) {
-                    matrizSend[i][0] = TableReceveid.getValueAt(i, 0);
-                    matrizSend[i][1] = TableReceveid.getValueAt(i, 1);
-                    matrizSend[i][2] = TableReceveid.getValueAt(i, 2);
-
-                    matrizSend[i][3] = estado;
-                }
-
-            }
-            TableSend.setModel(new javax.swing.table.DefaultTableModel(
-                    matrizSend, reporteEntrega
-            ) {
-                Class[] types = new Class[]{
-                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
-                };
-
-                public Class getColumnClass(int columnIndex) {
-                    return types[columnIndex];
-                }
-            });
-
-            TableSend.setRowHeight(20);
-
-            jScrollPane1.setViewportView(TableSend);
-        } else {
-            JOptionPane.showMessageDialog(null, "Debe selecionar al menos uno", "Mensaje de alerta", JOptionPane.WARNING_MESSAGE);
-        }
-
-    }//GEN-LAST:event_btnAactualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTable TableReceveid;
-    public javax.swing.JTable TableSend;
-    private javax.swing.JButton btnAactualizar;
     public javax.swing.JButton btnFoodMenu1;
     private javax.swing.JButton btnFoodMenu2;
     private javax.swing.JButton btnFoodMenu3;
@@ -501,15 +421,7 @@ public class PanelMenu extends javax.swing.JPanel {
     private javax.swing.JButton btnFoodMenu7;
     private javax.swing.JButton btnFoodMenu8;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -523,76 +435,47 @@ public class PanelMenu extends javax.swing.JPanel {
     public javax.swing.JLabel lblFoodMenu6;
     public javax.swing.JLabel lblFoodMenu7;
     public javax.swing.JLabel lblFoodMenu8;
+    private javax.swing.JLabel lblNombre1;
+    private javax.swing.JLabel lblNombre2;
+    private javax.swing.JLabel lblNombre3;
+    private javax.swing.JLabel lblNombre4;
+    private javax.swing.JLabel lblNombre5;
+    private javax.swing.JLabel lblNombre6;
+    private javax.swing.JLabel lblNombre7;
+    private javax.swing.JLabel lblNombre8;
+    public javax.swing.JTable tblEnviados;
+    public javax.swing.JTable tblRecibidos;
     // End of variables declaration//GEN-END:variables
 
-    public boolean Seleccionados(int pos) {
-        int contador = 0;
-        boolean bandera = true;
-        for (int i = 0; i < TableReceveid.getRowCount(); i++) {
-            boolean selecccion = (boolean) TableReceveid.getValueAt(i, pos);
-            if (selecccion) {
-                contador++;
+    public void setComidasDelMenu() {
+        JLabel[] imagenes = {lblFoodMenu1, lblFoodMenu2, lblFoodMenu3, lblFoodMenu4,
+            lblFoodMenu5, lblFoodMenu6, lblFoodMenu7, lblFoodMenu8};
+        JLabel[] nombres = {lblNombre1, lblNombre2, lblNombre3, lblNombre4, lblNombre5,
+            lblNombre6, lblNombre7, lblNombre8};
+
+        for (int i = 0; i < miMenu.getTamaño(); i++) {
+            if (miMenu.getComida(i) != null) {
+                Comida c = miMenu.getComida(i);
+                imagenes[i].setIcon(new ImageIcon(getClass().getResource(c.getImg())));
+                nombres[i].setText(c.getNombre());
             }
         }
-        if (contador == 0) {
-            bandera = false;
-        }
-        return bandera;
     }
 
-    public void mostrar() {
-
-        Object matriz[][] = new Object[lista.size()][4];
-        String[] columnas = {"DNI", "Nombre", "comida", "Estado"};
-        for (int i = 0; i < lista.size(); i++) {
-            matriz[i][0] = lista.get(i).getPedidoDniCliente();
-            matriz[i][1] = lista.get(i).getPedidoClienteNombre();
-            matriz[i][2] = lista.get(i).getPeidoNombreComida();
-            matriz[i][3] = lista.get(i).isEstado();
-
-        }
-
-        TableReceveid.setModel(new javax.swing.table.DefaultTableModel(
-                matriz,
-                columnas
-        ) {
-            Class[] types = new Class[]{
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
+    public void setTabla(ArrayList<Pedido> p, JTable tbl) {
+        String[] columnas = {"Dni", "Nombre", "Comida", "Estado"};
+        if (!p.equals(null)) {
+            Object[][] miData = new Object[p.size()][4];
+            for (int i = 0; i < p.size(); i++) {
+                miData[i][0] = p.get(i).getDniCliente();
+                miData[i][1] = p.get(i).getNombreCliente();
+                miData[i][2] = p.get(i).getNombreComida();
+                miData[i][3] = p.get(i).getEstado();
             }
-        });
-        TableReceveid.setColumnSelectionAllowed(true);
-        TableReceveid.setDoubleBuffered(true);
-        TableReceveid.setRowHeight(25);
-        jScrollPane2.setViewportView(TableReceveid);
-    }
+            DefaultTableModel miDefaultTableModel = new DefaultTableModel(miData, columnas);
+            tbl.setModel(miDefaultTableModel);
+        }
 
-    public Icon setIconoButton(String direcc, JButton button) {
-        ImageIcon icon = new ImageIcon(getClass().getResource(direcc));
-        int ancho = button.getWidth();
-        int alto = button.getHeight();
-        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
-        return icono;
-    }
-
-    public Icon seticonIconPresionado(String direcc, JButton boton, int ancho, int altura) {
-        ImageIcon icon = new ImageIcon(getClass().getResource(direcc));
-        int width = boton.getWidth() - ancho;
-        int heigth = boton.getHeight() - altura;
-        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(width, heigth, Image.SCALE_DEFAULT));
-        return icono;
-    }
-
-    public Icon setScalableFoto(JLabel lbl, String direcc) {
-        ImageIcon foto = new ImageIcon(getClass().getResource(direcc));
-        Icon icono = new ImageIcon(foto.getImage().getScaledInstance(
-                lbl.getWidth(),
-                lbl.getHeight(),
-                1));
-        return icono;
     }
 
 }

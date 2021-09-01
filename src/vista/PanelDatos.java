@@ -24,9 +24,6 @@ public class PanelDatos extends javax.swing.JFrame {
     public PanelDatos() {
         initComponents();
         setLocationRelativeTo(null);
-        lblPrecio.setText("" + comida.getPrecio());
-        lblNombreComida.setText(comida.getNombre());
-        lblFotos.setIcon(new javax.swing.ImageIcon(getClass().getResource(comida.getImg())));
     }
 
     @SuppressWarnings("unchecked")
@@ -123,13 +120,10 @@ public class PanelDatos extends javax.swing.JFrame {
     public javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 
-    public Icon setScalableFoto(JLabel lbl, String direcc) {
-        ImageIcon foto = new ImageIcon(getClass().getResource(direcc));
-        Icon icono = new ImageIcon(foto.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), 1));
-        return icono;
-    }
-
     public void setComidaAPedir(Comida c) {
         this.comida = c;
+        lblPrecio.setText("" + comida.getPrecio());
+        lblNombreComida.setText(comida.getNombre());
+        lblFotos.setIcon(new javax.swing.ImageIcon(getClass().getResource(comida.getImg())));
     }
 }

@@ -17,7 +17,7 @@ public class Menu {
 
     public static Menu getMenu() {
         if (menu == null) {
-            menu = new Menu(10);
+            menu = new Menu(8);
         }
         return menu;
     }
@@ -43,21 +43,8 @@ public class Menu {
         }
     }
 
-    public static void setLlenarComidas() {
-
-        Comida comida1 = new Comida("LomoSaltado", (float) 35.5);
-        Comida comida2 = new Comida("Aji de Gallina", (float) 40.5);
-        Comida comida3 = new Comida("Arroz con pollo", (float) 35.5);
-        Comida comida4 = new Comida("Sopa Seca", (float) 35.5);
-
-        comida1.setImg("/imagenes/arrayComida/comida1.jpg");
-        comida2.setImg("/imagenes/arrayComida/comida2.jpg");        
-
-        menu.addComida(comida1);
-        menu.addComida(comida2);
-        menu.addComida(comida3);
-        menu.addComida(comida4);
-
+    public int getTamaño() {
+        return comida.length;
     }
 
     public Comida getComida(int pos) {
@@ -84,4 +71,17 @@ public class Menu {
         return c;
     }
 
+    public static void setLlenarComidas() {
+
+        Comida comida1 = new Comida("Lomo Saltado", (float) 35.5, "/imagenes/arrayComida/comida1.jpg");
+        Comida comida2 = new Comida("Aji de Gallina", (float) 40.5, "/imagenes/arrayComida/comida2.jpg");
+        //Comida comida3 = new Comida("Arroz con pollo", (float) 35.5);
+        //Comida comida4 = new Comida("Sopa Seca", (float) 35.5);
+
+        menu.addComida(comida1);
+        menu.addComida(comida2);
+        //menu.addComida(comida3);
+        //menu.addComida(comida4);
+
+    }
 }

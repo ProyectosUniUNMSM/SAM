@@ -20,10 +20,12 @@ public class Pedido {
         this.estado = false;
         this.sig = null;
     }
- public Pedido() {
+
+    public Pedido() {
     }
-    public Comida getComida() {
-        return comida;
+
+    public String getNombreComida() {
+        return comida.getNombre();
     }
 
     public String getPeidoNombreComida() {
@@ -44,17 +46,20 @@ public class Pedido {
     public int getIndice() {
         return indice;
     }
-    public String getAceptar(){
+
+    public String getAceptar() {
         return "";
     }
- 
 
-
-    public Cliente getCliente() {
-        return cliente;
+    public String getDniCliente() {
+        return cliente.getDni();
     }
 
-    public boolean isEstado() {
+    public String getNombreCliente() {
+        return cliente.getNombre();
+    }
+
+    public boolean getEstado() {
         return estado;
     }
 

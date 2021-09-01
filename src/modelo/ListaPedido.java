@@ -99,22 +99,27 @@ public class ListaPedido {
 
     public ArrayList<Pedido> getPedidos() {
         ArrayList<Pedido> lista = new ArrayList<Pedido>();
-        Pedido aux = inicio;
-        while (aux.sig != null) {
-            lista.add(aux);
-            aux = aux.sig;
+        if (!isListaVacia()) {
+            Pedido aux = inicio;
+            while (aux.sig != null) {
+                lista.add(aux);
+                aux = aux.sig;
+            }
         }
+
         return lista;
     }
 
     public ArrayList<Pedido> getPedidosListos() {
         ArrayList<Pedido> lista = new ArrayList<Pedido>();
-        Pedido aux = inicio;
-        while (aux.sig != null) {
-            if (aux.estado == true) {
-                lista.add(aux);
+        if (!isListaVacia()) {
+            Pedido aux = inicio;
+            while (aux.sig != null) {
+                if (aux.estado == true) {
+                    lista.add(aux);
+                }
+                aux = aux.sig;
             }
-            aux = aux.sig;
         }
         return lista;
     }
