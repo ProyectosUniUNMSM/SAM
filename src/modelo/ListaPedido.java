@@ -10,9 +10,8 @@ import java.util.ArrayList;
 public class ListaPedido {
 
     private static ListaPedido listaPedido;
-    private Pedido inicio, econtrado;
-    static int tamaño =0;
-   
+    private Pedido inicio;
+    static int tamaño = 0;
 
     private ListaPedido() {
         this.inicio = null;
@@ -64,7 +63,8 @@ public class ListaPedido {
         }
         return null;
     }
-        public Pedido buscar(int index) {
+
+    public Pedido buscar(int index) {
         Pedido aux = inicio;
         while (aux.sig != null) {
             if (aux.cliente.equals(index)) {
@@ -74,7 +74,6 @@ public class ListaPedido {
         }
         return aux;
     }
-    
 
     public void mostrarPedido() {
         Pedido aux = inicio;
@@ -98,16 +97,21 @@ public class ListaPedido {
         }
     }
 
-    public void limpiarLista() {
-
-    }
-
-    public ArrayList<Pedido> enivarPedidos(Cliente c) {
+    public ArrayList<Pedido> getPedidos() {
         ArrayList<Pedido> lista = new ArrayList<Pedido>();
         Pedido aux = inicio;
         while (aux.sig != null) {
-            if (aux.cliente.equals(c)) {
-                aux.estado = true;
+            lista.add(aux);
+            aux = aux.sig;
+        }
+        return lista;
+    }
+
+    public ArrayList<Pedido> getPedidosListos() {
+        ArrayList<Pedido> lista = new ArrayList<Pedido>();
+        Pedido aux = inicio;
+        while (aux.sig != null) {
+            if (aux.estado == true) {
                 lista.add(aux);
             }
             aux = aux.sig;

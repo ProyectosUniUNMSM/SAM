@@ -5,27 +5,16 @@
  */
 package vista;
 
-import controlador.ControladorMenu;
-import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import modelo.Cliente;
-import modelo.Comida;
-import modelo.ImageConfig;
 import modelo.ListaPedido;
 import modelo.Menu;
 import modelo.Pedido;
-import sam.SAM;
 
 public class PanelMenu extends javax.swing.JPanel {
 
@@ -38,21 +27,23 @@ public class PanelMenu extends javax.swing.JPanel {
     public PanelMenu() {
         initComponents();
 
-        miMenu.setLlenarComidas(miMenu);
-
-
+        miMenu.setLlenarComidas();
+        /*
         panDatos.btnCerrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 panDatos.dispose();
             }
         });
+
         panDatos.btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 Cliente cliente = new Cliente(panDatos.txtNombre.getText(), panDatos.txtDni.getText());
                 float precio = Float.parseFloat(panDatos.lblPrecio.getText());
-                Comida comida = new Comida(panDatos.lblNombreComida.getText(), precio);
+                //No debe crear una nueva comida si no sacarla de menu
+                //Comida comida = new Comida(panDatos.lblNombreComida.getText(), precio);
+                Comida comida = miMenu.getComida(panDatos.lblNombreComida.getText());
                 Pedido pedido = new Pedido(comida, cliente);
                 misPedidos.addPedido(comida, cliente);
                 System.out.println(misPedidos.size());
@@ -63,10 +54,9 @@ public class PanelMenu extends javax.swing.JPanel {
                 panDatos.txtNombre.setText("");
                 panDatos.dispose();
             }
-            
+
         });
-        
-        
+         */
     }
 
     /**
@@ -442,9 +432,9 @@ public class PanelMenu extends javax.swing.JPanel {
 
     private void btnFoodMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu1ActionPerformed
         panDatos.setVisible(true);
-        panDatos.lblNombreComida.setText(miMenu.getComidaNombreI(0));
+        panDatos.lblNombreComida.setText(miMenu.getComida(0).getNombre());
         panDatos.lblFotos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arrayComida/comida1.jpg")));
-        panDatos.lblPrecio.setText(String.valueOf(miMenu.getComidaPrecioI(0)));
+        panDatos.lblPrecio.setText(String.valueOf(miMenu.getComida(0).getPrecio()));
 
 
     }//GEN-LAST:event_btnFoodMenu1ActionPerformed
@@ -452,9 +442,9 @@ public class PanelMenu extends javax.swing.JPanel {
     private void btnFoodMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu2ActionPerformed
 
         panDatos.setVisible(true);
-        panDatos.lblNombreComida.setText(miMenu.getComidaNombreI(1));
+        panDatos.lblNombreComida.setText(miMenu.getComida(1).getNombre());
         panDatos.lblFotos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arrayComida/comida2.jpg")));
-        panDatos.lblPrecio.setText(String.valueOf(miMenu.getComidaPrecioI(1)));
+        panDatos.lblPrecio.setText(String.valueOf(miMenu.getComida(1).getPrecio()));
 
 
     }//GEN-LAST:event_btnFoodMenu2ActionPerformed
@@ -534,7 +524,8 @@ public class PanelMenu extends javax.swing.JPanel {
     public javax.swing.JLabel lblFoodMenu7;
     public javax.swing.JLabel lblFoodMenu8;
     // End of variables declaration//GEN-END:variables
-      public boolean Seleccionados(int pos) {
+
+    public boolean Seleccionados(int pos) {
         int contador = 0;
         boolean bandera = true;
         for (int i = 0; i < TableReceveid.getRowCount(); i++) {

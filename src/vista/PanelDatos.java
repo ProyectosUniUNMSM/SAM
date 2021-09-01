@@ -5,18 +5,12 @@
  */
 package vista;
 
-import controlador.ControladorDatos;
-import controlador.ControladorMenu;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Comida;
-import modelo.Pedido;
+import modelo.ListaPedido;
 
 /**
  *
@@ -24,12 +18,15 @@ import modelo.Pedido;
  */
 public class PanelDatos extends javax.swing.JFrame {
 
-    ArrayList<Pedido> listaPedidos = new ArrayList<Pedido>();
-//  PanelMenu panMenu = new PanelMenu();
+    private Comida comida; //Comida que se va a pedir
+    ListaPedido misPedidos = ListaPedido.getListaPedido();
 
     public PanelDatos() {
         initComponents();
         setLocationRelativeTo(null);
+        lblPrecio.setText("" + comida.getPrecio());
+        lblNombreComida.setText(comida.getNombre());
+        lblFotos.setIcon(new javax.swing.ImageIcon(getClass().getResource(comida.getImg())));
     }
 
     @SuppressWarnings("unchecked")
@@ -42,7 +39,7 @@ public class PanelDatos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
-        btnCerrar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         lblPrecio = new javax.swing.JLabel();
         lblFotos = new javax.swing.JLabel();
@@ -67,8 +64,8 @@ public class PanelDatos extends javax.swing.JFrame {
         panPrueba.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 31, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Formulario");
-        panPrueba.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 108, -1));
+        jLabel3.setText("Agregar Pedido");
+        panPrueba.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 108, -1));
 
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -78,19 +75,13 @@ public class PanelDatos extends javax.swing.JFrame {
         });
         panPrueba.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
 
-        btnCerrar.setText("Cerrar");
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
-        panPrueba.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
-
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
+        panPrueba.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
         panPrueba.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 120, -1));
 
         lblPrecio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -107,41 +98,19 @@ public class PanelDatos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
-
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        /*
-        Cliente cliente = new Cliente(txtNombre.getText(), txtDni.getText());
-        float precio = Float.parseFloat(lblPrecio.getText());
-        Comida comida = new Comida(lblNombreComida.getText(), precio);
-        Pedido pedido = new Pedido(comida, cliente);
-        listaPedidos.add(pedido);*/
+        Cliente client = new Cliente(txtNombre.getText(), txtDni.getText());
+        misPedidos.addPedido(comida, client);
+        dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
-    /*
-    public void mostrar() {
-        Object matriz[][] = new Object[listaPedidos.size()][3];
-        String[] columnas = {"DNI", "Nombre", "comida", "Estado"};
-        for (int i = 0; i < listaPedidos.size(); i++) {
-            matriz[i][0] = listaPedidos.get(i).getPedidoDniCliente();
-            matriz[i][1] = listaPedidos.get(i).getPedidoClienteNombre();
-            matriz[i][2] = listaPedidos.get(i).getPeidoNombreComida();
-            matriz[i][3] = listaPedidos.get(i).isEstado();
-        }
-      
-         DefaultTableModel miDefaultTableModel = new DefaultTableModel(matriz, columnas);
-        panMenu.TableReceveid.setModel(miDefaultTableModel);
-    
-    }*/
-    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        /*dispose();
-        setLocationRelativeTo(null);*/
-    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAceptar;
-    public javax.swing.JButton btnCerrar;
+    public javax.swing.JButton btnCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -158,5 +127,9 @@ public class PanelDatos extends javax.swing.JFrame {
         ImageIcon foto = new ImageIcon(getClass().getResource(direcc));
         Icon icono = new ImageIcon(foto.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), 1));
         return icono;
+    }
+
+    public void setComidaAPedir(Comida c) {
+        this.comida = c;
     }
 }

@@ -7,8 +7,6 @@ package sam;
 
 import controlador.ControladorVentanaPrincipal;
 import modelo.Caja;
-import modelo.Comida;
-import modelo.Ingrediente;
 import modelo.Inventario;
 import modelo.ListaPedido;
 import modelo.Menu;
