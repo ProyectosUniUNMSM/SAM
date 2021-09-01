@@ -32,7 +32,7 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
     VentanaPrincipal vista;
     PanelHome panHome = new PanelHome();
     PanelInventario panInventario = new PanelInventario();
-   PanelMenu panMenu = new PanelMenu();
+    PanelMenu panMenu = new PanelMenu();
   
     PanelBalance panBalance = new PanelBalance();
     PanelDatos panDatos = new PanelDatos();
@@ -97,6 +97,10 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
             vista.panContenedor.add(panBalance);
             vista.panContenedor.validate();
         }
+        
+        
+        
+        
     }
 
 }

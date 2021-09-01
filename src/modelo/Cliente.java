@@ -8,8 +8,8 @@ import java.util.Objects;
  */
 public class Cliente {
 
-    String nombre;
-    String dni;
+    private String nombre;
+    private String dni;
 
     public Cliente() {
     }
@@ -39,6 +39,14 @@ public class Cliente {
             return false;
         }
         return true;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDni() {
+        return dni;
     }
 
 }

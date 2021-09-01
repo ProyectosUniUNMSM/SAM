@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 /**
@@ -10,9 +11,11 @@ public class ListaPedido {
 
     private static ListaPedido listaPedido;
     private Pedido inicio, econtrado;
+    private Pedido[] pedidos;
 
     private ListaPedido() {
         this.inicio = null;
+      
     }
 
     public static ListaPedido getListaPedido() {
@@ -30,7 +33,9 @@ public class ListaPedido {
     }
 
     public void addPedido(Comida comida, Cliente cliente) {
+
         Pedido nuevo = new Pedido(comida, cliente);
+
         nuevo.sig = null;
 
         if (isListaVacia()) {
@@ -38,8 +43,13 @@ public class ListaPedido {
         } else {
             nuevo.sig = inicio;
             inicio = nuevo;
+            inicio.indice++;
         }
+    
+
     }
+
+ 
 
     public Pedido buscarPedido(Cliente c) {
         Pedido aux = inicio;
@@ -89,5 +99,17 @@ public class ListaPedido {
             aux = aux.sig;
         }
         return lista;
+    };
+    //ingrediete   getcarcarnes
+   public ArrayList<ListaPedido> getPedidos() {
+        ArrayList<ListaPedido> listaInformacion = new ArrayList<>();
+        int i = 0;
+        while (pedidos[i] != null && i < pedidos.length) {
+             if (pedidos[i].getAceptar().equalsIgnoreCase("")) {
+                listaInformacion.add(pedidos[i]);
+            }
+            i++;
+        }
+        return listaInformacion;
     }
 }

@@ -42,7 +42,8 @@ public class Menu {
             i++;
         }
     }
-   public void setLlenarComidas(Menu menu){
+   public static void setLlenarComidas(Menu menu){
+       
         Comida comida1 = new Comida("LomoSaltado", (float) 35.5);
         Comida comida2 = new Comida("Aji de Gallina", (float) 40.5);
         Comida comida3 = new Comida("Arroz con pollo", (float) 35.5);
@@ -55,6 +56,9 @@ public class Menu {
            
     }
      public float getComidaPrecioI(int indice ) {
-          return comida[1].getPrecio();
+          return comida[indice].getPrecio();
+    }
+    public String getComidaNombreI(int indice ) {
+          return comida[indice].getNombre();
     }
 }

@@ -66,6 +66,7 @@ public class Inventario {
         }
     }
 
+    
     public ArrayList<Ingrediente> getVegetales() {
         ArrayList<Ingrediente> listaVegetales = new ArrayList<>();
         int i = 0;
