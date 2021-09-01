@@ -27,22 +27,16 @@ import modelo.Menu;
 import modelo.Pedido;
 import sam.SAM;
 
-/**
- *
- * @author Carlos
- */
-
 public class PanelMenu extends javax.swing.JPanel {
 
-    /**
-     * Creates new form menuFrm
-     */
-    
 
     PanelDatos panDatos = new PanelDatos();
 
     Menu miMenu = Menu.getMenu();
     ListaPedido misPedidos = ListaPedido.getListaPedido();
+    ArrayList<Pedido> lista = new ArrayList<Pedido>();
+    
+    
     public PanelMenu() {
         initComponents();
       
@@ -58,19 +52,14 @@ public class PanelMenu extends javax.swing.JPanel {
      panDatos.btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-        Cliente cliente = new Cliente(panDatos.txtNombre.getText(),panDatos.txtDni.getText() );
-        float precio = Float.parseFloat(panDatos.lblPrecio.getText());
-        Comida comida = new Comida(panDatos.lblNombreComida.getText(), precio);
-        
-        misPedidos.addPedido(comida, cliente);
-        
-                System.out.println(misPedidos.size());
-        
-        /*
-        
-        Pedido pedido = new Pedido(comida, cliente);
-        listaPedidos.add(pedido);
-        */
+             Cliente cliente = new Cliente(panDatos.txtNombre.getText(),panDatos.txtDni.getText() );
+            float precio = Float.parseFloat(panDatos.lblPrecio.getText());
+            Comida comida = new Comida(panDatos.lblNombreComida.getText(), precio); 
+            Pedido pedido = new Pedido(comida, cliente);
+            misPedidos.addPedido(comida, cliente);
+            System.out.println(misPedidos.size());
+            lista.add(pedido);
+      
         mostrar();
         panDatos.txtDni.setText("");
         panDatos.txtNombre.setText("");
@@ -508,13 +497,14 @@ public class PanelMenu extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
       public void mostrar() {
   
-        Object matriz[][] = new Object[misPedidos.size()][4];
+        Object matriz[][] = new Object[lista.size()][4];
         String[] columnas = {"DNI", "Nombre", "comida", "Estado"};
-        for (int i = 0; i < misPedidos.size(); i++) {
-            matriz[i][0] = misPedidos.buscar(i).getPedidoDniCliente();
-          matriz[i][1] = misPedidos.buscar(i).getPedidoClienteNombre();
-            matriz[i][2] = misPedidos.buscar(i).getPeidoNombreComida();
-            matriz[i][3] = misPedidos.buscar(i).isEstado();
+        for (int i = 0; i < lista.size(); i++) {
+            matriz[i][0] = lista.get(i).getPedidoDniCliente();
+            matriz[i][1] = lista.get(i).getPedidoClienteNombre();
+            matriz[i][2] = lista.get(i).getPeidoNombreComida();
+            matriz[i][3] = lista.get(i).isEstado();
+          misPedidos.mostrarPedido();
         }
       
         TableReceveid.setModel(new javax.swing.table.DefaultTableModel(
