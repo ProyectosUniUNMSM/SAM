@@ -3,10 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/alexa/Desktop/GitHub/SAM/src/vista/PanelMenu.java</file>
-            <file>file:/C:/Users/alexa/Desktop/GitHub/SAM/src/modelo/Cliente.java</file>
-            <file>file:/C:/Users/alexa/Desktop/GitHub/SAM/src/modelo/ListaPedido.java</file>
-            <file>file:/C:/Users/alexa/Desktop/GitHub/SAM/src/controlador/ControladorVentanaPrincipal.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/modelo/Cliente.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/vista/Ingrediente.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/modelo/ListaPedido.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/modelo/Comida.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/vista/menuFrm.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/modelo/Ingrediente.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/modelo/Pedido.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/controlador/CtrlIngrediente.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/modelo/Menu.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/controlador/CtrlComida.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/modelo/Caja.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/vista/panelBalance.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/sam/SAM.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/modelo/TextPrompt.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/modelo/Boleta.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/modelo/Inventario.java</file>
+            <file>file:/C:/Users/Carlos/Desktop/Carpeta%20universidad/Estructura%20de%20datos/A.CodigoProyecto/SAM/src/vista/principal.java</file>
         </group>
     </open-files>
 </project-private>
