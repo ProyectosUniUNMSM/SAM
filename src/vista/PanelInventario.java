@@ -49,7 +49,7 @@ public class PanelInventario extends javax.swing.JPanel {
         //Cargando archivos en clase inventario
         miInventario.cargarInventario(temp);
         actualizarTablas();
-        
+
 //        //Cargando Tablas y cbx
 //        for (int i = 0; i < temp.size(); i++) {
 //            if (temp.get(i).getCategoria().equalsIgnoreCase("carnes")) {
