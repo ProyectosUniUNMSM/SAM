@@ -28,6 +28,7 @@ public class TextPrompt extends JLabel implements FocusListener, DocumentListene
     public TextPrompt(String text, JTextComponent component) {
         this(text, component, Show.ALWAYS);
     }
+   
 
     public TextPrompt(String text, JTextComponent component, Show show) {
         this.component = component;
