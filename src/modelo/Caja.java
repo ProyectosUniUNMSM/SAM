@@ -29,17 +29,10 @@ public class Caja {
         return ultimo == null;
     }
 
+    //Solo para cargar desde los archivos
     public void addBoleta(Boleta nuevo) {
-        if (isCajaVacia()) {
-            ultimo = nuevo;
-            tamaño++;
-
-        } else {
-            nuevo.sig = ultimo.sig;
-            ultimo.sig = nuevo;
-            ultimo = nuevo;
-            tamaño++;
-        }
+        ultimo = nuevo;
+        tamaño++;
     }
 
     public void addBoleta(Pedido p) {
@@ -131,8 +124,8 @@ public class Caja {
             for (int i = 0; i < caja.getTamaño(); i++) {
                 if (aux.estado == false) {
                     temp.add(aux);
-                    aux = aux.sig;
                 }
+                aux = aux.sig;
             }
         }
         return temp;

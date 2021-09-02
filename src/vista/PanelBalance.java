@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 import modelo.Boleta;
 import modelo.Caja;
@@ -31,9 +32,10 @@ public class PanelBalance extends javax.swing.JPanel {
     ControladorCaja c = new ControladorCaja();
     Caja miCaja = Caja.getCaja();
     ArrayList<Boleta> misBoletas = miCaja.getBoletasActivas();
-    
+
     public PanelBalance() {
         initComponents();
+
     }
 
     /**
@@ -126,14 +128,9 @@ public class PanelBalance extends javax.swing.JPanel {
 
         cbxClientes.setForeground(new java.awt.Color(102, 102, 102));
         cbxClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente 1", "Cliente 2", "Cliente 3", "Cliente 4" }));
-        cbxClientes.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                cbxClientesMouseDragged(evt);
-            }
-        });
-        cbxClientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cbxClientesMouseClicked(evt);
+        cbxClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxClientesActionPerformed(evt);
             }
         });
         panFactura.add(cbxClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 62, 100, -1));
@@ -274,6 +271,8 @@ public class PanelBalance extends javax.swing.JPanel {
         String dni = (String) cbxClientes.getSelectedItem();
         Boleta b = miCaja.buscarBoleta(dni);
         b.estado = true;
+        actualizarComboBox();
+        setTablaBalance(miCaja);
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void btnSalvarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarArchivoActionPerformed
@@ -281,15 +280,10 @@ public class PanelBalance extends javax.swing.JPanel {
         c.salvarArchivo();
     }//GEN-LAST:event_btnSalvarArchivoActionPerformed
 
-    private void cbxClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbxClientesMouseClicked
-        // TODO add your handling code here:
-        setBoleta();
-    }//GEN-LAST:event_cbxClientesMouseClicked
-
-    private void cbxClientesMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbxClientesMouseDragged
-        // TODO add your handling code here:
-        setBoleta();
-    }//GEN-LAST:event_cbxClientesMouseDragged
+    private void cbxClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxClientesActionPerformed
+        // TODO add your handling code here:        
+        setBoleta(cbxClientes);
+    }//GEN-LAST:event_cbxClientesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFactura;
@@ -340,26 +334,25 @@ public class PanelBalance extends javax.swing.JPanel {
             Class[] types = new Class[]{
                 java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Float.class, java.lang.Boolean.class
             };
-            
+
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
         };
         tblBalance.setModel(modelo);
     }
-    
-    public void setBoleta() {
+
+    public void setBoleta(JComboBox a) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
-        String dni = (String) cbxClientes.getSelectedItem();
+        String dni = (String) a.getSelectedItem();
         Boleta b = miCaja.buscarBoleta(dni);
-        
+        setTablaBoleta(b);
         lblNomCliente.setText(b.cliente.getNombre());
         lblDniCliente.setText(b.cliente.getDni());
         lblFechaCliente.setText(formatter.format(b.fecha));
         lblTotal.setText(b.calcMonto() + "");
-        setTablaBoleta(b);
     }
-    
+
     public void setTablaBoleta(Boleta b) {
         String[] columnas = {"Plato", "Monto"};
         Object[][] miData = new Object[b.pedidos.size()][2];
@@ -372,12 +365,12 @@ public class PanelBalance extends javax.swing.JPanel {
         DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
         tblBoleta.setModel(modelo);
     }
-    
+
     public void setNumeroVentas(Caja c) {
         int ventas = c.getTamaño();
         lblTotalVentas.setText(String.valueOf(ventas));
     }
-    
+
     public void setPlatoMasVendido(Caja c) {
         ArrayList<String> comidas = new ArrayList<>();
         Boleta b = c.getUltimo();
@@ -387,7 +380,7 @@ public class PanelBalance extends javax.swing.JPanel {
             }
             b = b.sig;
         }
-        
+
         System.out.println(comidas.toString());
         int max = 0;
         int curr = 0;
@@ -402,17 +395,17 @@ public class PanelBalance extends javax.swing.JPanel {
         }
         lblPlato.setText(currKey);
     }
-    
+
     public void setCmbxClientes(ArrayList<Boleta> ped) {
         cbxClientes.removeAllItems();
         for (int i = 0; i < ped.size(); i++) {
             cbxClientes.addItem(ped.get(i).getCliente().getDni());
         }
     }
-    
+
     public void actualizarComboBox() {
         misBoletas = miCaja.getBoletasActivas();
         setCmbxClientes(misBoletas);
     }
-    
+
 }
