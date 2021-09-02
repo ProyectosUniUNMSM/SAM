@@ -13,6 +13,9 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Boleta;
 import modelo.Caja;
 import modelo.Comida;
+import modelo.Ingrediente;
+import modelo.ListaPedido;
+import modelo.Pedido;
 
 /**
  *
@@ -23,14 +26,17 @@ public class PanelBalance extends javax.swing.JPanel {
     /**
      * Creates new form panelBalance
      */
+
     Caja miCaja = Caja.getCaja();
-    
+    ListaPedido misPedidos = ListaPedido.getListaPedido();
+    ArrayList<Pedido> misClientes = misPedidos.getPedidos();
     public PanelBalance() {
         initComponents();
         setTablaBalance(miCaja);
         setNumeroVentas(miCaja);
         setPlatoMasVendido(miCaja);
         setTablaBoleta(miCaja);
+        actualizarComboBox();
     }
 
     /**
@@ -254,6 +260,7 @@ public class PanelBalance extends javax.swing.JPanel {
 
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
         // TODO add your handling code here:
+        actualizarComboBox();
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -345,4 +352,17 @@ public class PanelBalance extends javax.swing.JPanel {
         }
         lblPlato.setText(currKey);
     }
+    
+    public void setCmbxClientes(ArrayList<Pedido> ped) {
+        cbxClientes.removeAllItems();
+        for (int i = 0; i < ped.size(); i++) {
+            cbxClientes.addItem(ped.get(i).getNombreCliente());
+        }
+    }
+    
+    public void actualizarComboBox(){
+        misClientes = misPedidos.getPedidos();
+        setCmbxClientes(misClientes);
+    }
+    
 }

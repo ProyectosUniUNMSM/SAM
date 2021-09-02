@@ -5,6 +5,7 @@
  */
 package vista;
 
+import java.awt.Component;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.Icon;
@@ -26,7 +27,6 @@ public class PanelMenu extends javax.swing.JPanel {
 
     ListaPedido misPedidos = ListaPedido.getListaPedido();
     Menu miMenu = Menu.getMenu();
-
     PanelDatos panDatos = new PanelDatos(this);
     ArrayList<Pedido> recibido = misPedidos.getPedidos();
     ArrayList<Pedido> enviado = misPedidos.getPedidosListos();
@@ -37,6 +37,7 @@ public class PanelMenu extends javax.swing.JPanel {
         setComidasDelMenu();
         actualizarTablas();
     }
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -480,5 +481,7 @@ public class PanelMenu extends javax.swing.JPanel {
         setTabla(enviado, tblEnviados);
 
     }
+
+    
 
 }

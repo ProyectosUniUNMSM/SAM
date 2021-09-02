@@ -21,12 +21,14 @@ public class PanelDatos extends javax.swing.JFrame {
     private Comida comida; //Comida que se va a pedir
     ListaPedido misPedidos = ListaPedido.getListaPedido();
     PanelMenu conexion;
+    PanelBalance conex;
 
     public PanelDatos(PanelMenu menu) {
         this.conexion = menu;
         initComponents();
         setLocationRelativeTo(null);
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -109,6 +111,7 @@ public class PanelDatos extends javax.swing.JFrame {
         misPedidos.addPedido(comida, client);
         dispose();
         conexion.actualizarTablas();
+        conex.actualizarComboBox();
         limpiarCampos();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
