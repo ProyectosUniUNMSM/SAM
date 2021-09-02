@@ -322,10 +322,18 @@ public class PanelInventario extends javax.swing.JPanel {
 
     private void ordCantidadVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordCantidadVegActionPerformed
         // TODO add your handling code here:
-        ordCantidadVeg.setSelected(true);
+
         ordAlfabeticoVeg.setSelected(false);
-        ordCantidad(vegetales, 0, vegetales.size() - 1);
-        setTablaVegetales(vegetales);
+        // ordCantidadVeg.setSelected(true);
+        if (ordCantidadVeg.isSelected()) {
+            ordCantidad(vegetales, 0, vegetales.size() - 1);
+            setTablaVegetales(vegetales);
+
+        } else {
+            
+        }
+
+
     }//GEN-LAST:event_ordCantidadVegActionPerformed
 
     private void btnAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCarActionPerformed
@@ -358,7 +366,8 @@ public class PanelInventario extends javax.swing.JPanel {
         // TODO add your handling code here:
         ordCantidadVeg.setSelected(false);
         ordAlfabeticoVeg.setSelected(true);
-        ordCantidad(vegetales, 0, vegetales.size() - 1);
+        //ordCantidad(vegetales, 0, vegetales.size() - 1);
+        ordAlfabeticamente(vegetales, 0, vegetales.size() - 1);
         setTablaVegetales(vegetales);
     }//GEN-LAST:event_ordAlfabeticoVegActionPerformed
 
@@ -366,7 +375,8 @@ public class PanelInventario extends javax.swing.JPanel {
         // TODO add your handling code here:
         ordCantidadCar.setSelected(false);
         ordAlfabeticoCar.setSelected(true);
-        ordCantidad(carnes, 0, carnes.size() - 1);
+        ordAlfabeticamente(carnes, 0, carnes.size()-1);
+        
         setTablaCarnes(carnes);
     }//GEN-LAST:event_ordAlfabeticoCarActionPerformed
 
@@ -472,10 +482,13 @@ public class PanelInventario extends javax.swing.JPanel {
         j = ultimo;
 
         do {
-            while (ing.get(i).getNombre().compareToIgnoreCase(pivote) == 1) {
+            /*while (ing.get(i).getNombre().compareToIgnoreCase(pivote) == 1) {
+                i++;
+            }*/
+            while(ing.get(i).getNombre().charAt(0)< pivote.charAt(0)){
                 i++;
             }
-            while (ing.get(j).getNombre().compareToIgnoreCase(pivote) == -1) {
+            while (ing.get(j).getNombre().charAt(0)>pivote.charAt(0)) {
                 j--;
             }
             if (i <= j) {
@@ -499,7 +512,9 @@ public class PanelInventario extends javax.swing.JPanel {
         int pivote;
 
         central = (primero + ultimo) / 2;
+
         pivote = ing.get(central).getCantidad();
+
         i = primero;
         j = ultimo;
 
@@ -525,4 +540,5 @@ public class PanelInventario extends javax.swing.JPanel {
             ordCantidad(ing, i, ultimo);
         }
     }
+   
 }
