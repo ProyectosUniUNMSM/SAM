@@ -111,7 +111,7 @@ public class PanelDatos extends javax.swing.JFrame {
         misPedidos.addPedido(comida, client);
         dispose();
         conexion.actualizarTablas();
-        conex.actualizarComboBox();
+        //Apretar pagar para ver las actualizaciones
         limpiarCampos();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
