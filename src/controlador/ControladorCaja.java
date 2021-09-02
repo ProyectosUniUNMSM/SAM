@@ -26,11 +26,11 @@ public class ControladorCaja {
     
     public ControladorCaja() {
         boletas = new ArrayList<Boleta>();
-        leerArchivo();
+       // leerArchivo();
         //salvarArchivo();
     }
 
-    public void leerArchivo() {
+   /* public void leerArchivo() {
         try {
             FileInputStream file = new FileInputStream("boletas.dat");
             ObjectInputStream fileInput = new ObjectInputStream(file);
@@ -51,7 +51,7 @@ public class ControladorCaja {
             JOptionPane.showMessageDialog(null, "Sin boletas");
         }
     }
-
+*/
     public void salvarArchivo() {
         try {
             FileOutputStream file = new FileOutputStream("boletas.dat");
