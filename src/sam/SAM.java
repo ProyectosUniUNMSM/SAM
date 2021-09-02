@@ -33,7 +33,7 @@ public class SAM {
         //inv.salvarArchivo();
         ControladorArchivoInventario archivoInventario = new ControladorArchivoInventario();
         ControladorArchivoMenu archivoMenu = new ControladorArchivoMenu();
-        ControladorCaja cc = new ControladorCaja();
+        //ControladorCaja cc = new ControladorCaja();
         //cc.salvarArchivo(); 
 
 

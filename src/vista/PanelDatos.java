@@ -8,6 +8,7 @@ package vista;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import modelo.Cliente;
 import modelo.Comida;
 import modelo.ListaPedido;
@@ -107,12 +108,17 @@ public class PanelDatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        Cliente client = new Cliente(txtNombre.getText(), txtDni.getText());
-        misPedidos.addPedido(comida, client);
-        dispose();
-        conexion.actualizarTablas();
-        //Apretar pagar para ver las actualizaciones
-        limpiarCampos();
+        if(txtNombre.getText() == "" && txtDni.getText() == "" ){
+            Cliente client = new Cliente(txtNombre.getText(), txtDni.getText());
+            misPedidos.addPedido(comida, client);
+            dispose();
+            conexion.actualizarTablas();
+            //Apretar pagar para ver las actualizaciones
+            limpiarCampos();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Datos incompletos");
+        }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
