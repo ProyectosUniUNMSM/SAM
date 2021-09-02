@@ -19,7 +19,7 @@ public class Inventario {
 
     public static Inventario getInventario() {
         if (inventario == null) {
-            inventario = new Inventario(10);
+            inventario = new Inventario(18);
         }
         return inventario;
     }
@@ -40,14 +40,14 @@ public class Inventario {
         return false;
     }
 
-    public int buscarIngrediente(String buscar) {
-        int posBuscada = -1;
-        for (int i = 0; i < ingredientes.length; i++) {
-            if (ingredientes[i].getNombre().equalsIgnoreCase(buscar)) {
-                return i;
+    public Ingrediente buscarIngrediente(String buscar) {
+        Ingrediente encontrado = null;
+        for (int i = 0; i < ingredientes.length - 1; i++) {
+            if (ingredientes[i].getNombre().compareTo(buscar) == 0) {
+                encontrado = ingredientes[i];
             }
         }
-        return posBuscada;
+        return encontrado;
     }
 
     public void disIngrediente(int pos, int cantidad) {
@@ -58,6 +58,12 @@ public class Inventario {
         ingredientes[pos].aumIngrediente(cantidad);
     }
 
+    public void cargarInventario(ArrayList<Ingrediente> listaIngredientes) {
+        for (Ingrediente temp : listaIngredientes) {
+            addIngrediente(temp);
+        }
+    }
+
     public void mostrar() {
         int i = 0;
         while (ingredientes[i] != null && i < ingredientes.length) {
@@ -66,7 +72,6 @@ public class Inventario {
         }
     }
 
-    
     public ArrayList<Ingrediente> getVegetales() {
         ArrayList<Ingrediente> listaVegetales = new ArrayList<>();
         int i = 0;
