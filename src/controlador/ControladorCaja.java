@@ -21,9 +21,10 @@ import modelo.Caja;
  * @author Daniel
  */
 public class ControladorCaja {
+
     private ArrayList<Boleta> boletas;
     Caja miCaja = Caja.getCaja();
-    
+
     public ControladorCaja() {
         boletas = new ArrayList<Boleta>();
        // leerArchivo();
@@ -59,7 +60,7 @@ public class ControladorCaja {
             Boleta b = miCaja.getUltimo();
             for (int i = 0; i < miCaja.getTamaño(); i++) {
                 fileOut.writeObject(b);
-                b=b.sig;
+                b = b.sig;
                 System.out.println(b.cliente.getDni());
             }
             fileOut.close();
@@ -70,7 +71,7 @@ public class ControladorCaja {
     }
 
     public void cargarCaja() {
-       for(Boleta b : this.boletas) {
+        for (Boleta b : this.boletas) {
             miCaja.addBoleta(b);
         }
     }

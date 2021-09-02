@@ -8,22 +8,23 @@ package vista;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import modelo.Caja;
 import modelo.Cliente;
 import modelo.Comida;
 import modelo.ListaPedido;
 import modelo.TextPrompt;
+import modelo.Pedido;
 
 /**
  *
  * @author anthony.ricse
  */
-
 public class PanelDatos extends javax.swing.JFrame {
 
-    private Comida comida; //Comida que se va a pedir
+    private Comida comida; //Comida que se va a pedir    
+    Caja micaja = Caja.getCaja();
     ListaPedido misPedidos = ListaPedido.getListaPedido();
     PanelMenu conexion;
-    PanelBalance conex;
 
     public PanelDatos(PanelMenu menu) {
         this.conexion = menu;
@@ -31,9 +32,8 @@ public class PanelDatos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         TextPrompt placeName = new TextPrompt("Nombre", txtNombre);
         TextPrompt placeDni = new TextPrompt("Dni", txtDni);
-      
+
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -128,10 +128,11 @@ public class PanelDatos extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         Cliente client = new Cliente(txtNombre.getText(), txtDni.getText());
-        misPedidos.addPedido(comida, client);
+        Pedido pedido = new Pedido(comida, client);
+        misPedidos.addPedido(pedido);
+        micaja.addBoleta(pedido);
         dispose();
         conexion.actualizarTablas();
-        //Apretar pagar para ver las actualizaciones
         limpiarCampos();
     }//GEN-LAST:event_btnAceptarActionPerformed
 

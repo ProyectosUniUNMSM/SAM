@@ -5,6 +5,8 @@
  */
 package vista;
 
+import controlador.ControladorCaja;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -29,14 +31,10 @@ public class PanelBalance extends javax.swing.JPanel {
     Caja miCaja = Caja.getCaja();
     ListaPedido misPedidos = ListaPedido.getListaPedido();
     ArrayList<Pedido> misClientes = misPedidos.getPedidos();
+    ArrayList<Boleta> misBoletas = miCaja.getBoletas();
 
     public PanelBalance() {
         initComponents();
-        setTablaBalance(miCaja);
-        setNumeroVentas(miCaja);
-        setPlatoMasVendido(miCaja);
-        setTablaBoleta(miCaja);
-        actualizarComboBox();
     }
 
     /**
@@ -74,8 +72,8 @@ public class PanelBalance extends javax.swing.JPanel {
         lblPlato = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblBalance = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        btnSalvarArchivo = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(180, 237, 131));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(130, 179, 102)));
@@ -127,7 +125,6 @@ public class PanelBalance extends javax.swing.JPanel {
         });
         panFactura.add(btnFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 100, 47));
 
-        cbxClientes.setEditable(true);
         cbxClientes.setForeground(new java.awt.Color(102, 102, 102));
         cbxClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente 1", "Cliente 2", "Cliente 3", "Cliente 4" }));
         panFactura.add(cbxClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 62, 100, -1));
@@ -223,33 +220,38 @@ public class PanelBalance extends javax.swing.JPanel {
 
         tblBalance.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Dni", "Nombre", "Fecha", "Monto", "Estado"
             }
-        ));
-        jScrollPane2.setViewportView(tblBalance);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Float.class, java.lang.Boolean.class
+            };
 
-        panBalance.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 470, 240));
-
-        jButton1.setBackground(new java.awt.Color(0, 140, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("IMPRIMIR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
         });
-        panBalance.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, 170, 60));
+        jScrollPane2.setViewportView(tblBalance);
+
+        panBalance.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 550, 240));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setText("Fin del Dia");
         panBalance.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+
+        btnSalvarArchivo.setText("Salvar Archivo");
+        btnSalvarArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarArchivoActionPerformed(evt);
+            }
+        });
+        panBalance.add(btnSalvarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, -1));
 
         jScrollPane3.setViewportView(panBalance);
 
@@ -260,17 +262,19 @@ public class PanelBalance extends javax.swing.JPanel {
 
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
         // TODO add your handling code here:
-        actualizarComboBox();
+        
     }//GEN-LAST:event_btnFacturaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSalvarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarArchivoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        ControladorCaja c = new ControladorCaja();
+        c.salvarArchivo();
+    }//GEN-LAST:event_btnSalvarArchivoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFactura;
+    private javax.swing.JButton btnSalvarArchivo;
     private javax.swing.JComboBox<String> cbxClientes;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -301,23 +305,48 @@ public class PanelBalance extends javax.swing.JPanel {
     public void setTablaBalance(Caja c) {
         String[] columnas = {"DNI", "Nombre", "Fecha", "Monto", "Estado"};
         Object[][] miData = new Object[c.getTamaño()][5];
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
         Boleta b = c.getUltimo();
         for (int i = 0; i < c.getTamaño(); i++) {
             b.calcMonto();
             miData[i][0] = b.cliente.getDni();
             miData[i][1] = b.cliente.getNombre();
-            miData[i][2] = b.fecha;
+            miData[i][2] = formatter.format(b.fecha);
             miData[i][3] = b.monto;
             miData[i][4] = b.estado;
             b = b.sig;
         }
-        DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
+        DefaultTableModel modelo = new DefaultTableModel(miData, columnas) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Float.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+        };
         tblBalance.setModel(modelo);
     }
 
-    public void setTablaBoleta(Caja c) {
+    public void setBoleta() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+        Boleta b = null;
+        
+        lblNomCliente.setText(b.cliente.getNombre());
+        lblDniCliente.setText(b.cliente.getDni());
+        lblFechaCliente.setText(formatter.format(b.fecha));
+        setTablaBoleta(b);
+    }
+
+    public void setTablaBoleta(Boleta b) {
         String[] columnas = {"Plato", "Monto"};
-        Object[][] miData = new Object[c.getTamaño()][2];
+        Object[][] miData = new Object[b.pedidos.size()][2];
+        for (int i = 0; i < b.pedidos.size(); i++) {
+            b.calcMonto();
+            miData[i][0] = b.pedidos.get(i).comida.getNombre();
+            miData[i][1] = b.pedidos.get(i).comida.getPrecio();
+            b = b.sig;
+        }
         DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
         tblBoleta.setModel(modelo);
     }
@@ -352,16 +381,17 @@ public class PanelBalance extends javax.swing.JPanel {
         lblPlato.setText(currKey);
     }
 
-    public void setCmbxClientes(ArrayList<Pedido> ped) {
+    public void setCmbxClientes(ArrayList<Boleta> ped) {
         cbxClientes.removeAllItems();
         for (int i = 0; i < ped.size(); i++) {
-            cbxClientes.addItem(ped.get(i).getNombreCliente());
+            cbxClientes.addItem(ped.get(i).getCliente().getNombre());
         }
     }
 
     public void actualizarComboBox() {
+        misBoletas = miCaja.getBoletas();
         misClientes = misPedidos.getPedidos();
-        setCmbxClientes(misClientes);
+        setCmbxClientes(misBoletas);
     }
 
 }

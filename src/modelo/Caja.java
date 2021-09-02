@@ -28,45 +28,37 @@ public class Caja {
     public boolean isCajaVacia() {
         return ultimo == null;
     }
-    
-    public void addBoleta(Boleta nuevo){
+
+    public void addBoleta(Boleta nuevo) {
         if (isCajaVacia()) {
             ultimo = nuevo;
             tamaño++;
 
         } else {
-                nuevo.sig = ultimo.sig;
-                ultimo.sig = nuevo;
-                ultimo = nuevo;
-                tamaño++;
+            nuevo.sig = ultimo.sig;
+            ultimo.sig = nuevo;
+            ultimo = nuevo;
+            tamaño++;
         }
     }
-    
-    public void addBoleta(Cliente c) {
-        Boleta nuevo = new Boleta(c);
+
+    public void addBoleta(Pedido p) {
+        Boleta nuevo = new Boleta(p);
 
         if (isCajaVacia()) {
             ultimo = nuevo;
             tamaño++;
-
         } else {
-            if (!isBoletaActiva(c)) {
+            if (!isBoletaActiva(p.cliente)) {
                 nuevo.sig = ultimo.sig;
                 ultimo.sig = nuevo;
                 ultimo = nuevo;
                 tamaño++;
             } else {
+                buscarBoleta(p.cliente).addPedido(p);
                 System.out.println("Ya Hay un Boleta Activa");
             }
         }
-
-    }
-
-    public void addPedidoBoleta(Pedido p) {
-        if (isCajaVacia()) {
-            addBoleta(p.cliente);
-        }
-        buscarBoleta(p.cliente).addPedido(p);
     }
 
     public boolean isBoletaActiva(Cliente c) {
@@ -89,8 +81,8 @@ public class Caja {
                 return aux;
             }
             aux = aux.sig;
-        } while (aux!= ultimo.sig);
-        return null;
+        } while (aux != ultimo.sig);
+        return aux;
     }
 
     public float calcTotal() {
@@ -103,20 +95,33 @@ public class Caja {
         }
         return total;
     }
-
-    public void recibirPedido(ArrayList<Pedido> lista) {
-        for (Pedido aux : lista) {
-            if (aux != null) {
-                addPedidoBoleta(aux);
-            }
-        }
-    }
+//
+//    public void recibirPedido(ArrayList<Pedido> lista) {
+//        for (Pedido aux : lista) {
+//            if (aux != null) {
+//                addPedidoBoleta(aux);
+//            }
+//        }
+//    }
 
     public int getTamaño() {
         return tamaño;
-    } 
+    }
 
     public Boleta getUltimo() {
         return ultimo;
+    }
+
+    public ArrayList<Boleta> getBoletas() {
+        ArrayList<Boleta> temp = new ArrayList<>();
+        Boleta aux = ultimo;
+
+        if (!isCajaVacia()) {
+            for (int i = 0; i < caja.getTamaño(); i++) {
+                temp.add(aux);
+                aux = aux.sig;
+            }
+        }
+        return temp;
     }
 }

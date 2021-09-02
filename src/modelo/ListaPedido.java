@@ -49,6 +49,22 @@ public class ListaPedido {
 
     }
 
+    public void addPedido(Pedido pedido) {
+        Pedido nuevo = pedido;
+        //nuevo.descontarIngredientes();
+        nuevo.sig = null;
+
+        if (isListaVacia()) {
+            inicio = nuevo;
+        } else {
+            nuevo.sig = inicio;
+            inicio = nuevo;
+        }
+        nuevo.indice++;
+
+        tamaño++;
+    }
+
     public int size() {
         return tamaño;
     }
@@ -123,11 +139,9 @@ public class ListaPedido {
         }
         return lista;
     }
-    
-    public  String getNombreCliente(){
+
+    public String getNombreCliente() {
         return inicio.cliente.getNombre();
     }
-    
- 
 
 }
