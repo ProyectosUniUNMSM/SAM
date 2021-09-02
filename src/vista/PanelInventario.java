@@ -40,14 +40,6 @@ public class PanelInventario extends javax.swing.JPanel {
         ImageIcon TamañoV = new ImageIcon(imgVeget.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
         this.tabpanel.setIconAt(0, TamañoV);
 
-        //Leyendo archivos de ingredientes
-        ing = new ControladorArchivoInventario();
-        ArrayList<Ingrediente> temp;
-        temp = ing.crearArrayList();
-        ing.leerArchivo(temp);
-
-        //Cargando archivos en clase inventario
-        miInventario.cargarInventario(temp);
         actualizarTablas();
 
 //        //Cargando Tablas y cbx

@@ -27,7 +27,6 @@ public class ControladorArchivoInventario {
 //        inicializarInventario(temp);
 //        salvarArchivo(temp);
 //    }
-
     public void leerArchivo(ArrayList<Ingrediente> a) {
         try {
             FileInputStream file = new FileInputStream("ingredientes.dat");
@@ -81,7 +80,6 @@ public class ControladorArchivoInventario {
 //            }
 //        }
 //    }
-
     public void inicializarInventario(ArrayList<Ingrediente> a) {
         Ingrediente ing1 = new Ingrediente("Lomo", "carnes", 10);
         Ingrediente ing2 = new Ingrediente("Arroz", "vegetales", 10);
@@ -126,9 +124,22 @@ public class ControladorArchivoInventario {
 //            miInventario.addIngrediente(i);
 //        }
 //    }
-    
-    public ArrayList<Ingrediente> crearArrayList(){
+    public ArrayList<Ingrediente> crearArrayList() {
         ArrayList<Ingrediente> a = new ArrayList<>();
         return a;
+    }
+
+    public void crearArchivo() {
+        ArrayList<Ingrediente> temp = crearArrayList();
+        leerArchivo(temp);
+        inicializarInventario(temp);
+        salvarArchivo(temp);
+    }
+
+    public void cargarArchivo() {
+        Inventario miInventario = Inventario.getInventario();
+        ArrayList<Ingrediente> temp = crearArrayList();
+        leerArchivo(temp);
+        miInventario.cargarInventario(temp);
     }
 }

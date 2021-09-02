@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.ControladorArchivoMenu;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.Icon;
@@ -26,6 +27,7 @@ public class PanelMenu extends javax.swing.JPanel {
 
     ListaPedido misPedidos = ListaPedido.getListaPedido();
     Menu miMenu = Menu.getMenu();
+    ControladorArchivoMenu archivo;
 
     PanelDatos panDatos = new PanelDatos(this);
     ArrayList<Pedido> recibido = misPedidos.getPedidos();
@@ -33,7 +35,8 @@ public class PanelMenu extends javax.swing.JPanel {
 
     public PanelMenu() {
         initComponents();
-        miMenu.setLlenarComidas();
+        //miMenu.setLlenarComidas();
+
         setComidasDelMenu();
         actualizarTablas();
     }
@@ -210,7 +213,7 @@ public class PanelMenu extends javax.swing.JPanel {
         lblNombre7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblNombre7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombre7.setText("Comida 7");
-        jPanel1.add(lblNombre7, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 330, 100, -1));
+        jPanel1.add(lblNombre7, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 330, 110, -1));
 
         btnFoodMenu7.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
