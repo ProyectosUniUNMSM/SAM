@@ -92,12 +92,16 @@ public class PanelMenu extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(865, 460));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblFoodMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(lblFoodMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 100, 90));
 
         lblNombre1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombre1.setText("Comida 1");
+        jPanel1.add(lblNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 100, -1));
 
         btnFoodMenu1.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -108,18 +112,25 @@ public class PanelMenu extends javax.swing.JPanel {
                 btnFoodMenu1ActionPerformed(evt);
             }
         });
+        jPanel1.add(btnFoodMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 80, -1));
 
         lblFoodMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(lblFoodMenu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 100, 90));
 
         lblNombre2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombre2.setText("Comdia 2");
+        jPanel1.add(lblNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(282, 141, 100, -1));
 
         lblFoodMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(lblFoodMenu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 40, 100, 90));
 
         lblNombre3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombre3.setText("Comida 3");
+        jPanel1.add(lblNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 141, 100, -1));
 
         btnFoodMenu3.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -130,12 +141,16 @@ public class PanelMenu extends javax.swing.JPanel {
                 btnFoodMenu3ActionPerformed(evt);
             }
         });
+        jPanel1.add(btnFoodMenu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 174, 80, -1));
 
         lblFoodMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(lblFoodMenu4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 40, 100, 90));
 
         lblNombre4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombre4.setText("Comida 4");
+        jPanel1.add(lblNombre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, 100, -1));
 
         btnFoodMenu4.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -146,12 +161,16 @@ public class PanelMenu extends javax.swing.JPanel {
                 btnFoodMenu4ActionPerformed(evt);
             }
         });
+        jPanel1.add(btnFoodMenu4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 80, -1));
 
         lblFoodMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(lblFoodMenu5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 100, 90));
 
         lblNombre5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombre5.setText("Comida 5");
+        jPanel1.add(lblNombre5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 100, -1));
 
         btnFoodMenu5.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -162,12 +181,16 @@ public class PanelMenu extends javax.swing.JPanel {
                 btnFoodMenu5ActionPerformed(evt);
             }
         });
+        jPanel1.add(btnFoodMenu5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 80, -1));
 
         lblFoodMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(lblFoodMenu6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 100, 90));
 
         lblNombre6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombre6.setText("Comida 6");
+        jPanel1.add(lblNombre6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 100, -1));
 
         btnFoodMenu6.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -178,12 +201,16 @@ public class PanelMenu extends javax.swing.JPanel {
                 btnFoodMenu6ActionPerformed(evt);
             }
         });
+        jPanel1.add(btnFoodMenu6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 80, -1));
 
         lblFoodMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(lblFoodMenu7, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 220, 100, 90));
 
         lblNombre7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombre7.setText("Comida 7");
+        jPanel1.add(lblNombre7, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 330, 100, -1));
 
         btnFoodMenu7.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -194,12 +221,16 @@ public class PanelMenu extends javax.swing.JPanel {
                 btnFoodMenu7ActionPerformed(evt);
             }
         });
+        jPanel1.add(btnFoodMenu7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 80, -1));
 
         lblFoodMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/foodTemp.png"))); // NOI18N
         lblFoodMenu8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(lblFoodMenu8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 220, 100, 90));
 
         lblNombre8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNombre8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombre8.setText("Comida 8");
+        jPanel1.add(lblNombre8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 330, 100, -1));
 
         btnFoodMenu8.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -210,6 +241,7 @@ public class PanelMenu extends javax.swing.JPanel {
                 btnFoodMenu8ActionPerformed(evt);
             }
         });
+        jPanel1.add(btnFoodMenu8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 80, -1));
 
         btnFoodMenu2.setBackground(new java.awt.Color(102, 102, 102));
         btnFoodMenu2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -220,128 +252,7 @@ public class PanelMenu extends javax.swing.JPanel {
                 btnFoodMenu2ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnFoodMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNombre1))
-                        .addGap(105, 105, 105)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblNombre2)
-                                .addGap(142, 142, 142)
-                                .addComponent(lblNombre3)
-                                .addGap(155, 155, 155)
-                                .addComponent(lblNombre4))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnFoodMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(110, 110, 110)
-                                .addComponent(btnFoodMenu3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(130, 130, 130)
-                                .addComponent(btnFoodMenu4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(lblFoodMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
-                        .addComponent(lblFoodMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
-                        .addComponent(lblFoodMenu3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110)
-                        .addComponent(lblFoodMenu4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(lblFoodMenu5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(98, 98, 98)
-                        .addComponent(lblFoodMenu6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
-                        .addComponent(lblFoodMenu7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110)
-                        .addComponent(lblFoodMenu8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnFoodMenu5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(97, 97, 97)
-                                .addComponent(btnFoodMenu6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblNombre5)
-                                .addGap(133, 133, 133)
-                                .addComponent(lblNombre6)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(133, 133, 133)
-                                .addComponent(lblNombre7)
-                                .addGap(153, 153, 153)
-                                .addComponent(lblNombre8))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(123, 123, 123)
-                                .addComponent(btnFoodMenu7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnFoodMenu8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFoodMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFoodMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFoodMenu3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFoodMenu4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(lblNombre1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNombre4)
-                            .addComponent(lblNombre3)
-                            .addComponent(lblNombre2))))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnFoodMenu1)
-                            .addComponent(btnFoodMenu3)
-                            .addComponent(btnFoodMenu4)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnFoodMenu2)))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFoodMenu5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFoodMenu6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFoodMenu7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFoodMenu8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombre5)
-                    .addComponent(lblNombre6)
-                    .addComponent(lblNombre7)
-                    .addComponent(lblNombre8))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnFoodMenu7)
-                            .addComponent(btnFoodMenu5)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnFoodMenu6))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnFoodMenu8))))
-        );
+        jPanel1.add(btnFoodMenu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 80, -1));
 
         jTabbedPane1.addTab("Menú", jPanel1);
 
@@ -409,7 +320,7 @@ public class PanelMenu extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -438,7 +349,7 @@ public class PanelMenu extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Lista de Pedidos", jPanel2);
 
-        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 940, 450));
+        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 860, 450));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFoodMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu1ActionPerformed
