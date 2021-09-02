@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.ControladorArchivoInventario;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,6 +25,7 @@ public class PanelInventario extends javax.swing.JPanel {
     Inventario miInventario = Inventario.getInventario();
     ArrayList<Ingrediente> carnes = miInventario.getCarnes();
     ArrayList<Ingrediente> vegetales = miInventario.getVegetales();
+    ControladorArchivoInventario ing;
 
     public PanelInventario() {
         initComponents();
@@ -36,14 +38,24 @@ public class PanelInventario extends javax.swing.JPanel {
         ImageIcon imgVeget = new ImageIcon(getClass().getResource("/imagenes/verduraText.png"));
         ImageIcon TamañoV = new ImageIcon(imgVeget.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
         this.tabpanel.setIconAt(0, TamañoV);
-
+        //Leyendo archivos de ingredientes
+        ing = new ControladorArchivoInventario();
+        ArrayList<Ingrediente> temp;
+        temp = ing.crearArrayList();
+        ing.leerArchivo(temp);
         //Cargando Tablas y cbx
-        setTablaCarnes(carnes);
-        setCmbxIngredientesCarnes(carnes);
-
-        setTablaVegetales(vegetales);
-        setCmbxIngredientesVegetales(vegetales);
-
+        for (int i = 0; i < temp.size(); i++) {
+            if(temp.get(i).getCategoria().equalsIgnoreCase("carnes")){
+                carnes.add(temp.get(i));
+                setTablaCarnes(carnes);
+                setCmbxIngredientesCarnes(carnes);
+            }
+            else if(temp.get(i).getCategoria().equalsIgnoreCase("vegetales")){
+                vegetales.add(temp.get(i));
+                setTablaVegetales(vegetales);
+                setCmbxIngredientesVegetales(vegetales);
+            }      
+        }
     }
 
     /**
