@@ -12,6 +12,10 @@ import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 import modelo.Boleta;
 import modelo.Caja;
+import modelo.Comida;
+import modelo.Ingrediente;
+import modelo.ListaPedido;
+import modelo.Pedido;
 
 /**
  *
@@ -22,8 +26,17 @@ public class PanelBalance extends javax.swing.JPanel {
     /**
      * Creates new form panelBalance
      */
+    Caja miCaja = Caja.getCaja();
+    ListaPedido misPedidos = ListaPedido.getListaPedido();
+    ArrayList<Pedido> misClientes = misPedidos.getPedidos();
+
     public PanelBalance() {
         initComponents();
+        setTablaBalance(miCaja);
+        setNumeroVentas(miCaja);
+        setPlatoMasVendido(miCaja);
+        setTablaBoleta(miCaja);
+        actualizarComboBox();
     }
 
     /**
@@ -247,6 +260,7 @@ public class PanelBalance extends javax.swing.JPanel {
 
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
         // TODO add your handling code here:
+        actualizarComboBox();
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -300,20 +314,19 @@ public class PanelBalance extends javax.swing.JPanel {
         DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
         tblBalance.setModel(modelo);
     }
-    
+
     public void setTablaBoleta(Caja c) {
         String[] columnas = {"Plato", "Monto"};
         Object[][] miData = new Object[c.getTamaño()][2];
         DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
         tblBoleta.setModel(modelo);
     }
-   
-    
+
     public void setNumeroVentas(Caja c) {
         int ventas = c.getTamaño();
         lblTotalVentas.setText(String.valueOf(ventas));
     }
-    
+
     public void setPlatoMasVendido(Caja c) {
         ArrayList<String> comidas = new ArrayList<>();
         Boleta b = c.getUltimo();
@@ -323,7 +336,7 @@ public class PanelBalance extends javax.swing.JPanel {
             }
             b = b.sig;
         }
-        
+
         System.out.println(comidas.toString());
         int max = 0;
         int curr = 0;
@@ -338,4 +351,17 @@ public class PanelBalance extends javax.swing.JPanel {
         }
         lblPlato.setText(currKey);
     }
+
+    public void setCmbxClientes(ArrayList<Pedido> ped) {
+        cbxClientes.removeAllItems();
+        for (int i = 0; i < ped.size(); i++) {
+            cbxClientes.addItem(ped.get(i).getNombreCliente());
+        }
+    }
+
+    public void actualizarComboBox() {
+        misClientes = misPedidos.getPedidos();
+        setCmbxClientes(misClientes);
+    }
+
 }

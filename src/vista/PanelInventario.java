@@ -98,6 +98,12 @@ public class PanelInventario extends javax.swing.JPanel {
         panVegetales.setBackground(new java.awt.Color(255, 255, 255));
         panVegetales.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        cbxIngVeg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxIngVegActionPerformed(evt);
+            }
+        });
+
         btnAddVeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.png"))); // NOI18N
         btnAddVeg.setBorder(null);
         btnAddVeg.setContentAreaFilled(false);
@@ -392,6 +398,10 @@ public class PanelInventario extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_ordAlfabeticoCarActionPerformed
+
+    private void cbxIngVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxIngVegActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxIngVegActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

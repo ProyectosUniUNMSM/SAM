@@ -123,5 +123,11 @@ public class ListaPedido {
         }
         return lista;
     }
+    
+    public  String getNombreCliente(){
+        return inicio.cliente.getNombre();
+    }
+    
+ 
 
 }

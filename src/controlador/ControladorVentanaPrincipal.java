@@ -75,7 +75,8 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
             panInventario.setVisible(false);
             panMenu.setVisible(false);
             panBalance.setVisible(true);
-
+            
+            panBalance.actualizarComboBox();
             vista.panContenedor.add(panBalance);
             vista.panContenedor.validate();
 
