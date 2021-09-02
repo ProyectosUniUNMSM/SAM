@@ -5,10 +5,9 @@
  */
 package sam;
 
+import controlador.ControladorCaja;
 import controlador.ControladorVentanaPrincipal;
 import modelo.Caja;
-import modelo.Comida;
-import modelo.Ingrediente;
 import modelo.Inventario;
 import modelo.ListaPedido;
 import modelo.Menu;
@@ -29,10 +28,13 @@ public class SAM {
         Inventario miInventario = Inventario.getInventario();
         ListaPedido misPedidos = ListaPedido.getListaPedido();
         Caja miCaja = Caja.getCaja();
-
+        
         VentanaPrincipal ventana = new VentanaPrincipal();
         ControladorVentanaPrincipal control = new ControladorVentanaPrincipal(ventana);
         control.iniciar();
-
+        
+        ControladorCaja cc = new ControladorCaja();
+        //cc.salvarArchivo(); 
+        
     }
 }

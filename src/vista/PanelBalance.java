@@ -12,7 +12,6 @@ import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 import modelo.Boleta;
 import modelo.Caja;
-import modelo.Comida;
 
 /**
  *
@@ -23,13 +22,8 @@ public class PanelBalance extends javax.swing.JPanel {
     /**
      * Creates new form panelBalance
      */
-    Caja miCaja = Caja.getCaja();
-    
     public PanelBalance() {
         initComponents();
-        setTablaBoletas(miCaja);
-        setNumeroVentas(miCaja);
-        setPlatoMasVendido(miCaja);
     }
 
     /**

@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -7,7 +8,7 @@ import java.util.Date;
  *
  * @author AlexTprog
  */
-public class Boleta {
+public class Boleta implements Serializable{
 
     //Nodo de Lista Doblemente enlazada    
     public float monto;

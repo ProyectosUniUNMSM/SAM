@@ -28,7 +28,20 @@ public class Caja {
     public boolean isCajaVacia() {
         return ultimo == null;
     }
+    
+    public void addBoleta(Boleta nuevo){
+        if (isCajaVacia()) {
+            ultimo = nuevo;
+            tamaño++;
 
+        } else {
+                nuevo.sig = ultimo.sig;
+                ultimo.sig = nuevo;
+                ultimo = nuevo;
+                tamaño++;
+        }
+    }
+    
     public void addBoleta(Cliente c) {
         Boleta nuevo = new Boleta(c);
 
@@ -40,6 +53,7 @@ public class Caja {
             if (!isBoletaActiva(c)) {
                 nuevo.sig = ultimo.sig;
                 ultimo.sig = nuevo;
+                ultimo = nuevo;
                 tamaño++;
             } else {
                 System.out.println("Ya Hay un Boleta Activa");
