@@ -1,12 +1,12 @@
 package modelo;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  *
  * @author AlexTprog
  */
-public class Pedido {
+public class Pedido implements Serializable{
 
     //Nodo Pedido
     public Comida comida;

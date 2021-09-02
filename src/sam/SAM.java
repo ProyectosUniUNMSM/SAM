@@ -7,14 +7,8 @@ package sam;
 
 import controlador.ControladorArchivoInventario;
 import controlador.ControladorArchivoMenu;
+import controlador.ControladorCaja;
 import controlador.ControladorVentanaPrincipal;
-import java.util.ArrayList;
-import modelo.Caja;
-import modelo.Comida;
-import modelo.Ingrediente;
-import modelo.Inventario;
-import modelo.ListaPedido;
-import modelo.Menu;
 import vista.VentanaPrincipal;
 
 /**
@@ -39,6 +33,9 @@ public class SAM {
         //inv.salvarArchivo();
         ControladorArchivoInventario archivoInventario = new ControladorArchivoInventario();
         ControladorArchivoMenu archivoMenu = new ControladorArchivoMenu();
+        ControladorCaja cc = new ControladorCaja();
+        //cc.salvarArchivo(); 
+
 
         archivoInventario.cargarArchivo();
         archivoMenu.cargarArchivo();

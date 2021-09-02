@@ -1,12 +1,13 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author AlexTprog
  */
-public class Cliente {
+public class Cliente implements Serializable{
 
     private String nombre;
     private String dni;
