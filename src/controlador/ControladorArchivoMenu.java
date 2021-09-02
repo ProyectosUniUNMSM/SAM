@@ -63,16 +63,18 @@ public class ControladorArchivoMenu {
 
     public void cargarComidas(ArrayList<Comida> comidas) {
         Menu miMenu = Menu.getMenu();
-
+        for (Comida i : this.comidas) {
+            miMenu.addComida(i);
+        }
     }
 
     //Para inicializar las comidas, luego borrar metodo.
-    public void agregarComidas() {
-        //8 comidas predefinidas
+    public void inicializarMenu() {
+        // comidas predefinidas
         /*
         Comida com0 = new Comida("Lomo Saltado", 12.5f);
-        Comida com1 = new Comida("Arroz con Pollo", 10.0f);
-        Comida com2 = new Comida("Ají de Gallina", 10.0f);
+        Comida com1 = new Comida("Ají de Gallina", 10.0f);
+        Comida com2 = new Comida("Arroz con Pollo", 10.0f);        
         Comida com3 = new Comida("Arroz Chaufa", 8.5f);
         Comida com4 = new Comida("Aeropuerto", 12.0f);
         Comida com5 = new Comida("Tallarín Saltado", 11.0f);

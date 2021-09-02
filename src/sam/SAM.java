@@ -5,6 +5,7 @@
  */
 package sam;
 
+import controlador.ControladorArchivoInventario;
 import controlador.ControladorVentanaPrincipal;
 import modelo.Caja;
 import modelo.Inventario;
@@ -23,13 +24,13 @@ public class SAM {
      */
     public static void main(String[] args) {
 
-        Menu miMenu = Menu.getMenu();
-        Inventario miInventario = Inventario.getInventario();
-        ListaPedido misPedidos = ListaPedido.getListaPedido();
-        Caja miCaja = Caja.getCaja();
-
+        ControladorArchivoInventario inv = new ControladorArchivoInventario();
+        inv.inicializarInventario();
+        inv.salvarArchivo();
+        /*
         VentanaPrincipal ventana = new VentanaPrincipal();
         ControladorVentanaPrincipal control = new ControladorVentanaPrincipal(ventana);
         control.iniciar();
+         */
     }
 }

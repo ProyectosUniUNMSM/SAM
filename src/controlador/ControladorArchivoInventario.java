@@ -21,6 +21,7 @@ public class ControladorArchivoInventario {
 
     public ControladorArchivoInventario() {
         ingredientes = new ArrayList<Ingrediente>();
+
     }
 
     public void leerArchivo() {
@@ -54,7 +55,7 @@ public class ControladorArchivoInventario {
             fileOut.close();
             JOptionPane.showMessageDialog(null, "Los ingredientes fueron registrados.");
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Ingredientes no registradas.");
+            JOptionPane.showMessageDialog(null, "Ingredientes no registrados.");
         }
     }
 
@@ -76,6 +77,44 @@ public class ControladorArchivoInventario {
                 flag = false;
             }
         }
+    }
+
+    public void inicializarInventario() {
+        Ingrediente ing1 = new Ingrediente("Lomo", "carnes", 10);
+        Ingrediente ing2 = new Ingrediente("Arroz", "vegetales", 10);
+        Ingrediente ing3 = new Ingrediente("papa", "vegetales", 10);
+        Ingrediente ing4 = new Ingrediente("cebolla", "vegetales", 10);
+        Ingrediente ing5 = new Ingrediente("gallina", "carnes", 10);
+        Ingrediente ing6 = new Ingrediente("aji amarillo", "vegetales", 10);
+        Ingrediente ing7 = new Ingrediente("pollo", "carnes", 10);
+        Ingrediente ing8 = new Ingrediente("alverjas", "vegetales", 10);
+        Ingrediente ing9 = new Ingrediente("zanahoria", "vegetales", 10);
+        Ingrediente ing10 = new Ingrediente("huevo", "carnes", 10);
+        Ingrediente ing11 = new Ingrediente("pimenton", "vegetales", 10);
+        Ingrediente ing12 = new Ingrediente("fideos", "vegetales", 10);
+        Ingrediente ing13 = new Ingrediente("res", "carnes", 10);
+        Ingrediente ing14 = new Ingrediente("cebolla china", "vegetales", 10);
+        Ingrediente ing15 = new Ingrediente("pesacado", "carnes", 10);
+        Ingrediente ing16 = new Ingrediente("limones", "vegetales", 10);
+        Ingrediente ing17 = new Ingrediente("camote", "vegetales", 10);
+
+        ingredientes.add(ing1);
+        ingredientes.add(ing2);
+        ingredientes.add(ing3);
+        ingredientes.add(ing4);
+        ingredientes.add(ing5);
+        ingredientes.add(ing6);
+        ingredientes.add(ing7);
+        ingredientes.add(ing8);
+        ingredientes.add(ing9);
+        ingredientes.add(ing10);
+        ingredientes.add(ing11);
+        ingredientes.add(ing12);
+        ingredientes.add(ing13);
+        ingredientes.add(ing14);
+        ingredientes.add(ing15);
+        ingredientes.add(ing16);
+        ingredientes.add(ing17);
     }
 
     public void cargarInventario() {

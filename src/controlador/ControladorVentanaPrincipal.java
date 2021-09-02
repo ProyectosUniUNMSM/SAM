@@ -14,7 +14,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.plaf.nimbus.NimbusStyle;
+import modelo.Caja;
+import modelo.Cliente;
+import modelo.Comida;
 import modelo.Menu;
+import modelo.Pedido;
 import vista.PanelInventario;
 import vista.PanelMenu;
 import vista.PanelBalance;
@@ -86,12 +90,12 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
             vista.panContenedor.validate();
             /*
             Caja caja = Caja.getCaja();
-            Prueba de caja
+            //Prueba de caja
             Cliente c = new Cliente("Daniel", "19200102");
             Cliente c2 = new Cliente("Dan", "192002");
-            Comida com = new Comida("Chaufa", 50);
-            Comida com2 = new Comida("arroz", 10);
-            Comida com3 = new Comida("pollo", 25);
+            Comida com = new Comida("Chaufa", 50,"");
+            Comida com2 = new Comida("arroz", 10,"");
+            Comida com3 = new Comida("pollo", 25,"");
             Pedido p = new Pedido(com, c);
             Pedido p2 = new Pedido(com2, c2);
             Pedido p3 = new Pedido(com, c2);
@@ -111,7 +115,7 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
             panBalance.setTablaBoletas(caja);
             panBalance.setNumeroVentas(caja);
             panBalance.setPlatoMasVendido(caja);
-            */
+             */
         }
 
     }
