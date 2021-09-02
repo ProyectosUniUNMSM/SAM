@@ -34,7 +34,7 @@ public class ListaPedido {
     public void addPedido(Comida comida, Cliente cliente) {
 
         Pedido nuevo = new Pedido(comida, cliente);
-
+        //nuevo.descontarIngredientes();
         nuevo.sig = null;
 
         if (isListaVacia()) {

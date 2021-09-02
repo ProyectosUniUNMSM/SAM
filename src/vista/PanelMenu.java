@@ -36,7 +36,6 @@ public class PanelMenu extends javax.swing.JPanel {
     public PanelMenu() {
         initComponents();
         //miMenu.setLlenarComidas();
-
         setComidasDelMenu();
         actualizarTablas();
     }
@@ -367,26 +366,38 @@ public class PanelMenu extends javax.swing.JPanel {
 
     private void btnFoodMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu3ActionPerformed
         // TODO add your handling code here:        
+        panDatos.setComidaAPedir(miMenu.getComida(2));
+        panDatos.setVisible(true);
     }//GEN-LAST:event_btnFoodMenu3ActionPerformed
 
     private void btnFoodMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu4ActionPerformed
         // TODO add your handling code here:
+        panDatos.setComidaAPedir(miMenu.getComida(3));
+        panDatos.setVisible(true);
     }//GEN-LAST:event_btnFoodMenu4ActionPerformed
 
     private void btnFoodMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu5ActionPerformed
         // TODO add your handling code here:
+        panDatos.setComidaAPedir(miMenu.getComida(4));
+        panDatos.setVisible(true);
     }//GEN-LAST:event_btnFoodMenu5ActionPerformed
 
     private void btnFoodMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu6ActionPerformed
         // TODO add your handling code here:
+        panDatos.setComidaAPedir(miMenu.getComida(5));
+        panDatos.setVisible(true);
     }//GEN-LAST:event_btnFoodMenu6ActionPerformed
 
     private void btnFoodMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu7ActionPerformed
         // TODO add your handling code here:
+        panDatos.setComidaAPedir(miMenu.getComida(6));
+        panDatos.setVisible(true);
     }//GEN-LAST:event_btnFoodMenu7ActionPerformed
 
     private void btnFoodMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoodMenu8ActionPerformed
         // TODO add your handling code here:
+        panDatos.setComidaAPedir(miMenu.getComida(7));
+        panDatos.setVisible(true);
     }//GEN-LAST:event_btnFoodMenu8ActionPerformed
 
     private void tblRecibidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRecibidosMouseClicked

@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author AlexTprog
@@ -66,5 +68,12 @@ public class Pedido {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+//NO ME SALIO QUE DESCUENTE LOS INGREDIENTES xd : alex
+//    public void descontarIngredientes() {
+//        ArrayList<Ingrediente> temp = comida.getIngredientes();
+//        for (Ingrediente i : temp) {
+//            i.disIngrediente(1);
+//        }
+//    }
 
 }
