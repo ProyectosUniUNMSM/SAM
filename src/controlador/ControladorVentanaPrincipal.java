@@ -70,6 +70,7 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
             panBalance.setVisible(false);
 
             vista.panContenedor.add(panInventario);
+            panInventario.actualizarTablas();
             vista.panContenedor.validate();
         } else if (evt.equals(vista.btnMenu)) {
             panHome.setVisible(false);
