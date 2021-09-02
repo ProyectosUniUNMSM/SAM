@@ -1,10 +1,12 @@
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author AlexTprog
  */
-public class Ingrediente {
+public class Ingrediente implements Serializable {
 
     private int cantidad;
     private String categoria;

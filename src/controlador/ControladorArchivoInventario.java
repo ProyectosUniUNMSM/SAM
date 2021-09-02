@@ -17,21 +17,25 @@ import modelo.Inventario;
  */
 public class ControladorArchivoInventario {
 
-    private ArrayList<Ingrediente> ingredientes;
+//    private ArrayList<Ingrediente> ingredientes;
+//
+//    public ControladorArchivoInventario() {
+//        this.ingredientes = new ArrayList<Ingrediente>();
+//        ArrayList<Ingrediente> temp;
+//        temp = crearArrayList();
+//        leerArchivo(temp);
+//        inicializarInventario(temp);
+//        salvarArchivo(temp);
+//    }
 
-    public ControladorArchivoInventario() {
-        ingredientes = new ArrayList<Ingrediente>();
-
-    }
-
-    public void leerArchivo() {
+    public void leerArchivo(ArrayList<Ingrediente> a) {
         try {
             FileInputStream file = new FileInputStream("ingredientes.dat");
             ObjectInputStream fileInput = new ObjectInputStream(file);
             boolean finArchivo = false;
             while (!finArchivo) {
                 try {
-                    ingredientes.add((Ingrediente) fileInput.readObject());
+                    a.add((Ingrediente) fileInput.readObject());
                 } catch (EOFException e) {
                     finArchivo = true;
                 } catch (Exception e) {
@@ -39,18 +43,17 @@ public class ControladorArchivoInventario {
                 }
             }
             fileInput.close();
-            cargarInventario();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Sin ingredientes.");
         }
     }
 
-    public void salvarArchivo() {
+    public void salvarArchivo(ArrayList<Ingrediente> a) {
         try {
             FileOutputStream file = new FileOutputStream("ingredientes.dat");
             ObjectOutputStream fileOut = new ObjectOutputStream(file);
-            for (int i = 0; i < ingredientes.size(); i++) {
-                fileOut.writeObject(ingredientes.get(i));
+            for (int i = 0; i < a.size(); i++) {
+                fileOut.writeObject(a.get(i));
             }
             fileOut.close();
             JOptionPane.showMessageDialog(null, "Los ingredientes fueron registrados.");
@@ -60,26 +63,26 @@ public class ControladorArchivoInventario {
     }
 
     //Para inicializar las comidas, luego borrar metodo.
-    public void agregarIngredientes(String nom, String cat, int cant) {
-        Ingrediente i = new Ingrediente(nom, cat, cant);
-        i.aumIngrediente(cant);
-        ingredientes.add(i);
-        salvarArchivo();
-    }
+//    public void agregarIngredientes(String nom, String cat, int cant) {
+//        Ingrediente i = new Ingrediente(nom, cat, cant);
+//        i.aumIngrediente(cant);
+//        crearArrayList().add(i);
+//        salvarArchivo();
+//    }
+//
+//    public void eliminarIngredientes(Ingrediente ing, String nom) {
+//        int i = 0;
+//        boolean flag = true;
+//        while (i < crearArrayList().size()) {
+//            if (ing.getNombre().equalsIgnoreCase(nom)) {
+//                crearArrayList().remove(i);
+//                salvarArchivo();
+//                flag = false;
+//            }
+//        }
+//    }
 
-    public void eliminarIngredientes(Ingrediente ing, String nom) {
-        int i = 0;
-        boolean flag = true;
-        while (i < ingredientes.size()) {
-            if (ing.getNombre().equalsIgnoreCase(nom)) {
-                ingredientes.remove(i);
-                salvarArchivo();
-                flag = false;
-            }
-        }
-    }
-
-    public void inicializarInventario() {
+    public void inicializarInventario(ArrayList<Ingrediente> a) {
         Ingrediente ing1 = new Ingrediente("Lomo", "carnes", 10);
         Ingrediente ing2 = new Ingrediente("Arroz", "vegetales", 10);
         Ingrediente ing3 = new Ingrediente("papa", "vegetales", 10);
@@ -98,29 +101,34 @@ public class ControladorArchivoInventario {
         Ingrediente ing16 = new Ingrediente("limones", "vegetales", 10);
         Ingrediente ing17 = new Ingrediente("camote", "vegetales", 10);
 
-        ingredientes.add(ing1);
-        ingredientes.add(ing2);
-        ingredientes.add(ing3);
-        ingredientes.add(ing4);
-        ingredientes.add(ing5);
-        ingredientes.add(ing6);
-        ingredientes.add(ing7);
-        ingredientes.add(ing8);
-        ingredientes.add(ing9);
-        ingredientes.add(ing10);
-        ingredientes.add(ing11);
-        ingredientes.add(ing12);
-        ingredientes.add(ing13);
-        ingredientes.add(ing14);
-        ingredientes.add(ing15);
-        ingredientes.add(ing16);
-        ingredientes.add(ing17);
+        a.add(ing1);
+        a.add(ing2);
+        a.add(ing3);
+        a.add(ing4);
+        a.add(ing5);
+        a.add(ing6);
+        a.add(ing7);
+        a.add(ing8);
+        a.add(ing9);
+        a.add(ing10);
+        a.add(ing11);
+        a.add(ing12);
+        a.add(ing13);
+        a.add(ing14);
+        a.add(ing15);
+        a.add(ing16);
+        a.add(ing17);
     }
 
-    public void cargarInventario() {
-        Inventario miInventario = Inventario.getInventario();
-        for (Ingrediente i : this.ingredientes) {
-            miInventario.addIngrediente(i);
-        }
+//    public void cargarInventario() {
+//        Inventario miInventario = Inventario.getInventario();
+//        for (Ingrediente i : this.crearArrayList()) {
+//            miInventario.addIngrediente(i);
+//        }
+//    }
+    
+    public ArrayList<Ingrediente> crearArrayList(){
+        ArrayList<Ingrediente> a = new ArrayList<>();
+        return a;
     }
 }

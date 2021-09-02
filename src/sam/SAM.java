@@ -7,7 +7,9 @@ package sam;
 
 import controlador.ControladorArchivoInventario;
 import controlador.ControladorVentanaPrincipal;
+import java.util.ArrayList;
 import modelo.Caja;
+import modelo.Ingrediente;
 import modelo.Inventario;
 import modelo.ListaPedido;
 import modelo.Menu;
@@ -24,13 +26,18 @@ public class SAM {
      */
     public static void main(String[] args) {
 
-        ControladorArchivoInventario inv = new ControladorArchivoInventario();
-        inv.inicializarInventario();
-        inv.salvarArchivo();
-        /*
+        //Ya no es necesario descomentarlo porque duplicaria los objetos(ingrediente)
+//        ControladorArchivoInventario inv = new ControladorArchivoInventario();
+//        ArrayList<Ingrediente> temp;
+//        temp=inv.crearArrayList();
+//        inv.leerArchivo(temp);
+//        inv.inicializarInventario(temp);
+//        inv.salvarArchivo(temp);
+
+        //inv.inicializarInventario();
+        //inv.salvarArchivo();
         VentanaPrincipal ventana = new VentanaPrincipal();
         ControladorVentanaPrincipal control = new ControladorVentanaPrincipal(ventana);
         control.iniciar();
-         */
     }
 }
