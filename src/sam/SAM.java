@@ -27,13 +27,12 @@ public class SAM {
     public static void main(String[] args) {
 
         //Ya no es necesario descomentarlo porque duplicaria los objetos(ingrediente)
-        ControladorArchivoInventario inv = new ControladorArchivoInventario();
-        ArrayList<Ingrediente> temp;
-        temp = inv.crearArrayList();
-        inv.leerArchivo(temp);
-        inv.inicializarInventario(temp);
-        inv.salvarArchivo(temp);
-
+//        ControladorArchivoInventario inv = new ControladorArchivoInventario();
+//        ArrayList<Ingrediente> temp;
+//        temp = inv.crearArrayList();
+//        inv.leerArchivo(temp);
+//        inv.inicializarInventario(temp);
+//        inv.salvarArchivo(temp);
         //inv.inicializarInventario();
         //inv.salvarArchivo();
         VentanaPrincipal ventana = new VentanaPrincipal();
