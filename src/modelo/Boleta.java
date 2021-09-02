@@ -8,7 +8,7 @@ import java.util.Date;
  *
  * @author AlexTprog
  */
-public class Boleta implements Serializable{
+public class Boleta implements Serializable {
 
     //Nodo de Lista Doblemente enlazada    
     public float monto;
@@ -41,4 +41,9 @@ public class Boleta implements Serializable{
     public void addPedido(Pedido p) {
         this.pedidos.add(p);
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
 }

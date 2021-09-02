@@ -29,7 +29,8 @@ public class PanelBalance extends javax.swing.JPanel {
     Caja miCaja = Caja.getCaja();
     ListaPedido misPedidos = ListaPedido.getListaPedido();
     ArrayList<Pedido> misClientes = misPedidos.getPedidos();
-
+    ArrayList<Boleta> misBoletas = miCaja.getBoletas();
+    
     public PanelBalance() {
         initComponents();
         setTablaBalance(miCaja);
@@ -352,16 +353,18 @@ public class PanelBalance extends javax.swing.JPanel {
         lblPlato.setText(currKey);
     }
 
-    public void setCmbxClientes(ArrayList<Pedido> ped) {
+    public void setCmbxClientes(ArrayList<Boleta> ped) {
         cbxClientes.removeAllItems();
         for (int i = 0; i < ped.size(); i++) {
-            cbxClientes.addItem(ped.get(i).getNombreCliente());
+            cbxClientes.addItem(ped.get(i).getCliente().getNombre());
         }
     }
 
     public void actualizarComboBox() {
+        misBoletas = miCaja.getBoletas();
         misClientes = misPedidos.getPedidos();
-        setCmbxClientes(misClientes);
+
+        setCmbxClientes(misBoletas);
     }
 
 }

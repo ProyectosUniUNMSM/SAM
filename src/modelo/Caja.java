@@ -28,27 +28,27 @@ public class Caja {
     public boolean isCajaVacia() {
         return ultimo == null;
     }
-    
-    public void addBoleta(Boleta nuevo){
+
+    public void addBoleta(Boleta nuevo) {
         if (isCajaVacia()) {
             ultimo = nuevo;
             tamaño++;
 
         } else {
-                nuevo.sig = ultimo.sig;
-                ultimo.sig = nuevo;
-                ultimo = nuevo;
-                tamaño++;
+            nuevo.sig = ultimo.sig;
+            ultimo.sig = nuevo;
+            ultimo = nuevo;
+            tamaño++;
         }
     }
-    
+
     public void addBoleta(Cliente c) {
         Boleta nuevo = new Boleta(c);
 
         if (isCajaVacia()) {
             ultimo = nuevo;
             tamaño++;
-
+            System.out.println("Caja Vacia");
         } else {
             if (!isBoletaActiva(c)) {
                 nuevo.sig = ultimo.sig;
@@ -61,12 +61,13 @@ public class Caja {
         }
 
     }
-
+    
     public void addPedidoBoleta(Pedido p) {
         if (isCajaVacia()) {
             addBoleta(p.cliente);
         }
         buscarBoleta(p.cliente).addPedido(p);
+        System.out.println(p);
     }
 
     public boolean isBoletaActiva(Cliente c) {
@@ -89,7 +90,7 @@ public class Caja {
                 return aux;
             }
             aux = aux.sig;
-        } while (aux!= ultimo.sig);
+        } while (aux != ultimo.sig);
         return null;
     }
 
@@ -103,20 +104,33 @@ public class Caja {
         }
         return total;
     }
-
-    public void recibirPedido(ArrayList<Pedido> lista) {
-        for (Pedido aux : lista) {
-            if (aux != null) {
-                addPedidoBoleta(aux);
-            }
-        }
-    }
+//
+//    public void recibirPedido(ArrayList<Pedido> lista) {
+//        for (Pedido aux : lista) {
+//            if (aux != null) {
+//                addPedidoBoleta(aux);
+//            }
+//        }
+//    }
 
     public int getTamaño() {
         return tamaño;
-    } 
+    }
 
     public Boleta getUltimo() {
         return ultimo;
+    }
+
+    public ArrayList<Boleta> getBoletas() {
+        ArrayList<Boleta> temp = new ArrayList<>();
+        if (!isCajaVacia()) {
+            Boleta aux = ultimo;
+            while (aux.sig != ultimo) {
+                temp.add(aux);
+                aux = aux.sig;
+            }
+        }
+
+        return temp;
     }
 }
