@@ -1,12 +1,13 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author AlexTprog
  */
-public class Comida {
+public class Comida implements Serializable {
 
     private String nombre;
     private float precio;

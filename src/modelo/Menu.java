@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author AlexTprog
@@ -48,6 +50,7 @@ public class Menu {
     }
 
     public Comida getComida(int pos) {
+        /*
         int i = 0;
         Comida c = null;
         while (comida[i] != null && i < comida.length) {
@@ -56,7 +59,8 @@ public class Menu {
             }
             i++;
         }
-        return c;
+         */
+        return this.comida[pos];
     }
 
     public Comida getComida(String nombre) {
@@ -71,17 +75,17 @@ public class Menu {
         return c;
     }
 
-    public static void setLlenarComidas() {
+    public void cargarComidas(ArrayList<Comida> listaComidas) {
+        for (Comida temp : listaComidas) {
+            addComida(temp);
+        }
+    }
 
+    public static void setLlenarComidas() {
         Comida comida1 = new Comida("Lomo Saltado", (float) 35.5, "/imagenes/arrayComida/comida1.jpg");
         Comida comida2 = new Comida("Aji de Gallina", (float) 40.5, "/imagenes/arrayComida/comida2.jpg");
-        //Comida comida3 = new Comida("Arroz con pollo", (float) 35.5);
-        //Comida comida4 = new Comida("Sopa Seca", (float) 35.5);
-
         menu.addComida(comida1);
         menu.addComida(comida2);
-        //menu.addComida(comida3);
-        //menu.addComida(comida4);
 
     }
 }
