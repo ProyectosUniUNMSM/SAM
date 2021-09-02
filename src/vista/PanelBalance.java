@@ -28,11 +28,10 @@ public class PanelBalance extends javax.swing.JPanel {
     /**
      * Creates new form panelBalance
      */
+    ControladorCaja c = new ControladorCaja();
     Caja miCaja = Caja.getCaja();
-    ListaPedido misPedidos = ListaPedido.getListaPedido();
-    ArrayList<Pedido> misClientes = misPedidos.getPedidos();
-    ArrayList<Boleta> misBoletas = miCaja.getBoletas();
-
+    ArrayList<Boleta> misBoletas = miCaja.getBoletasActivas();
+    
     public PanelBalance() {
         initComponents();
     }
@@ -127,13 +126,23 @@ public class PanelBalance extends javax.swing.JPanel {
 
         cbxClientes.setForeground(new java.awt.Color(102, 102, 102));
         cbxClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente 1", "Cliente 2", "Cliente 3", "Cliente 4" }));
+        cbxClientes.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                cbxClientesMouseDragged(evt);
+            }
+        });
+        cbxClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbxClientesMouseClicked(evt);
+            }
+        });
         panFactura.add(cbxClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 62, 100, -1));
 
         jLabel2.setText("Cliente:");
         panFactura.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 63, 50, 20));
 
         lblFechaCliente.setText("FECHA DE FACTURA");
-        panFactura.add(lblFechaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 210, -1, -1));
+        panFactura.add(lblFechaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, -1, -1));
 
         lblNomCliente.setText("NOMBRE Y APELLIDO CLIENTE");
         panFactura.add(lblNomCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
@@ -142,7 +151,7 @@ public class PanelBalance extends javax.swing.JPanel {
         panFactura.add(lblDniCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
 
         jLabel4.setText("FECHA:");
-        panFactura.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, -1, -1));
+        panFactura.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, -1, -1));
 
         jLabel5.setText("DNI:");
         panFactura.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
@@ -262,14 +271,25 @@ public class PanelBalance extends javax.swing.JPanel {
 
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
         // TODO add your handling code here:
-        
+        String dni = (String) cbxClientes.getSelectedItem();
+        Boleta b = miCaja.buscarBoleta(dni);
+        b.estado = true;
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void btnSalvarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarArchivoActionPerformed
-        // TODO add your handling code here:
-        ControladorCaja c = new ControladorCaja();
+        // TODO add your handling code here:        
         c.salvarArchivo();
     }//GEN-LAST:event_btnSalvarArchivoActionPerformed
+
+    private void cbxClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbxClientesMouseClicked
+        // TODO add your handling code here:
+        setBoleta();
+    }//GEN-LAST:event_cbxClientesMouseClicked
+
+    private void cbxClientesMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbxClientesMouseDragged
+        // TODO add your handling code here:
+        setBoleta();
+    }//GEN-LAST:event_cbxClientesMouseDragged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFactura;
@@ -320,24 +340,26 @@ public class PanelBalance extends javax.swing.JPanel {
             Class[] types = new Class[]{
                 java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Float.class, java.lang.Boolean.class
             };
-
+            
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
         };
         tblBalance.setModel(modelo);
     }
-
+    
     public void setBoleta() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
-        Boleta b = null;
+        String dni = (String) cbxClientes.getSelectedItem();
+        Boleta b = miCaja.buscarBoleta(dni);
         
         lblNomCliente.setText(b.cliente.getNombre());
         lblDniCliente.setText(b.cliente.getDni());
         lblFechaCliente.setText(formatter.format(b.fecha));
+        lblTotal.setText(b.calcMonto() + "");
         setTablaBoleta(b);
     }
-
+    
     public void setTablaBoleta(Boleta b) {
         String[] columnas = {"Plato", "Monto"};
         Object[][] miData = new Object[b.pedidos.size()][2];
@@ -350,12 +372,12 @@ public class PanelBalance extends javax.swing.JPanel {
         DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
         tblBoleta.setModel(modelo);
     }
-
+    
     public void setNumeroVentas(Caja c) {
         int ventas = c.getTamaño();
         lblTotalVentas.setText(String.valueOf(ventas));
     }
-
+    
     public void setPlatoMasVendido(Caja c) {
         ArrayList<String> comidas = new ArrayList<>();
         Boleta b = c.getUltimo();
@@ -365,7 +387,7 @@ public class PanelBalance extends javax.swing.JPanel {
             }
             b = b.sig;
         }
-
+        
         System.out.println(comidas.toString());
         int max = 0;
         int curr = 0;
@@ -380,18 +402,17 @@ public class PanelBalance extends javax.swing.JPanel {
         }
         lblPlato.setText(currKey);
     }
-
+    
     public void setCmbxClientes(ArrayList<Boleta> ped) {
         cbxClientes.removeAllItems();
         for (int i = 0; i < ped.size(); i++) {
-            cbxClientes.addItem(ped.get(i).getCliente().getNombre());
+            cbxClientes.addItem(ped.get(i).getCliente().getDni());
         }
     }
-
+    
     public void actualizarComboBox() {
-        misBoletas = miCaja.getBoletas();
-        misClientes = misPedidos.getPedidos();
+        misBoletas = miCaja.getBoletasActivas();
         setCmbxClientes(misBoletas);
     }
-
+    
 }

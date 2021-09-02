@@ -28,6 +28,7 @@ public class Boleta implements Serializable {
         this.estado = false;
         this.sig = this;
     }
+
     public Boleta(Pedido p) {
         this.pedidos = new ArrayList<Pedido>();
         this.pedidos.add(p);

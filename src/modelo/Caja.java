@@ -49,7 +49,7 @@ public class Caja {
             ultimo = nuevo;
             tamaño++;
         } else {
-            if (!isBoletaActiva(p.cliente)) {
+            if (!isBoletaActiva(p.cliente.getDni())) {
                 nuevo.sig = ultimo.sig;
                 ultimo.sig = nuevo;
                 ultimo = nuevo;
@@ -61,12 +61,12 @@ public class Caja {
         }
     }
 
-    public boolean isBoletaActiva(Cliente c) {
+    public boolean isBoletaActiva(String dni) {
         Boleta aux = ultimo;
         boolean band = false;
         //Si el estado de la boleta es false, sigue activa = no esta pagada
         while (aux.sig != ultimo && !band) {
-            if (aux.cliente.equals(c) && !aux.estado) {
+            if (aux.cliente.getDni().equals(dni) && !aux.estado) {
                 band = true;
             }
             aux = aux.sig;
@@ -78,6 +78,17 @@ public class Caja {
         Boleta aux = ultimo.sig;
         do {
             if (aux.cliente.equals(c)) {
+                return aux;
+            }
+            aux = aux.sig;
+        } while (aux != ultimo.sig);
+        return aux;
+    }
+
+    public Boleta buscarBoleta(String dni) {
+        Boleta aux = ultimo.sig;
+        do {
+            if (aux.cliente.equals(dni) && aux.estado == false) {
                 return aux;
             }
             aux = aux.sig;
@@ -112,14 +123,16 @@ public class Caja {
         return ultimo;
     }
 
-    public ArrayList<Boleta> getBoletas() {
+    public ArrayList<Boleta> getBoletasActivas() {
         ArrayList<Boleta> temp = new ArrayList<>();
         Boleta aux = ultimo;
 
         if (!isCajaVacia()) {
             for (int i = 0; i < caja.getTamaño(); i++) {
-                temp.add(aux);
-                aux = aux.sig;
+                if (aux.estado == false) {
+                    temp.add(aux);
+                    aux = aux.sig;
+                }
             }
         }
         return temp;
