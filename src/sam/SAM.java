@@ -27,10 +27,10 @@ public class SAM {
         ControladorArchivoInventario inv = new ControladorArchivoInventario();
         inv.inicializarInventario();
         inv.salvarArchivo();
-        /*
+        
         VentanaPrincipal ventana = new VentanaPrincipal();
         ControladorVentanaPrincipal control = new ControladorVentanaPrincipal(ventana);
         control.iniciar();
-         */
+        
     }
 }

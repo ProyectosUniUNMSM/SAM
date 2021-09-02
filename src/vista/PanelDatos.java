@@ -49,23 +49,27 @@ public class PanelDatos extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(400, 400));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        panPrueba.setBackground(new java.awt.Color(102, 255, 102));
         panPrueba.setMinimumSize(new java.awt.Dimension(400, 400));
         panPrueba.setPreferredSize(new java.awt.Dimension(400, 400));
         panPrueba.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        panPrueba.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 120, -1));
+        panPrueba.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 120, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Nombre");
-        panPrueba.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));
+        jLabel1.setText("Nombre:");
+        panPrueba.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Dni");
-        panPrueba.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 31, -1));
+        jLabel2.setText("DNI:");
+        panPrueba.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 40, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Agregar Pedido");
-        panPrueba.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 108, -1));
+        panPrueba.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 140, -1));
 
+        btnAceptar.setBackground(new java.awt.Color(255, 255, 255));
+        btnAceptar.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.png"))); // NOI18N
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +78,9 @@ public class PanelDatos extends javax.swing.JFrame {
         });
         panPrueba.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
 
+        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menos.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,16 +88,16 @@ public class PanelDatos extends javax.swing.JFrame {
             }
         });
         panPrueba.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
-        panPrueba.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 120, -1));
+        panPrueba.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 120, -1));
 
-        lblPrecio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        panPrueba.add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 80, 50));
-        panPrueba.add(lblFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 100, 100));
-        panPrueba.add(lblNombreComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 110, 20));
+        lblPrecio.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        panPrueba.add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 80, 50));
+        panPrueba.add(lblFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 100, 100));
+        panPrueba.add(lblNombreComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 140, 20));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setText("Precio: S/.");
-        panPrueba.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, 30));
+        panPrueba.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, 30));
 
         getContentPane().add(panPrueba, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 320));
 

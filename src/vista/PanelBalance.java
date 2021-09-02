@@ -27,9 +27,10 @@ public class PanelBalance extends javax.swing.JPanel {
     
     public PanelBalance() {
         initComponents();
-        setTablaBoletas(miCaja);
+        setTablaBalance(miCaja);
         setNumeroVentas(miCaja);
         setPlatoMasVendido(miCaja);
+        setTablaBoleta(miCaja);
     }
 
     /**
@@ -55,7 +56,7 @@ public class PanelBalance extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblBoleta = new javax.swing.JTable();
         panPrecio = new javax.swing.JPanel();
         lblTotal = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -143,7 +144,7 @@ public class PanelBalance extends javax.swing.JPanel {
         jLabel5.setText("DNI:");
         panFactura.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblBoleta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -154,7 +155,7 @@ public class PanelBalance extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblBoleta);
 
         panFactura.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 810, 240));
 
@@ -276,7 +277,6 @@ public class PanelBalance extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     public javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblDniCliente;
     private javax.swing.JLabel lblFechaCliente;
     private javax.swing.JLabel lblNomCliente;
@@ -288,9 +288,10 @@ public class PanelBalance extends javax.swing.JPanel {
     private javax.swing.JPanel panFactura;
     private javax.swing.JPanel panPrecio;
     private javax.swing.JTable tblBalance;
+    private javax.swing.JTable tblBoleta;
     // End of variables declaration//GEN-END:variables
 
-    public void setTablaBoletas(Caja c) {
+    public void setTablaBalance(Caja c) {
         String[] columnas = {"DNI", "Nombre", "Fecha", "Monto", "Estado"};
         Object[][] miData = new Object[c.getTamaño()][5];
         Boleta b = c.getUltimo();
@@ -306,6 +307,14 @@ public class PanelBalance extends javax.swing.JPanel {
         DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
         tblBalance.setModel(modelo);
     }
+    
+    public void setTablaBoleta(Caja c) {
+        String[] columnas = {"Plato", "Monto"};
+        Object[][] miData = new Object[c.getTamaño()][2];
+        DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
+        tblBoleta.setModel(modelo);
+    }
+   
     
     public void setNumeroVentas(Caja c) {
         int ventas = c.getTamaño();
