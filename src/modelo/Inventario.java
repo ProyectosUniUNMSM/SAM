@@ -95,4 +95,5 @@ public class Inventario {
         }
         return listaCarnes;
     }
+      
 }
