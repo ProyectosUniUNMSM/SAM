@@ -111,7 +111,7 @@ public class PanelDatos extends javax.swing.JFrame {
         Cliente client = new Cliente(txtNombre.getText(), txtDni.getText());
         Pedido pedido = new Pedido(comida, client);
         misPedidos.addPedido(pedido);
-        micaja.addPedidoBoleta(pedido);
+        micaja.addBoleta(pedido);
         dispose();
         conexion.actualizarTablas();
         limpiarCampos();

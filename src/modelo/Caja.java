@@ -42,32 +42,23 @@ public class Caja {
         }
     }
 
-    public void addBoleta(Cliente c) {
-        Boleta nuevo = new Boleta(c);
+    public void addBoleta(Pedido p) {
+        Boleta nuevo = new Boleta(p);
 
         if (isCajaVacia()) {
             ultimo = nuevo;
             tamaño++;
-            System.out.println("Caja Vacia");
         } else {
-            if (!isBoletaActiva(c)) {
+            if (!isBoletaActiva(p.cliente)) {
                 nuevo.sig = ultimo.sig;
                 ultimo.sig = nuevo;
                 ultimo = nuevo;
                 tamaño++;
             } else {
+                buscarBoleta(p.cliente).addPedido(p);
                 System.out.println("Ya Hay un Boleta Activa");
             }
         }
-
-    }
-    
-    public void addPedidoBoleta(Pedido p) {
-        if (isCajaVacia()) {
-            addBoleta(p.cliente);
-        }
-        buscarBoleta(p.cliente).addPedido(p);
-        System.out.println(p);
     }
 
     public boolean isBoletaActiva(Cliente c) {
@@ -91,7 +82,7 @@ public class Caja {
             }
             aux = aux.sig;
         } while (aux != ultimo.sig);
-        return null;
+        return aux;
     }
 
     public float calcTotal() {
@@ -123,14 +114,14 @@ public class Caja {
 
     public ArrayList<Boleta> getBoletas() {
         ArrayList<Boleta> temp = new ArrayList<>();
+        Boleta aux = ultimo;
+
         if (!isCajaVacia()) {
-            Boleta aux = ultimo;
-            while (aux.sig != ultimo) {
+            for (int i = 0; i < caja.getTamaño(); i++) {
                 temp.add(aux);
                 aux = aux.sig;
             }
         }
-
         return temp;
     }
 }
