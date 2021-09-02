@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.Comida;
 import modelo.Ingrediente;
 import modelo.Inventario;
 
@@ -38,24 +39,29 @@ public class PanelInventario extends javax.swing.JPanel {
         ImageIcon imgVeget = new ImageIcon(getClass().getResource("/imagenes/verduraText.png"));
         ImageIcon TamañoV = new ImageIcon(imgVeget.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
         this.tabpanel.setIconAt(0, TamañoV);
+
         //Leyendo archivos de ingredientes
         ing = new ControladorArchivoInventario();
         ArrayList<Ingrediente> temp;
         temp = ing.crearArrayList();
         ing.leerArchivo(temp);
-        //Cargando Tablas y cbx
-        for (int i = 0; i < temp.size(); i++) {
-            if(temp.get(i).getCategoria().equalsIgnoreCase("carnes")){
-                carnes.add(temp.get(i));
-                setTablaCarnes(carnes);
-                setCmbxIngredientesCarnes(carnes);
-            }
-            else if(temp.get(i).getCategoria().equalsIgnoreCase("vegetales")){
-                vegetales.add(temp.get(i));
-                setTablaVegetales(vegetales);
-                setCmbxIngredientesVegetales(vegetales);
-            }      
-        }
+
+        //Cargando archivos en clase inventario
+        miInventario.cargarInventario(temp);
+        actualizarTablas();
+        
+//        //Cargando Tablas y cbx
+//        for (int i = 0; i < temp.size(); i++) {
+//            if (temp.get(i).getCategoria().equalsIgnoreCase("carnes")) {
+//                carnes.add(temp.get(i));
+//                setTablaCarnes(carnes);
+//                setCmbxIngredientesCarnes(carnes);
+//            } else if (temp.get(i).getCategoria().equalsIgnoreCase("vegetales")) {
+//                vegetales.add(temp.get(i));
+//                setTablaVegetales(vegetales);
+//                setCmbxIngredientesVegetales(vegetales);
+//            }
+//        }
     }
 
     /**
@@ -98,8 +104,6 @@ public class PanelInventario extends javax.swing.JPanel {
 
         panVegetales.setBackground(new java.awt.Color(255, 255, 255));
         panVegetales.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        cbxIngVeg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnAddVeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.png"))); // NOI18N
         btnAddVeg.setBorder(null);
@@ -205,7 +209,6 @@ public class PanelInventario extends javax.swing.JPanel {
         panCarnes.setBackground(new java.awt.Color(255, 255, 255));
         panCarnes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        cbxIngCarn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbxIngCarn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnAddCar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.png"))); // NOI18N
@@ -314,44 +317,48 @@ public class PanelInventario extends javax.swing.JPanel {
 
     private void btnAddVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddVegActionPerformed
         aumentarIngrediente(cbxIngVeg);
+        setTablaVegetales(vegetales);
     }//GEN-LAST:event_btnAddVegActionPerformed
 
     private void ordCantidadVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordCantidadVegActionPerformed
         // TODO add your handling code here:
         ordCantidadVeg.setSelected(true);
         ordAlfabeticoVeg.setSelected(false);
-        ordCantidad(vegetales, 0, vegetales.size());
+        ordCantidad(vegetales, 0, vegetales.size() - 1);
         setTablaVegetales(vegetales);
     }//GEN-LAST:event_ordCantidadVegActionPerformed
 
     private void btnAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCarActionPerformed
         // TODO add your handling code here:
         aumentarIngrediente(cbxIngCarn);
+        setTablaCarnes(carnes);
     }//GEN-LAST:event_btnAddCarActionPerformed
 
     private void ordCantidadCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordCantidadCarActionPerformed
         // TODO add your handling code here:
         ordCantidadCar.setSelected(true);
         ordAlfabeticoCar.setSelected(false);
-        ordCantidad(carnes, 0, carnes.size());
+        ordCantidad(carnes, 0, carnes.size() - 1);
         setTablaCarnes(carnes);
     }//GEN-LAST:event_ordCantidadCarActionPerformed
 
     private void btnMinusCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusCarActionPerformed
         // TODO add your handling code here:
         disminuirIngrediente(cbxIngCarn);
+        setTablaCarnes(carnes);
     }//GEN-LAST:event_btnMinusCarActionPerformed
 
     private void btnMinusVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusVegActionPerformed
         // TODO add your handling code here:
         disminuirIngrediente(cbxIngVeg);
+        setTablaVegetales(vegetales);
     }//GEN-LAST:event_btnMinusVegActionPerformed
 
     private void ordAlfabeticoVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordAlfabeticoVegActionPerformed
         // TODO add your handling code here:
         ordCantidadVeg.setSelected(false);
         ordAlfabeticoVeg.setSelected(true);
-        ordCantidad(vegetales, 0, vegetales.size());
+        ordCantidad(vegetales, 0, vegetales.size() - 1);
         setTablaVegetales(vegetales);
     }//GEN-LAST:event_ordAlfabeticoVegActionPerformed
 
@@ -359,7 +366,7 @@ public class PanelInventario extends javax.swing.JPanel {
         // TODO add your handling code here:
         ordCantidadCar.setSelected(false);
         ordAlfabeticoCar.setSelected(true);
-        ordCantidad(carnes, 0, carnes.size());
+        ordCantidad(carnes, 0, carnes.size() - 1);
         setTablaCarnes(carnes);
     }//GEN-LAST:event_ordAlfabeticoCarActionPerformed
 
@@ -385,6 +392,15 @@ public class PanelInventario extends javax.swing.JPanel {
     private javax.swing.JTable tableVegetales;
     public javax.swing.JTabbedPane tabpanel;
     // End of variables declaration//GEN-END:variables
+
+    public void actualizarTablas() {
+        carnes = miInventario.getCarnes();
+        vegetales = miInventario.getVegetales();
+        setTablaCarnes(carnes);
+        setTablaVegetales(vegetales);
+        setCmbxIngredientesCarnes(carnes);
+        setCmbxIngredientesVegetales(vegetales);
+    }
 
     public void setTablaCarnes(ArrayList<Ingrediente> ingredientes) {
         String[] columnas = {"Nombre", "Categoria", "Cantidad"};
@@ -426,8 +442,10 @@ public class PanelInventario extends javax.swing.JPanel {
 
     public void aumentarIngrediente(JComboBox cbx) {
         if (cbx.getSelectedItem() != null) {
-            Ingrediente ing = (Ingrediente) cbx.getSelectedItem();
-            ing.aumIngrediente(1);
+            String find = (String) cbx.getSelectedItem();
+            Ingrediente seleccionado = miInventario.buscarIngrediente(find);
+            seleccionado.aumIngrediente(1);
+
         } else {
             JOptionPane.showMessageDialog(null, "Ingrediente no seleccionado");
         }
@@ -435,8 +453,9 @@ public class PanelInventario extends javax.swing.JPanel {
 
     public void disminuirIngrediente(JComboBox cbx) {
         if (cbx.getSelectedItem() != null) {
-            Ingrediente ing = (Ingrediente) cbx.getSelectedItem();
-            ing.disIngrediente(1);
+            String find = (String) cbx.getSelectedItem();
+            Ingrediente seleccionado = miInventario.buscarIngrediente(find);
+            seleccionado.disIngrediente(1);
         } else {
             JOptionPane.showMessageDialog(null, "Ingrediente no seleccionado");
         }
