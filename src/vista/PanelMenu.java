@@ -493,7 +493,6 @@ public class PanelMenu extends javax.swing.JPanel {
         enviado = misPedidos.getPedidosListos();
         setTabla(recibido, tblRecibidos);
         setTabla(enviado, tblEnviados);
-
     }
 
 }

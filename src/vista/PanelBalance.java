@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 import modelo.Boleta;
 import modelo.Caja;
@@ -28,13 +29,13 @@ public class PanelBalance extends javax.swing.JPanel {
     /**
      * Creates new form panelBalance
      */
+    ControladorCaja c = new ControladorCaja();
     Caja miCaja = Caja.getCaja();
-    ListaPedido misPedidos = ListaPedido.getListaPedido();
-    ArrayList<Pedido> misClientes = misPedidos.getPedidos();
-    ArrayList<Boleta> misBoletas = miCaja.getBoletas();
+    ArrayList<Boleta> misBoletas = miCaja.getBoletasActivas();
 
     public PanelBalance() {
         initComponents();
+
     }
 
     /**
@@ -127,13 +128,18 @@ public class PanelBalance extends javax.swing.JPanel {
 
         cbxClientes.setForeground(new java.awt.Color(102, 102, 102));
         cbxClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente 1", "Cliente 2", "Cliente 3", "Cliente 4" }));
+        cbxClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxClientesActionPerformed(evt);
+            }
+        });
         panFactura.add(cbxClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 62, 100, -1));
 
         jLabel2.setText("Cliente:");
         panFactura.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 63, 50, 20));
 
         lblFechaCliente.setText("FECHA DE FACTURA");
-        panFactura.add(lblFechaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 210, -1, -1));
+        panFactura.add(lblFechaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, -1, -1));
 
         lblNomCliente.setText("NOMBRE Y APELLIDO CLIENTE");
         panFactura.add(lblNomCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
@@ -142,7 +148,7 @@ public class PanelBalance extends javax.swing.JPanel {
         panFactura.add(lblDniCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
 
         jLabel4.setText("FECHA:");
-        panFactura.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, -1, -1));
+        panFactura.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, -1, -1));
 
         jLabel5.setText("DNI:");
         panFactura.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
@@ -262,14 +268,22 @@ public class PanelBalance extends javax.swing.JPanel {
 
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
         // TODO add your handling code here:
-        
+        String dni = (String) cbxClientes.getSelectedItem();
+        Boleta b = miCaja.buscarBoleta(dni);
+        b.estado = true;
+        actualizarComboBox();
+        setTablaBalance(miCaja);
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void btnSalvarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarArchivoActionPerformed
-        // TODO add your handling code here:
-        ControladorCaja c = new ControladorCaja();
+        // TODO add your handling code here:        
         c.salvarArchivo();
     }//GEN-LAST:event_btnSalvarArchivoActionPerformed
+
+    private void cbxClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxClientesActionPerformed
+        // TODO add your handling code here:        
+        setBoleta(cbxClientes);
+    }//GEN-LAST:event_cbxClientesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFactura;
@@ -328,14 +342,15 @@ public class PanelBalance extends javax.swing.JPanel {
         tblBalance.setModel(modelo);
     }
 
-    public void setBoleta() {
+    public void setBoleta(JComboBox a) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
-        Boleta b = null;
-        
+        String dni = (String) a.getSelectedItem();
+        Boleta b = miCaja.buscarBoleta(dni);
+        setTablaBoleta(b);
         lblNomCliente.setText(b.cliente.getNombre());
         lblDniCliente.setText(b.cliente.getDni());
         lblFechaCliente.setText(formatter.format(b.fecha));
-        setTablaBoleta(b);
+        lblTotal.setText(b.calcMonto() + "");
     }
 
     public void setTablaBoleta(Boleta b) {
@@ -384,13 +399,12 @@ public class PanelBalance extends javax.swing.JPanel {
     public void setCmbxClientes(ArrayList<Boleta> ped) {
         cbxClientes.removeAllItems();
         for (int i = 0; i < ped.size(); i++) {
-            cbxClientes.addItem(ped.get(i).getCliente().getNombre());
+            cbxClientes.addItem(ped.get(i).getCliente().getDni());
         }
     }
 
     public void actualizarComboBox() {
-        misBoletas = miCaja.getBoletas();
-        misClientes = misPedidos.getPedidos();
+        misBoletas = miCaja.getBoletasActivas();
         setCmbxClientes(misBoletas);
     }
 
