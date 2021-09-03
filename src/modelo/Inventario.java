@@ -95,5 +95,12 @@ public class Inventario {
         }
         return listaCarnes;
     }
-      
+
+    public Ingrediente[] getIngredientes() {
+        return ingredientes;
+    }
+
+    public int getTamaño() {
+        return this.ingredientes.length;
+    }
 }

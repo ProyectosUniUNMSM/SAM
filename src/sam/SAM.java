@@ -35,7 +35,7 @@ public class SAM {
         ControladorArchivoMenu archivoMenu = new ControladorArchivoMenu();
         ControladorCaja cc = new ControladorCaja();
 
-        archivoInventario.cargarArchivo();
+        archivoInventario.leerArchivo();
         archivoMenu.cargarArchivo();
         cc.leerArchivo();
 

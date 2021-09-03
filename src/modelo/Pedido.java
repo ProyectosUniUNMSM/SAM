@@ -1,12 +1,13 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
  * @author AlexTprog
  */
-public class Pedido implements Serializable{
+public class Pedido implements Serializable {
 
     //Nodo Pedido
     public Comida comida;
@@ -68,7 +69,7 @@ public class Pedido implements Serializable{
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-//NO ME SALIO QUE DESCUENTE LOS INGREDIENTES xd : alex
+
 //    public void descontarIngredientes() {
 //        ArrayList<Ingrediente> temp = comida.getIngredientes();
 //        for (Ingrediente i : temp) {

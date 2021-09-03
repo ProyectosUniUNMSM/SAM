@@ -12,6 +12,8 @@ import modelo.Caja;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
 import modelo.Comida;
+import modelo.Ingrediente;
+import modelo.Inventario;
 import modelo.ListaPedido;
 import modelo.TextPrompt;
 import modelo.Pedido;
@@ -135,6 +137,7 @@ public class PanelDatos extends javax.swing.JFrame {
 //        }
         Cliente client = new Cliente(txtNombre.getText(), txtDni.getText());
         Pedido pedido = new Pedido(comida, client);
+        descontarIngredientes(pedido);
         misPedidos.addPedido(pedido);
         micaja.addBoleta(pedido);
         dispose();
@@ -181,4 +184,11 @@ public class PanelDatos extends javax.swing.JFrame {
         txtDni.setText("");
     }
 
+    public void descontarIngredientes(Pedido p) {
+        Inventario miInventario = Inventario.getInventario();
+        for (Ingrediente i : p.comida.getIngredientes()) {
+            Ingrediente temp = miInventario.buscarIngrediente(i.getNombre());
+            temp.disIngrediente(1);
+        }
+    }
 }
