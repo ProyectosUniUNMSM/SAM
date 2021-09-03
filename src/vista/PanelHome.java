@@ -11,9 +11,8 @@ package vista;
  */
 public class PanelHome extends javax.swing.JPanel {
 
-    /**
-     * Creates new form prueba
-     */
+//    private int xx,xy;
+    
     public PanelHome() {
         initComponents();
     }
@@ -34,8 +33,30 @@ public class PanelHome extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoPrincipal.png"))); // NOI18N
+        lblFondo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                lblFondoMouseDragged(evt);
+            }
+        });
+        lblFondo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblFondoMousePressed(evt);
+            }
+        });
         add(lblFondo, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblFondoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFondoMousePressed
+//        xx = evt.getX();
+//        xy = evt.getY();
+    }//GEN-LAST:event_lblFondoMousePressed
+
+    private void lblFondoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFondoMouseDragged
+//        int x = evt.getXOnScreen();
+//        int y = evt.getYOnScreen();
+//        
+//        this.setLocation(x-xx, y-xy);
+    }//GEN-LAST:event_lblFondoMouseDragged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

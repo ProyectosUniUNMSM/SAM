@@ -19,10 +19,10 @@ import java.awt.Toolkit;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form principal
-     */
+    private int xx,xy;
+    
     public VentanaPrincipal() {
+        this.setUndecorated(true);
         initComponents();
         this.btnExit.setIcon(setScalableFoto(this.btnExit, "/imagenes/paneButton.jpg"));
         this.setLocationRelativeTo(null);
@@ -55,6 +55,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(950, 600));
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panContenedor.setMinimumSize(new java.awt.Dimension(950, 490));
@@ -82,13 +92,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panBtns.add(btnBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 80, 80));
 
         ExitBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exitMain.PNG"))); // NOI18N
-        ExitBTN.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ExitBTN.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ExitBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExitBTNActionPerformed(evt);
             }
         });
         panBtns.add(ExitBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 70, 70));
+
+        btnExit.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                btnExitMouseDragged(evt);
+            }
+        });
+        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnExitMousePressed(evt);
+            }
+        });
         panBtns.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 100));
 
         getContentPane().add(panBtns, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 950, 100));
@@ -102,6 +123,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void ExitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitBTNActionPerformed
     System.exit(0);    }//GEN-LAST:event_ExitBTNActionPerformed
+
+    private void btnExitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMousePressed
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_btnExitMousePressed
+
+    private void btnExitMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x-xx, y-xy-500);
+    }//GEN-LAST:event_btnExitMouseDragged
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+//        xx = evt.getX();
+//        xy = evt.getY();
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+//        int x = evt.getXOnScreen();
+//        int y = evt.getYOnScreen();
+//        
+//        this.setLocation(x-xx, y-xy);
+    }//GEN-LAST:event_formMouseDragged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ExitBTN;
