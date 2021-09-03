@@ -107,9 +107,10 @@ public class PanelInventario extends javax.swing.JPanel {
             }
         });
 
+        btnAddVeg.setBackground(new java.awt.Color(255, 255, 255));
         btnAddVeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.png"))); // NOI18N
         btnAddVeg.setBorder(null);
-        btnAddVeg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddVeg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAddVeg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddVegActionPerformed(evt);
@@ -140,7 +141,7 @@ public class PanelInventario extends javax.swing.JPanel {
         btnMinusVeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menos.png"))); // NOI18N
         btnMinusVeg.setBorder(null);
         btnMinusVeg.setContentAreaFilled(false);
-        btnMinusVeg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMinusVeg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMinusVeg.setMinimumSize(new java.awt.Dimension(61, 30));
         btnMinusVeg.setPreferredSize(new java.awt.Dimension(61, 30));
         btnMinusVeg.addActionListener(new java.awt.event.ActionListener() {
@@ -224,7 +225,7 @@ public class PanelInventario extends javax.swing.JPanel {
         btnAddCar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.png"))); // NOI18N
         btnAddCar.setBorder(null);
         btnAddCar.setContentAreaFilled(false);
-        btnAddCar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddCar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAddCar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddCarActionPerformed(evt);
@@ -255,7 +256,7 @@ public class PanelInventario extends javax.swing.JPanel {
         btnMinusCar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menos.png"))); // NOI18N
         btnMinusCar.setBorder(null);
         btnMinusCar.setContentAreaFilled(false);
-        btnMinusCar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMinusCar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMinusCar.setMinimumSize(new java.awt.Dimension(61, 30));
         btnMinusCar.setPreferredSize(new java.awt.Dimension(61, 30));
         btnMinusCar.addActionListener(new java.awt.event.ActionListener() {
