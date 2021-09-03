@@ -27,7 +27,7 @@ public class PanelInventario extends javax.swing.JPanel {
     Inventario miInventario = Inventario.getInventario();
     ArrayList<Ingrediente> carnes = miInventario.getCarnes();
     ArrayList<Ingrediente> vegetales = miInventario.getVegetales();
-    ControladorArchivoInventario ing;
+    
 
     public PanelInventario() {
         initComponents();
@@ -328,9 +328,9 @@ public class PanelInventario extends javax.swing.JPanel {
             setTablaVegetales(vegetales);
 
         } else {
-          ordCantidad(vegetales, 0, vegetales.size() - 1);
-          ListaInvierte(vegetales);
-          setTablaVegetales(vegetales);
+            ordCantidad(vegetales, 0, vegetales.size() - 1);
+            ListaInvierte(vegetales);
+            setTablaVegetales(vegetales);
         }
 
 
@@ -344,17 +344,17 @@ public class PanelInventario extends javax.swing.JPanel {
 
     private void ordCantidadCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordCantidadCarActionPerformed
         // TODO add your handling code here:
-       
+
         ordAlfabeticoCar.setSelected(false);
-        if(ordCantidadCar.isSelected()){
-        ordCantidad(carnes, 0, carnes.size() - 1);
-        setTablaCarnes(carnes);
-        }else{
-        ordCantidad(carnes, 0, carnes.size() - 1);
-        ListaInvierte(carnes);
-        setTablaCarnes(carnes);
+        if (ordCantidadCar.isSelected()) {
+            ordCantidad(carnes, 0, carnes.size() - 1);
+            setTablaCarnes(carnes);
+        } else {
+            ordCantidad(carnes, 0, carnes.size() - 1);
+            ListaInvierte(carnes);
+            setTablaCarnes(carnes);
         }
-        
+
     }//GEN-LAST:event_ordCantidadCarActionPerformed
 
     private void btnMinusCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusCarActionPerformed
@@ -372,31 +372,30 @@ public class PanelInventario extends javax.swing.JPanel {
     private void ordAlfabeticoVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordAlfabeticoVegActionPerformed
         // TODO add your handling code here:
         ordCantidadVeg.setSelected(false);
-        if(ordAlfabeticoVeg.isSelected()){
-        ordAlfabeticamente(vegetales, 0, vegetales.size() - 1);
-        setTablaVegetales(vegetales);
-        }else{
-        ordAlfabeticamente(vegetales, 0, vegetales.size() - 1);
-        ListaInvierte(vegetales);
-        setTablaVegetales(vegetales);
+        if (ordAlfabeticoVeg.isSelected()) {
+            ordAlfabeticamente(vegetales, 0, vegetales.size() - 1);
+            setTablaVegetales(vegetales);
+        } else {
+            ordAlfabeticamente(vegetales, 0, vegetales.size() - 1);
+            ListaInvierte(vegetales);
+            setTablaVegetales(vegetales);
         }
-        
+
     }//GEN-LAST:event_ordAlfabeticoVegActionPerformed
 
     private void ordAlfabeticoCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordAlfabeticoCarActionPerformed
         // TODO add your handling code here:
         ordCantidadCar.setSelected(false);
-        
-        
-        if(ordAlfabeticoCar.isSelected()){
-            ordAlfabeticamente(carnes, 0, carnes.size()-1);
+
+        if (ordAlfabeticoCar.isSelected()) {
+            ordAlfabeticamente(carnes, 0, carnes.size() - 1);
             setTablaCarnes(carnes);
-        }else{
-            ordAlfabeticamente(carnes, 0, carnes.size()-1);
+        } else {
+            ordAlfabeticamente(carnes, 0, carnes.size() - 1);
             ListaInvierte(carnes);
             setTablaCarnes(carnes);
         }
-        
+
     }//GEN-LAST:event_ordAlfabeticoCarActionPerformed
 
     private void cbxIngVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxIngVegActionPerformed
@@ -505,10 +504,10 @@ public class PanelInventario extends javax.swing.JPanel {
         j = ultimo;
 
         do {
-            while(ing.get(i).getNombre().charAt(0)< pivote.charAt(0)){
+            while (ing.get(i).getNombre().charAt(0) < pivote.charAt(0)) {
                 i++;
             }
-            while (ing.get(j).getNombre().charAt(0)>pivote.charAt(0)) {
+            while (ing.get(j).getNombre().charAt(0) > pivote.charAt(0)) {
                 j--;
             }
             if (i <= j) {
@@ -560,8 +559,9 @@ public class PanelInventario extends javax.swing.JPanel {
             ordCantidad(ing, i, ultimo);
         }
     }
-    public void ListaInvierte(ArrayList<Ingrediente>  ing){
+
+    public void ListaInvierte(ArrayList<Ingrediente> ing) {
         Collections.reverse(ing);
     }
-   
+
 }

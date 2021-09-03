@@ -59,9 +59,9 @@ public class ControladorArchivoInventario {
                 fileOut.writeObject(inv.getIngredientes()[i]);
             }
             fileOut.close();
-            JOptionPane.showMessageDialog(null, "Los ingredientes fueron registrados.");
+            System.out.println("Los ingredientes fueron guardados.");            
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Ingredientes no registrados.");
+            System.out.println("Ingredientes no registrados.");
         }
     }
 

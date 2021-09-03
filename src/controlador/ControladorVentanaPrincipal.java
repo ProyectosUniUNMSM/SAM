@@ -26,6 +26,7 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
     PanelMenu panMenu = new PanelMenu();
     PanelBalance panBalance = new PanelBalance();
     Caja miCaja = Caja.getCaja();
+    ControladorArchivoInventario archivoInv = new ControladorArchivoInventario();
 
     public ControladorVentanaPrincipal(VentanaPrincipal vista) {
         this.vista = vista;
@@ -58,6 +59,7 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
             panMenu.setVisible(false);
             panBalance.setVisible(false);
 
+            archivoInv.salvarArchivo();
             vista.panContenedor.add(panInventario);
             panInventario.actualizarTablas();
             vista.panContenedor.validate();
@@ -67,6 +69,7 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
             panMenu.setVisible(true);
             panBalance.setVisible(false);
 
+            archivoInv.salvarArchivo();
             vista.panContenedor.add(panMenu);
             vista.panContenedor.validate();
 
@@ -76,6 +79,7 @@ public class ControladorVentanaPrincipal extends javax.swing.JFrame implements A
             panMenu.setVisible(false);
             panBalance.setVisible(true);
 
+            archivoInv.salvarArchivo();
             vista.panContenedor.add(panBalance);
             vista.panContenedor.validate();
 
