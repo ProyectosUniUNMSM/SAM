@@ -27,8 +27,6 @@ public class ControladorCaja {
 
     public ControladorCaja() {
         boletas = new ArrayList<Boleta>();
-        //leerArchivo();
-        //salvarArchivo();
     }
 
     public void leerArchivo() {
@@ -73,7 +71,7 @@ public class ControladorCaja {
     public void cargarCaja() {
         for (Boleta b : this.boletas) {
             miCaja.addBoleta(b);
-            System.out.println(b.cliente.getDni());
+            System.out.println(b.cliente.getNombre());
         }
     }
 }

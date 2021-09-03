@@ -31,6 +31,8 @@ public class PanelBalance extends javax.swing.JPanel {
      */
     ControladorCaja c = new ControladorCaja();
     Caja miCaja = Caja.getCaja();
+    ListaPedido misPedidos = ListaPedido.getListaPedido();
+    ArrayList<Pedido> misClientes = misPedidos.getPedidos();
     ArrayList<Boleta> misBoletas = miCaja.getBoletasActivas();
 
     public PanelBalance() {
@@ -276,7 +278,7 @@ public class PanelBalance extends javax.swing.JPanel {
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void btnSalvarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarArchivoActionPerformed
-        // TODO add your handling code here:        
+    // TODO add your handling code here:        
         c.salvarArchivo();
     }//GEN-LAST:event_btnSalvarArchivoActionPerformed
 

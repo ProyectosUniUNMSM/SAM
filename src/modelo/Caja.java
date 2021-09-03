@@ -33,6 +33,7 @@ public class Caja {
     public void addBoleta(Boleta nuevo) {
         ultimo = nuevo;
         tamaño++;
+
     }
 
     public void addBoleta(Pedido p) {
