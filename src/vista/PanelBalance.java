@@ -76,8 +76,12 @@ public class PanelBalance extends javax.swing.JPanel {
         lblPlato = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblBalance = new javax.swing.JTable();
-        jLabel8 = new javax.swing.JLabel();
         btnSalvarArchivo = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        lblEndDay = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(180, 237, 131));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(130, 179, 102)));
@@ -211,21 +215,21 @@ public class PanelBalance extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Total de Ventas:");
-        panBalance.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 180, 30));
+        panBalance.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 180, 30));
 
         lblTotalVentas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTotalVentas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTotalVentas.setText("NUMERO");
-        panBalance.add(lblTotalVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 90, 20));
+        panBalance.add(lblTotalVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 90, 20));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel7.setText("Plato mas Vendido:");
-        panBalance.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 220, 30));
+        panBalance.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 220, 30));
 
         lblPlato.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblPlato.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPlato.setText("PLATO");
-        panBalance.add(lblPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 150, 20));
+        panBalance.add(lblPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 150, 20));
 
         tblBalance.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -248,19 +252,55 @@ public class PanelBalance extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblBalance);
 
-        panBalance.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 550, 240));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel8.setText("Fin del Dia");
-        panBalance.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+        panBalance.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 550, 240));
 
         btnSalvarArchivo.setText("Salvar Archivo");
+        btnSalvarArchivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalvarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarArchivoActionPerformed(evt);
             }
         });
-        panBalance.add(btnSalvarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, -1));
+        panBalance.add(btnSalvarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 51));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel8.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Fin del Dia");
+
+        lblEndDay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/EndDay.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(359, 359, 359)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addComponent(lblEndDay, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(271, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(lblEndDay, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        panBalance.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 60));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/estadisitica.png"))); // NOI18N
+        panBalance.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 60, 50));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/comida.png"))); // NOI18N
+        panBalance.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 40, 40));
 
         jScrollPane3.setViewportView(panBalance);
 
@@ -293,6 +333,7 @@ public class PanelBalance extends javax.swing.JPanel {
     private javax.swing.JButton btnSalvarArchivo;
     private javax.swing.JComboBox<String> cbxClientes;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -300,12 +341,15 @@ public class PanelBalance extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     public javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel lblDniCliente;
+    private javax.swing.JLabel lblEndDay;
     private javax.swing.JLabel lblFechaCliente;
     private javax.swing.JLabel lblNomCliente;
     private javax.swing.JLabel lblPlato;

@@ -76,6 +76,7 @@ public class PanelInventario extends javax.swing.JPanel {
         PanelOrdenVeg = new javax.swing.JPanel();
         ordAlfabeticoVeg = new javax.swing.JRadioButton();
         ordCantidadVeg = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
         panCarnes = new javax.swing.JPanel();
         cbxIngCarn = new javax.swing.JComboBox<>();
         btnAddCar = new javax.swing.JButton();
@@ -85,6 +86,7 @@ public class PanelInventario extends javax.swing.JPanel {
         PanelOrdenCar = new javax.swing.JPanel();
         ordAlfabeticoCar = new javax.swing.JRadioButton();
         ordCantidadCar = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(180, 237, 131));
         setMinimumSize(new java.awt.Dimension(950, 600));
@@ -98,6 +100,7 @@ public class PanelInventario extends javax.swing.JPanel {
         panVegetales.setBackground(new java.awt.Color(255, 255, 255));
         panVegetales.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        cbxIngVeg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbxIngVeg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxIngVegActionPerformed(evt);
@@ -106,8 +109,7 @@ public class PanelInventario extends javax.swing.JPanel {
 
         btnAddVeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.png"))); // NOI18N
         btnAddVeg.setBorder(null);
-        btnAddVeg.setContentAreaFilled(false);
-        btnAddVeg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAddVeg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddVeg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddVegActionPerformed(evt);
@@ -138,7 +140,7 @@ public class PanelInventario extends javax.swing.JPanel {
         btnMinusVeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menos.png"))); // NOI18N
         btnMinusVeg.setBorder(null);
         btnMinusVeg.setContentAreaFilled(false);
-        btnMinusVeg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMinusVeg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMinusVeg.setMinimumSize(new java.awt.Dimension(61, 30));
         btnMinusVeg.setPreferredSize(new java.awt.Dimension(61, 30));
         btnMinusVeg.addActionListener(new java.awt.event.ActionListener() {
@@ -172,6 +174,8 @@ public class PanelInventario extends javax.swing.JPanel {
         });
         PanelOrdenVeg.add(ordCantidadVeg);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Lista.png"))); // NOI18N
+
         javax.swing.GroupLayout panVegetalesLayout = new javax.swing.GroupLayout(panVegetales);
         panVegetales.setLayout(panVegetalesLayout);
         panVegetalesLayout.setHorizontalGroup(
@@ -184,9 +188,13 @@ public class PanelInventario extends javax.swing.JPanel {
                     .addComponent(cbxIngVeg, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panVegetalesLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(btnAddVeg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(btnMinusVeg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(panVegetalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(panVegetalesLayout.createSequentialGroup()
+                                .addComponent(btnAddVeg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(btnMinusVeg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(19, 19, 19))
         );
         panVegetalesLayout.setVerticalGroup(
             panVegetalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,8 +207,10 @@ public class PanelInventario extends javax.swing.JPanel {
                 .addGroup(panVegetalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAddVeg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMinusVeg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(202, 252, Short.MAX_VALUE))
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
         );
 
         tabpanel.addTab("", panVegetales);
@@ -208,12 +218,13 @@ public class PanelInventario extends javax.swing.JPanel {
         panCarnes.setBackground(new java.awt.Color(255, 255, 255));
         panCarnes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        cbxIngCarn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbxIngCarn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnAddCar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.png"))); // NOI18N
         btnAddCar.setBorder(null);
         btnAddCar.setContentAreaFilled(false);
-        btnAddCar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAddCar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddCar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddCarActionPerformed(evt);
@@ -244,7 +255,7 @@ public class PanelInventario extends javax.swing.JPanel {
         btnMinusCar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menos.png"))); // NOI18N
         btnMinusCar.setBorder(null);
         btnMinusCar.setContentAreaFilled(false);
-        btnMinusCar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMinusCar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMinusCar.setMinimumSize(new java.awt.Dimension(61, 30));
         btnMinusCar.setPreferredSize(new java.awt.Dimension(61, 30));
         btnMinusCar.addActionListener(new java.awt.event.ActionListener() {
@@ -278,6 +289,8 @@ public class PanelInventario extends javax.swing.JPanel {
         });
         PanelOrdenCar.add(ordCantidadCar);
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Lista.png"))); // NOI18N
+
         javax.swing.GroupLayout panCarnesLayout = new javax.swing.GroupLayout(panCarnes);
         panCarnes.setLayout(panCarnesLayout);
         panCarnesLayout.setHorizontalGroup(
@@ -290,9 +303,13 @@ public class PanelInventario extends javax.swing.JPanel {
                     .addComponent(cbxIngCarn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panCarnesLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(btnAddCar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(btnMinusCar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(panCarnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(panCarnesLayout.createSequentialGroup()
+                                .addComponent(btnAddCar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(btnMinusCar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         panCarnesLayout.setVerticalGroup(
             panCarnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,8 +322,10 @@ public class PanelInventario extends javax.swing.JPanel {
                 .addGroup(panCarnesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAddCar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMinusCar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
         );
 
         tabpanel.addTab("", panCarnes);
@@ -412,6 +431,8 @@ public class PanelInventario extends javax.swing.JPanel {
     private javax.swing.JButton btnMinusVeg;
     private javax.swing.JComboBox<String> cbxIngCarn;
     private javax.swing.JComboBox<String> cbxIngVeg;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JRadioButton ordAlfabeticoCar;

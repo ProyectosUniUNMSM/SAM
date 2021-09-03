@@ -96,6 +96,7 @@ public class PanelDatos extends javax.swing.JFrame {
         panPrueba.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 70, 60));
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);

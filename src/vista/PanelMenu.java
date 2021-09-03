@@ -110,6 +110,7 @@ public class PanelMenu extends javax.swing.JPanel {
         btnFoodMenu1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFoodMenu1.setForeground(new java.awt.Color(255, 255, 255));
         btnFoodMenu1.setText("Agregar");
+        btnFoodMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnFoodMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFoodMenu1ActionPerformed(evt);
@@ -139,6 +140,7 @@ public class PanelMenu extends javax.swing.JPanel {
         btnFoodMenu3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFoodMenu3.setForeground(new java.awt.Color(255, 255, 255));
         btnFoodMenu3.setText("Agregar");
+        btnFoodMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnFoodMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFoodMenu3ActionPerformed(evt);
@@ -159,6 +161,7 @@ public class PanelMenu extends javax.swing.JPanel {
         btnFoodMenu4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFoodMenu4.setForeground(new java.awt.Color(255, 255, 255));
         btnFoodMenu4.setText("Agregar");
+        btnFoodMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnFoodMenu4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFoodMenu4ActionPerformed(evt);
@@ -179,6 +182,7 @@ public class PanelMenu extends javax.swing.JPanel {
         btnFoodMenu5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFoodMenu5.setForeground(new java.awt.Color(255, 255, 255));
         btnFoodMenu5.setText("Agregar");
+        btnFoodMenu5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnFoodMenu5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFoodMenu5ActionPerformed(evt);
@@ -199,6 +203,7 @@ public class PanelMenu extends javax.swing.JPanel {
         btnFoodMenu6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFoodMenu6.setForeground(new java.awt.Color(255, 255, 255));
         btnFoodMenu6.setText("Agregar");
+        btnFoodMenu6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnFoodMenu6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFoodMenu6ActionPerformed(evt);
@@ -219,6 +224,7 @@ public class PanelMenu extends javax.swing.JPanel {
         btnFoodMenu7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFoodMenu7.setForeground(new java.awt.Color(255, 255, 255));
         btnFoodMenu7.setText("Agregar");
+        btnFoodMenu7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnFoodMenu7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFoodMenu7ActionPerformed(evt);
@@ -239,6 +245,7 @@ public class PanelMenu extends javax.swing.JPanel {
         btnFoodMenu8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFoodMenu8.setForeground(new java.awt.Color(255, 255, 255));
         btnFoodMenu8.setText("Agregar");
+        btnFoodMenu8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnFoodMenu8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFoodMenu8ActionPerformed(evt);
@@ -250,6 +257,7 @@ public class PanelMenu extends javax.swing.JPanel {
         btnFoodMenu2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnFoodMenu2.setForeground(new java.awt.Color(255, 255, 255));
         btnFoodMenu2.setText("Agregar");
+        btnFoodMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnFoodMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFoodMenu2ActionPerformed(evt);

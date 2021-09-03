@@ -82,6 +82,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panBtns.add(btnBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 80, 80));
 
         ExitBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exitMain.PNG"))); // NOI18N
+        ExitBTN.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ExitBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExitBTNActionPerformed(evt);
