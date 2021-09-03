@@ -360,7 +360,6 @@ public class PanelBalance extends javax.swing.JPanel {
             b.calcMonto();
             miData[i][0] = b.pedidos.get(i).comida.getNombre();
             miData[i][1] = b.pedidos.get(i).comida.getPrecio();
-            b = b.sig;
         }
         DefaultTableModel modelo = new DefaultTableModel(miData, columnas);
         tblBoleta.setModel(modelo);

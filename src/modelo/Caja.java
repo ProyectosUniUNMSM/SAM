@@ -81,7 +81,7 @@ public class Caja {
     public Boleta buscarBoleta(String dni) {
         Boleta aux = ultimo.sig;
         do {
-            if (aux.cliente.equals(dni) && aux.estado == false) {
+            if (aux.cliente.getDni().equals(dni) && aux.estado == false) {
                 return aux;
             }
             aux = aux.sig;
