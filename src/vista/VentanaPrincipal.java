@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import  java.awt.Image;
+import java.awt.Toolkit;
 
 /**
  *
@@ -22,10 +24,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
-        this.lblBotones.setIcon(setScalableFoto(this.lblBotones, "/imagenes/paneButton.jpg"));
+        this.btnExit.setIcon(setScalableFoto(this.btnExit, "/imagenes/paneButton.jpg"));
         this.setLocationRelativeTo(null);
+        
 
     }
+        public Image getIconImage(){
+            Image Logo = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/logo.png"));
+             return Logo;
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,10 +48,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnInventario = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
         btnBalance = new javax.swing.JButton();
-        lblBotones = new javax.swing.JLabel();
+        ExitBTN = new javax.swing.JButton();
+        btnExit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(950, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -64,14 +73,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 btnInventarioActionPerformed(evt);
             }
         });
-        panBtns.add(btnInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 10, 80, 80));
+        panBtns.add(btnInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 80, 80));
 
         btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/MenuBtn.png"))); // NOI18N
-        panBtns.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 10, 80, 80));
+        panBtns.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 80, 80));
 
         btnBalance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DineroBtn.PNG"))); // NOI18N
-        panBtns.add(btnBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 10, 80, 80));
-        panBtns.add(lblBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 100));
+        panBtns.add(btnBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 80, 80));
+
+        ExitBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exitMain.PNG"))); // NOI18N
+        ExitBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitBTNActionPerformed(evt);
+            }
+        });
+        panBtns.add(ExitBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 70, 70));
+        panBtns.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 100));
 
         getContentPane().add(panBtns, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 950, 100));
 
@@ -82,11 +99,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnInventarioActionPerformed
 
+    private void ExitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitBTNActionPerformed
+    System.exit(0);    }//GEN-LAST:event_ExitBTNActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ExitBTN;
     public javax.swing.JButton btnBalance;
+    public javax.swing.JLabel btnExit;
     public javax.swing.JButton btnInventario;
     public javax.swing.JButton btnMenu;
-    public javax.swing.JLabel lblBotones;
     public javax.swing.JPanel panBtns;
     public javax.swing.JPanel panContenedor;
     // End of variables declaration//GEN-END:variables
