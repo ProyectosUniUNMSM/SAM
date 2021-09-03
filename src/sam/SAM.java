@@ -34,10 +34,10 @@ public class SAM {
         ControladorArchivoInventario archivoInventario = new ControladorArchivoInventario();
         ControladorArchivoMenu archivoMenu = new ControladorArchivoMenu();
         ControladorCaja cc = new ControladorCaja();
-        cc.leerArchivo();
 
         archivoInventario.cargarArchivo();
         archivoMenu.cargarArchivo();
+        cc.leerArchivo();
 
         VentanaPrincipal ventana = new VentanaPrincipal();
         ControladorVentanaPrincipal control = new ControladorVentanaPrincipal(ventana);

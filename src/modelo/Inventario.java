@@ -19,7 +19,7 @@ public class Inventario {
 
     public static Inventario getInventario() {
         if (inventario == null) {
-            inventario = new Inventario(18);
+            inventario = new Inventario(19);
         }
         return inventario;
     }

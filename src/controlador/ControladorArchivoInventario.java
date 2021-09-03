@@ -94,10 +94,11 @@ public class ControladorArchivoInventario {
         Ingrediente ing11 = new Ingrediente("Pimenton", "vegetales", 10);
         Ingrediente ing12 = new Ingrediente("Fideos", "vegetales", 10);
         Ingrediente ing13 = new Ingrediente("Res", "carnes", 10);
-        Ingrediente ing14 = new Ingrediente("Cebolla china", "vegetales", 10);
-        Ingrediente ing15 = new Ingrediente("Pesacado", "carnes", 10);
+        Ingrediente ing14 = new Ingrediente("Cebolla China", "vegetales", 10);
+        Ingrediente ing15 = new Ingrediente("Pescado", "carnes", 10);
         Ingrediente ing16 = new Ingrediente("Limones", "vegetales", 10);
         Ingrediente ing17 = new Ingrediente("Camote", "vegetales", 10);
+        Ingrediente ing18 = new Ingrediente("Tomate", "vegetales", 10);
 
         a.add(ing1);
         a.add(ing2);
@@ -116,6 +117,7 @@ public class ControladorArchivoInventario {
         a.add(ing15);
         a.add(ing16);
         a.add(ing17);
+        a.add(ing18);
     }
 
 //    public void cargarInventario() {
