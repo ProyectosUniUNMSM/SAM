@@ -128,16 +128,18 @@ public class PanelDatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        if (txtNombre.getText() == "" && txtDni.getText() == "") {
-            Cliente client = new Cliente(txtNombre.getText(), txtDni.getText());
-            misPedidos.addPedido(comida, client);
-            dispose();
-            conexion.actualizarTablas();
-            //Apretar pagar para ver las actualizaciones
-            limpiarCampos();
-        } else {
-            JOptionPane.showMessageDialog(this, "Datos incompletos");
-        }
+//        if (txtNombre.getText() == "" && txtDni.getText() == "") {
+//            
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Datos incompletos");
+//        }
+        Cliente client = new Cliente(txtNombre.getText(), txtDni.getText());
+        Pedido pedido = new Pedido(comida, client);
+        misPedidos.addPedido(pedido);
+        micaja.addBoleta(pedido);
+        dispose();
+        conexion.actualizarTablas();
+        limpiarCampos();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
