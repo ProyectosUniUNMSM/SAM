@@ -26,7 +26,12 @@ public class Ingrediente implements Serializable {
     }
 
     public void disIngrediente(int cant) {
-        this.cantidad -= cant;
+        if(this.cantidad == 0){
+            System.out.println("Imposible disminuir más");
+        }else{
+            this.cantidad -= cant;
+        }
+        
     }
 
     public int getCantidad() {
