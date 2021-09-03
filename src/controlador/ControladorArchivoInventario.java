@@ -27,7 +27,9 @@ public class ControladorArchivoInventario {
 //        inicializarInventario(temp);
 //        salvarArchivo(temp);
 //    }
-    public void leerArchivo(ArrayList<Ingrediente> a) {
+    ArrayList<Ingrediente> a = new ArrayList<Ingrediente>();
+            
+    public void leerArchivo() {
         try {
             FileInputStream file = new FileInputStream("ingredientes.dat");
             ObjectInputStream fileInput = new ObjectInputStream(file);
@@ -42,17 +44,19 @@ public class ControladorArchivoInventario {
                 }
             }
             fileInput.close();
+            cargarArchivo();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Sin ingredientes.");
         }
     }
 
-    public void salvarArchivo(ArrayList<Ingrediente> a) {
+    public void salvarArchivo() {
         try {
             FileOutputStream file = new FileOutputStream("ingredientes.dat");
             ObjectOutputStream fileOut = new ObjectOutputStream(file);
-            for (int i = 0; i < a.size(); i++) {
-                fileOut.writeObject(a.get(i));
+            Inventario inv = Inventario.getInventario();
+            for (int i = 0; i < inv.getTamaño(); i++) {
+                fileOut.writeObject(inv.getIngredientes()[i]);
             }
             fileOut.close();
             JOptionPane.showMessageDialog(null, "Los ingredientes fueron registrados.");
@@ -130,18 +134,17 @@ public class ControladorArchivoInventario {
         ArrayList<Ingrediente> a = new ArrayList<>();
         return a;
     }
-
+    /*
     public void crearArchivo() {
         ArrayList<Ingrediente> temp = crearArrayList();
         leerArchivo(temp);
         inicializarInventario(temp);
-        salvarArchivo(temp);
+        salvarArchivo();
     }
+*/
 
     public void cargarArchivo() {
         Inventario miInventario = Inventario.getInventario();
-        ArrayList<Ingrediente> temp = crearArrayList();
-        leerArchivo(temp);
-        miInventario.cargarInventario(temp);
+        miInventario.cargarInventario(a);
     }
 }

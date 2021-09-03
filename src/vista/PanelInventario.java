@@ -27,7 +27,7 @@ public class PanelInventario extends javax.swing.JPanel {
     Inventario miInventario = Inventario.getInventario();
     ArrayList<Ingrediente> carnes = miInventario.getCarnes();
     ArrayList<Ingrediente> vegetales = miInventario.getVegetales();
-    ControladorArchivoInventario ing;
+    ControladorArchivoInventario ing = new ControladorArchivoInventario();
 
     public PanelInventario() {
         initComponents();
@@ -367,6 +367,7 @@ public class PanelInventario extends javax.swing.JPanel {
         // TODO add your handling code here:
         disminuirIngrediente(cbxIngVeg);
         setTablaVegetales(vegetales);
+        ing.salvarArchivo();
     }//GEN-LAST:event_btnMinusVegActionPerformed
 
     private void ordAlfabeticoVegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordAlfabeticoVegActionPerformed
@@ -375,6 +376,7 @@ public class PanelInventario extends javax.swing.JPanel {
         if(ordAlfabeticoVeg.isSelected()){
         ordAlfabeticamente(vegetales, 0, vegetales.size() - 1);
         setTablaVegetales(vegetales);
+        
         }else{
         ordAlfabeticamente(vegetales, 0, vegetales.size() - 1);
         ListaInvierte(vegetales);
